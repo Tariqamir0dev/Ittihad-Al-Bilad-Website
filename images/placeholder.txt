@@ -1,0 +1,49 @@
+# Image Placeholders for Ittihad Al-Bilad Website
+
+This folder contains placeholder images for the corporate website. 
+The following images need to be replaced with actual company assets:
+
+## Required Images:
+
+### Logos:
+- logo-placeholder.png (Main logo - dark version)
+- logo-light.png (Footer logo - light version)
+
+### Hero Section:
+- hero-placeholder.jpg (Main banner image - aspect ratio 16:7)
+
+### About Section:
+- about-placeholder.jpg (Company/office image)
+
+### Companies:
+- company1-logo.png through company6-logo.png (Partner company logos)
+
+### Projects:
+- project1.jpg through project6.jpg (Project showcase images)
+
+### Articles:
+- article1.jpg through article15.jpg (Media center article images)
+
+### Clients:
+- client1.png through client6.png (Client logos)
+
+### Additional:
+- og-image.jpg (Open Graph image for social media)
+
+## Image Specifications:
+
+- **Hero Image**: 1920x840px (16:7 aspect ratio), WebP format preferred
+- **Logo**: Transparent PNG, max height 120px
+- **Project Images**: 800x600px minimum, landscape orientation
+- **Article Images**: 600x400px, consistent aspect ratio
+- **Client Logos**: 300x200px max, transparent PNG preferred
+
+## Optimization Guidelines:
+
+1. Use WebP format for better compression
+2. Provide multiple sizes for responsive images
+3. Ensure alt text is descriptive and accessible
+4. Optimize for loading speed (< 500KB per image recommended)
+5. Use lazy loading for images below the fold
+
+All images should align with the Saudi corporate aesthetic and brand guidelines.
