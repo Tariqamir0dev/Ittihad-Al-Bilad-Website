@@ -2958,7 +2958,7 @@ p {
     padding: 0;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 30vh;
 }
 
 /* Animated Background Elements */
@@ -3269,8 +3269,8 @@ p {
 
 /* Contact Section */
 .contact-section {
-    background: rgba(255, 215, 0, 0.05);
-    border-color: rgba(255, 215, 0, 0.15);
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .contact-details {

@@ -1,0 +1,303 @@
+/* ===== TEAM MEMBERS PAGE - CLEAN & ELEGANT DESIGN ===== */
+
+/* Team Members Section */
+.board-members-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+    min-height: 80vh;
+    position: relative;
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.board-members-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(47,90,142,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.6;
+}
+
+.board-members-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(244, 198, 58, 0.05), transparent);
+    transform: rotate(15deg);
+    z-index: 1;
+}
+
+/* Team Members Grid - Enhanced Layout */
+.team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+/* Team Member Card - Premium & Modern */
+.team-member-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(47, 90, 142, 0.08);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid rgba(47, 90, 142, 0.06);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    backdrop-filter: blur(10px);
+}
+
+.team-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(244, 198, 58, 0.02) 0%, 
+        rgba(47, 90, 142, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.team-member-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(47, 90, 142, 0.15);
+    border-color: rgba(244, 198, 58, 0.2);
+}
+
+.team-member-card:hover::before {
+    opacity: 1;
+}
+
+/* Member Image Wrapper - Premium Frame */
+.member-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px 24px 0 0;
+    z-index: 2;
+}
+
+.member-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(244, 198, 58, 0.05) 0%, 
+        rgba(47, 90, 142, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.team-member-card:hover .member-image-wrapper::before {
+    opacity: 1;
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 2;
+    filter: brightness(1.02) contrast(1.05) saturate(1.1);
+    border-radius: 24px 24px 0 0;
+}
+
+.team-member-card:hover .member-image {
+    transform: scale(1.08);
+    filter: brightness(1.05) contrast(1.08) saturate(1.15);
+}
+
+/* Member Details - Premium Typography */
+.member-details {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: #ffffff;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border-radius: 0 0 24px 24px;
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    font-family: 'Tajawal', Arial, sans-serif;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.team-member-card:hover .member-name {
+    color: #f4c63a;
+    transform: translateY(-2px);
+}
+
+.member-position {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+    font-family: 'Tajawal', Arial, sans-serif;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(47, 90, 142, 0.05), rgba(244, 198, 58, 0.05));
+    border-radius: 16px;
+    border: 1px solid rgba(47, 90, 142, 0.08);
+    transition: all 0.3s ease;
+    letter-spacing: 0.2px;
+}
+
+.team-member-card:hover .member-position {
+    background: linear-gradient(135deg, rgba(244, 198, 58, 0.1), rgba(47, 90, 142, 0.1));
+    border-color: rgba(244, 198, 58, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .team-members-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-members-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .member-image-wrapper {
+        height: 280px;
+    }
+    
+    .member-details {
+        padding: 1.5rem 1.25rem;
+    }
+    
+    .member-name {
+        font-size: 1.4rem;
+    }
+    
+    .member-position {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-members-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .member-image-wrapper {
+        height: 250px;
+    }
+    
+    .member-details {
+        padding: 1.25rem 1rem;
+    }
+    
+    .member-name {
+        font-size: 1.3rem;
+    }
+    
+    .member-position {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+/* Premium Entrance Animation */
+.team-member-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: premiumFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.team-member-card:nth-child(1) { animation-delay: 0.1s; }
+.team-member-card:nth-child(2) { animation-delay: 0.2s; }
+.team-member-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes premiumFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Force Image Visibility */
+.member-image-wrapper img {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* Print styles */
+@media print {
+    .team-member-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .team-member-card:hover {
+        transform: none;
+    }
+    
+    .member-image-wrapper {
+        height: 200px;
+    }
+}

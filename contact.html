@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركاتنا - اتحاد البلاد</title>
-    <meta name="description" content="اكتشف شركات اتحاد البلاد المتخصصة في إدارة الفعاليات والإنتاج الإعلامي والتسويق والخدمات المساندة">
-    <meta name="keywords" content="شركات اتحاد البلاد، فعاليات، إنتاج إعلامي، تسويق، خدمات">
+    <title>اتصل بنا - اتحاد البلاد</title>
+    <meta name="description" content="تواصل مع اتحاد البلاد - شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي والتسويق والخدمات المساندة">
+    <meta name="keywords" content="اتحاد البلاد، اتصل بنا، تواصل، فعاليات، إنتاج إعلامي، تسويق، السعودية">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="شركاتنا - اتحاد البلاد">
-    <meta property="og:description" content="اكتشف شركات اتحاد البلاد المتخصصة في مختلف المجالات">
+    <meta property="og:title" content="اتصل بنا - اتحاد البلاد">
+    <meta property="og:description" content="تواصل مع اتحاد البلاد - شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/companies.html">
+    <meta property="og:url" content="/contact.html">
     <meta property="og:image" content="/images/og-image.jpg">
     
     <!-- Structured Data -->
@@ -20,12 +20,21 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "اتحاد البلاد",
-        "url": "/companies.html",
+        "url": "/",
         "logo": "/images/logo.png",
         "description": "شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي والتسويق",
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": "3455 طريق أنس ابن مالك، الملقا",
+            "addressLocality": "الرياض",
+            "postalCode": "13522",
             "addressCountry": "SA"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+966-11-123-4567",
+            "contactType": "customer service",
+            "email": "info@ittihadbilad.com"
         }
     }
     </script>
@@ -40,6 +49,7 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -51,7 +61,9 @@
             <div class="nav-container">
                 <!-- Logo -->
                 <div class="nav-logo">
-                    <img src="images/logo-placeholder.png" alt="اتحاد البلاد" class="logo-img">
+                    <a href="index.html">
+                        <img src="images/logo-placeholder.png" alt="اتحاد البلاد" class="logo-img">
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Toggle -->
@@ -71,7 +83,7 @@
                             <a href="index.html#about" class="nav-link">من نحن</a>
                         </li>
                         <li class="nav-item">
-                            <a href="companies.html" class="nav-link active" aria-current="page">شركاتنا</a>
+                            <a href="companies.html" class="nav-link">شركاتنا</a>
                         </li>
                         <li class="nav-item dropdown">
                             <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
@@ -88,7 +100,7 @@
                             <a href="#" class="nav-link">علاقات المستثمرين</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.html" class="nav-link">اتصل بنا</a>
+                            <a href="contact.html" class="nav-link active" aria-current="page">اتصل بنا</a>
                         </li>
                     </ul>
                     
@@ -105,188 +117,174 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Page Header -->
-        <section class="page-header" aria-label="رأس الصفحة">
-            <div class="container">
-                <div class="page-header-content">
-                    <h1 class="page-title">شركاتنا</h1>
-                    <p class="page-subtitle">اكتشف مجموعة شركاتنا المتخصصة في مختلف المجالات</p>
-                    <nav class="breadcrumb" aria-label="مسار التنقل">
-                        <ol class="breadcrumb-list">
-                            <li class="breadcrumb-item">
-                                <a href="index.html" class="breadcrumb-link">الرئيسية</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">شركاتنا</li>
-                        </ol>
-                    </nav>
-                </div>
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">اتصل بنا</h1>
+                <p class="page-subtitle">نحن هنا لخدمتكم - تواصلوا معنا في أي وقت</p>
+                <nav class="breadcrumb" aria-label="مسار التنقل">
+                    <ol class="breadcrumb-list">
+                        <li class="breadcrumb-item">
+                            <a href="index.html" class="breadcrumb-link">الرئيسية</a>
+                        </li>
+                        <li class="breadcrumb-item active">اتصل بنا</li>
+                    </ol>
+                </nav>
             </div>
         </section>
 
-        <!-- Companies Section -->
-        <section class="companies-page-section section-padding" aria-labelledby="companies-title">
+        <!-- Contact Section -->
+        <section class="contact-section section-padding">
             <div class="container">
-                <div class="companies-list">
-                    <!-- Company 1 -->
-                    <div class="company-card-horizontal">
-                        <div class="company-logo">
-                            <img src="images/atihad group.jpeg" alt="إدارة الفعاليات والمهرجانات" class="company-logo-img">
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="contact-form-header">
+                            <h2 class="contact-form-title">أرسل لنا رسالة</h2>
+                            <p class="contact-form-subtitle">سنكون سعداء للرد عليكم في أقرب وقت ممكن</p>
                         </div>
-                        <div class="company-content">
-                            <h3 class="company-name">إدارة الفعاليات والمهرجانات</h3>
-                            <p class="company-description">
-                                نقدّم خدماتنا في مجال إدارة وتخطيط الفعاليات والمهرجانات والمؤتمرات، وتحسين تجربة الزائر وفق المعايير المحلية والدولية.
-                            </p>
-                            <div class="company-actions">
-                                <div class="social-links">
-                                    <a href="#" class="social-link facebook" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-link twitter" aria-label="Twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#" class="social-link instagram" aria-label="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
+                        
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="form-label">الاسم *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                                <span class="form-error" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">البريد الإلكتروني *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                                <span class="form-error" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">رقم الهاتف</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                                <span class="form-error" id="phoneError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">الموضوع</label>
+                                <select id="subject" name="subject" class="form-select">
+                                    <option value="">اختر الموضوع</option>
+                                    <option value="general">استفسار عام</option>
+                                    <option value="events">الفعاليات</option>
+                                    <option value="media">الإنتاج الإعلامي</option>
+                                    <option value="marketing">التسويق</option>
+                                    <option value="partnership">شراكة</option>
+                                    <option value="career">الوظائف</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">رسالتك *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                                <span class="form-error" id="messageError"></span>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <span class="checkbox-custom"></span>
+                                    أوافق على <a href="#" class="privacy-link">سياسة الخصوصية</a> و <a href="#" class="terms-link">شروط الاستخدام</a>
+                                </label>
+                                <span class="form-error" id="privacyError"></span>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                إرسال الرسالة
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info & Map -->
+                    <div class="contact-info-container">
+                        <!-- Contact Information -->
+                        <div class="contact-info-card">
+                            <h3 class="contact-info-title">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                معلومات التواصل
+                            </h3>
+                            
+                            <div class="contact-details">
+                                <div class="contact-detail-item">
+                                    <div class="contact-detail-icon">
+                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <h4 class="contact-detail-label">العنوان</h4>
+                                        <p class="contact-detail-value">3455 طريق أنس ابن مالك، الملقا، الرياض 13522، المملكة العربية السعودية</p>
+                                    </div>
                                 </div>
-                                <a href="#" class="visit-website-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    زيارة الموقع
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-detail-icon">
+                                        <i class="fas fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <h4 class="contact-detail-label">الهاتف</h4>
+                                        <p class="contact-detail-value">+966 11 123 4567</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-detail-icon">
+                                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <h4 class="contact-detail-label">البريد الإلكتروني</h4>
+                                        <p class="contact-detail-value">info@ittihadbilad.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-detail-icon">
+                                        <i class="fas fa-clock" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <h4 class="contact-detail-label">ساعات العمل</h4>
+                                        <p class="contact-detail-value">الأحد - الخميس: 8:00 - 17:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Contact Buttons -->
+                            <div class="quick-contact-buttons">
+                                <a href="https://wa.me/966111234567" target="_blank" rel="noopener noreferrer" class="quick-contact-btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                    <span>واتساب</span>
+                                </a>
+                                
+                                <a href="tel:+966111234567" class="quick-contact-btn call-btn">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                    <span>اتصال</span>
+                                </a>
+                                
+                                <a href="mailto:info@ittihadbilad.com" class="quick-contact-btn email-btn">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    <span>إيميل</span>
                                 </a>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Company 2 -->
-                    <div class="company-card-horizontal">
-                        <div class="company-logo">
-                            <img src="images/atthad albilad cpmtractic .jpeg" alt="الإنتاج الإعلامي" class="company-logo-img">
-                        </div>
-                        <div class="company-content">
-                            <h3 class="company-name">الإنتاج الإعلامي</h3>
-                            <p class="company-description">
-                                نُغطّي كامل جوانب الإنتاج الإعلامي من البث المباشر إلى خدمات الإنتاج والمحتوى الإعلامي والنقل التلفزيوني.
-                            </p>
-                            <div class="company-actions">
-                                <div class="social-links">
-                                    <a href="#" class="social-link facebook" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-link twitter" aria-label="Twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#" class="social-link instagram" aria-label="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <a href="#" class="visit-website-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    زيارة الموقع
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Company 3 -->
-                    <div class="company-card-horizontal">
-                        <div class="company-logo">
-                            <img src="images/etthad albilad mintenance.jpeg" alt="التسويق المتطور" class="company-logo-img">
-                        </div>
-                        <div class="company-content">
-                            <h3 class="company-name">التسويق المتطور</h3>
-                            <p class="company-description">
-                                الشريك الأول في مجال التسويق المتغير في المملكة العربية السعودية، نحن التحول والتجدُّد في مجال التسويق الاحترافي.
-                            </p>
-                            <div class="company-actions">
-                                <div class="social-links">
-                                    <a href="#" class="social-link facebook" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-link twitter" aria-label="Twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#" class="social-link instagram" aria-label="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <a href="#" class="visit-website-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    زيارة الموقع
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Company 4 -->
-                    <div class="company-card-horizontal">
-                        <div class="company-logo">
-                            <img src="images/maayeer alturuq.jpeg" alt="تنفيذ الأحداث والمناسبات" class="company-logo-img">
-                        </div>
-                        <div class="company-content">
-                            <h3 class="company-name">تنفيذ الأحداث والمناسبات</h3>
-                            <p class="company-description">
-                                نقدم خدماتنا المتفردة في مجال تنفيذ الأحداث والمناسبات بإبداع فريقنا المكوَّن من نخبة الخبراء وأحدث التقنيات.
-                            </p>
-                            <div class="company-actions">
-                                <div class="social-links">
-                                    <a href="#" class="social-link facebook" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-link twitter" aria-label="Twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#" class="social-link instagram" aria-label="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <a href="#" class="visit-website-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    زيارة الموقع
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Company 5 -->
-                    <div class="company-card-horizontal">
-                        <div class="company-logo">
-                            <img src="images/suhul alttijah for shipping .jpeg" alt="تصنيع المعارض والمسارح" class="company-logo-img">
-                        </div>
-                        <div class="company-content">
-                            <h3 class="company-name">تصنيع المعارض والمسارح</h3>
-                            <p class="company-description">
-                                نقدم خدماتنا في مجال تصنيع المعارض والمسارح للمؤتمرات، وتجهيزها بأحدث المعدات المتطورة من خلال فريقنا المتخصص.
-                            </p>
-                            <div class="company-actions">
-                                <div class="social-links">
-                                    <a href="#" class="social-link facebook" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-link twitter" aria-label="Twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    <a href="#" class="social-link instagram" aria-label="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <a href="#" class="visit-website-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    زيارة الموقع
-                                </a>
+                        
+                        <!-- Google Map -->
+                        <div class="map-container">
+                            <h3 class="map-title">
+                                <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                                موقعنا على الخريطة
+                            </h3>
+                            <div class="map-wrapper">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.2!2d46.6753!3d24.7136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1635000000000!5m2!1sen!2s"
+                                    width="100%" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="موقع اتحاد البلاد - 3455 طريق أنس ابن مالك، الملقا، الرياض">
+                                </iframe>
                             </div>
                         </div>
                     </div>
@@ -353,7 +351,7 @@
                                     <i class="fas fa-building"></i>
                                     من نحن
                                 </a></li>
-                                <li><a href="companies.html" class="footer-link active">
+                                <li><a href="companies.html" class="footer-link">
                                     <i class="fas fa-handshake"></i>
                                     شركاتنا
                                 </a></li>
@@ -369,7 +367,7 @@
                                     <i class="fas fa-newspaper"></i>
                                     المركز الإعلامي
                                 </a></li>
-                                <li><a href="index.html#contact" class="footer-link">
+                                <li><a href="contact.html" class="footer-link">
                                     <i class="fas fa-phone"></i>
                                     اتصل بنا
                                 </a></li>
@@ -396,7 +394,7 @@
                             </div>
                             <div class="contact-info">
                                 <span class="contact-label">العنوان</span>
-                                <span class="contact-value">الرياض، المملكة العربية السعودية</span>
+                                <span class="contact-value">3455 طريق أنس ابن مالك، الملقا، الرياض 13522</span>
                             </div>
                         </div>
                         
@@ -489,7 +487,7 @@
                     <div class="map-overlay">
                         <div class="map-info">
                             <h4>مكتبنا الرئيسي</h4>
-                            <p>الرياض، المملكة العربية السعودية</p>
+                            <p>3455 طريق أنس ابن مالك، الملقا، الرياض 13522</p>
                         </div>
                     </div>
                     <iframe 
@@ -500,7 +498,7 @@
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="موقع اتحاد البلاد">
+                        title="موقع اتحاد البلاد - 3455 طريق أنس ابن مالك، الملقا، الرياض">
                     </iframe>
                 </div>
             </div>
@@ -530,5 +528,6 @@
 
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>
