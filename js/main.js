@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 instagram: "https://instagram.com/ittihadbilad_maintenance"
             },
             {
-                name: "سهول الاتجاه للنقل",
+                name: "سهوة اتجاه النقل",
                 tagline: "حلول النقل واللوجستيات المتطورة",
                 logo: "images/suhul alttijah for shipping .jpeg",
                 website: "https://www.suhul-attijah.com",
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 instagram: "https://instagram.com/maayeer_alturuq"
             },
             {
-                name: "اتحاد البلاد للمجموعة",
+                name: "مجموعة اتحاد البلاد",
                 tagline: "الشركة الأم لإدارة الاستثمارات والمشاريع",
                 logo: "images/atihad group.jpeg",
                 website: "https://www.ittihadbilad-group.com",
@@ -281,10 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="company-info">
                     <h3 class="company-name">${company.name}</h3>
                     <p class="company-tagline">${company.tagline}</p>
-                    <button class="more-button" aria-label="عرض المزيد من المعلومات">
-                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                        المزيد
-                    </button>
+                    
                 </div>
             </div>
             <div class="company-profile-overlay">
@@ -510,115 +507,127 @@ document.addEventListener('DOMContentLoaded', function() {
     function initMediaCenter() {
         const mediaContainer = document.getElementById('media-articles');
         
-        // Professional blog articles data
+        // Professional blog articles data - Updated with proper links to article-detail.html
         const articles = [
             {
+                id: 1,
                 title: "إطلاق مشروع رؤية 2030 الجديد",
                 excerpt: "نفخر بالإعلان عن إطلاق مشروعنا الجديد الذي يساهم في تحقيق رؤية المملكة 2030 من خلال تقديم حلول مبتكرة في مجال الفعاليات والإنتاج الإعلامي",
                 image: "images/article1.jpg",
                 date: "2025-01-15",
                 author: "فريق التحرير",
                 category: "أخبار الشركة",
-                link: "#"
+                link: "article-detail.html?id=1"
             },
             {
+                id: 2,
                 title: "نجاح فعالية الرياض الكبرى",
                 excerpt: "حققت فعالية الرياض الكبرى التي نظمناها نجاحاً باهراً بحضور أكثر من 50 ألف زائر ومشاركة 200+ شركة رائدة في مختلف القطاعات",
                 image: "images/article1.jpg",
                 date: "2025-01-10",
                 author: "إدارة الفعاليات",
                 category: "الفعاليات",
-                link: "#"
+                link: "article-detail.html?id=2"
             },
             {
+                id: 3,
                 title: "شراكة استراتيجية جديدة",
                 excerpt: "توقيع اتفاقية شراكة استراتيجية مع كبرى الشركات السعودية لتطوير قطاع الفعاليات والإنتاج الإعلامي في المملكة",
                 image: "images/article1.jpg",
                 date: "2025-01-05",
                 author: "إدارة التطوير",
                 category: "الشراكات",
-                link: "#"
+                link: "article-detail.html?id=3"
             },
             {
+                id: 4,
                 title: "جائزة أفضل شركة فعاليات",
                 excerpt: "حصلنا على جائزة أفضل شركة فعاليات في المملكة للعام الثالث على التوالي، مما يؤكد ريادتنا في هذا المجال",
                 image: "images/article1.jpg",
                 date: "2024-12-25",
                 author: "العلاقات العامة",
                 category: "الجوائز",
-                link: "#"
+                link: "article-detail.html?id=4"
             },
             {
+                id: 5,
                 title: "تقنيات الذكاء الاصطناعي في الفعاليات",
                 excerpt: "استخدام أحدث تقنيات الذكاء الاصطناعي لتحسين تجربة الزوار في الفعاليات وتقديم خدمات أكثر تطوراً",
                 image: "images/article1.jpg",
                 date: "2024-12-20",
                 author: "قسم التقنية",
                 category: "التكنولوجيا",
-                link: "#"
+                link: "article-detail.html?id=5"
             },
             {
+                id: 6,
                 title: "مؤتمر الابتكار السعودي 2025",
                 excerpt: "تنظيم مؤتمر الابتكار السعودي الذي يجمع أبرز الخبراء والمختصين في مجال التكنولوجيا والابتكار",
                 image: "images/article1.jpg",
                 date: "2024-12-15",
                 author: "فريق المؤتمرات",
                 category: "المؤتمرات",
-                link: "#"
+                link: "article-detail.html?id=6"
             },
             {
+                id: 7,
                 title: "برنامج التدريب المهني",
                 excerpt: "إطلاق برنامج تدريبي شامل لتأهيل الكوادر الوطنية في مجال إدارة الفعاليات والإنتاج الإعلامي",
                 image: "images/article1.jpg",
                 date: "2024-12-10",
                 author: "إدارة الموارد البشرية",
                 category: "التدريب",
-                link: "#"
+                link: "article-detail.html?id=7"
             },
             {
+                id: 8,
                 title: "الاستدامة في تنظيم الفعاليات",
                 excerpt: "مبادرات جديدة لتحقيق الاستدامة البيئية في جميع فعالياتنا ومشاريعنا لبناء مستقبل أكثر استدامة",
                 image: "images/article1.jpg",
                 date: "2024-12-05",
                 author: "قسم الاستدامة",
                 category: "الاستدامة",
-                link: "#"
+                link: "article-detail.html?id=8"
             },
             {
+                id: 9,
                 title: "توسعة الأعمال في المنطقة الشرقية",
                 excerpt: "افتتاح مكتب جديد في المنطقة الشرقية لخدمة عملائنا بشكل أفضل وتوسيع نطاق خدماتنا",
                 image: "images/article1.jpg",
                 date: "2024-11-30",
                 author: "إدارة التوسع",
                 category: "التوسع",
-                link: "#"
+                link: "article-detail.html?id=9"
             },
             {
+                id: 10,
                 title: "مهرجان الثقافة والفنون",
                 excerpt: "تنظيم مهرجان الثقافة والفنون السعودية بمشاركة أكثر من 200 فنان ومبدع من مختلف مناطق المملكة",
                 image: "images/article1.jpg",
                 date: "2024-11-25",
                 author: "قسم الفعاليات الثقافية",
                 category: "الثقافة",
-                link: "#"
+                link: "article-detail.html?id=10"
             },
             {
+                id: 11,
                 title: "تطوير منصة الفعاليات الرقمية",
                 excerpt: "إطلاق منصة رقمية متطورة لإدارة وتنظيم الفعاليات الافتراضية والمدمجة باستخدام أحدث التقنيات",
                 image: "images/article1.jpg",
                 date: "2024-11-20",
                 author: "فريق التطوير الرقمي",
                 category: "الرقمنة",
-                link: "#"
+                link: "article-detail.html?id=11"
             },
             {
+                id: 12,
                 title: "شهادة الجودة العالمية",
                 excerpt: "حصولنا على شهادة الجودة العالمية ISO في إدارة وتنظيم الفعاليات، مما يؤكد التزامنا بأعلى المعايير",
                 image: "images/article1.jpg",
                 date: "2024-11-15",
                 author: "إدارة الجودة",
                 category: "الجودة",
-                link: "#"
+                link: "article-detail.html?id=12"
             }
         ];
         
@@ -634,25 +643,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 slide.innerHTML = `
-                    <article class="blog-article-card">
-                        <img src="${article.image}" alt="${article.title}" class="blog-article-image" loading="lazy">
-                        <div class="blog-article-content">
-                            <div class="blog-article-header">
-                                <span class="blog-article-category">${article.category}</span>
-                                <h3 class="blog-article-title">${article.title}</h3>
-                                <p class="blog-article-excerpt">${article.excerpt}</p>
+                    <article class="article-card">
+                        <img src="${article.image}" alt="${article.title}" class="article-image" loading="lazy">
+                        <div class="article-content">
+                            <div class="article-header">
+                                <span class="article-category">${article.category}</span>
+                                <h3 class="article-title">${article.title}</h3>
+                                <p class="article-excerpt">${article.excerpt}</p>
                             </div>
-                            <div class="blog-article-meta">
-                                <div class="blog-article-date">
+                            <div class="article-meta">
+                                <div class="article-date">
                                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                     <span>${formattedDate}</span>
                                 </div>
-                                <div class="blog-article-author">
+                                <div class="article-author">
                                     <i class="fas fa-user" aria-hidden="true"></i>
                                     <span>${article.author}</span>
                                 </div>
                             </div>
-                            <a href="${article.link}" class="blog-read-more" aria-label="قراءة المقال: ${article.title}">
+                            <a href="${article.link}" class="article-read-more" aria-label="قراءة المقال: ${article.title}">
                                 <span>قراءة المقال</span>
                                 <i class="fas fa-arrow-left" aria-hidden="true"></i>
                             </a>
@@ -670,14 +679,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== BLOG CARD INTERACTIONS =====
     function initBlogCardInteractions() {
-        const blogCards = document.querySelectorAll('.blog-article-card');
+        const blogCards = document.querySelectorAll('.article-card');
         
         blogCards.forEach(card => {
             // Handle keyboard navigation
             card.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const link = this.querySelector('.blog-read-more');
+                    const link = this.querySelector('.article-read-more');
                     if (link) {
                         link.click();
                     }
