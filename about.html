@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اتحاد البلاد - الرئيسية</title>
+    <title>من نحن - اتحاد البلاد</title>
     <meta name="description" content="اتحاد البلاد - شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي والتسويق والخدمات المساندة">
-    <meta name="keywords" content="اتحاد البلاد، فعاليات، إنتاج إعلامي، تسويق، السعودية، رؤية 2030">
+    <meta name="keywords" content="اتحاد البلاد، من نحن، فعاليات، إنتاج إعلامي، تسويق، السعودية، رؤية 2030">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="اتحاد البلاد - الرئيسية">
-    <meta property="og:description" content="شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي">
+    <meta property="og:title" content="من نحن - اتحاد البلاد">
+    <meta property="og:description" content="شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي والتسويق والخدمات المساندة">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/">
+    <meta property="og:url" content="/about.html">
     <meta property="og:image" content="/images/og-image.jpg">
     
     <!-- Structured Data -->
@@ -35,11 +35,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -70,10 +70,10 @@
                 <div class="nav-menu" role="navigation">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" aria-current="page">الرئيسية</a>
+                            <a href="index.html" class="nav-link">الرئيسية</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">من نحن</a>
+                            <a href="about.html" class="nav-link active" aria-current="page">من نحن</a>
                         </li>
                         <li class="nav-item">
                             <a href="companies.html" class="nav-link">شركاتنا</a>
@@ -115,22 +115,27 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Banner -->
-        <section class="hero" aria-label="البانر الرئيسي">
-            <div class="hero-container">
-                <img src="images/hero-placeholder.jpg" alt="اتحاد البلاد - صناعة الفعاليات والإنتاج الإعلامي" class="hero-image" loading="eager">
-                <!-- Optional Video -->
-                <video class="hero-video" muted autoplay loop playsinline style="display: none;">
-                    <source src="videos/hero-video.mp4" type="video/mp4">
-                </video>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">من نحن</h1>
+                <p class="page-subtitle">نحن اتحاد البلاد - شركة سعودية رائدة في مجال صناعة وإدارة الفعاليات</p>
+                <nav class="breadcrumb" aria-label="مسار التنقل">
+                    <ol class="breadcrumb-list">
+                        <li class="breadcrumb-item">
+                            <a href="index.html" class="breadcrumb-link">الرئيسية</a>
+                        </li>
+                        <li class="breadcrumb-item active">من نحن</li>
+                    </ol>
+                </nav>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about-section section-padding" aria-labelledby="about-title">
+        <section class="about-section section-padding" aria-labelledby="about-title">
             <div class="container">
                 <div class="about-content">
-                    <div class="about-text">
+                    <div class="about-text" data-aos="fade-right" data-aos-delay="100">
                         <h2 id="about-title" class="section-title">من نحن</h2>
                         <div class="about-intro">
                             <p class="about-description">
@@ -139,7 +144,7 @@
                         </div>
                         
                         <div class="about-features">
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
                                 <div class="feature-icon">
                                     <i class="fas fa-lightbulb" aria-hidden="true"></i>
                                 </div>
@@ -149,7 +154,7 @@
                                 </div>
                             </div>
                             
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
                                 <div class="feature-icon">
                                     <i class="fas fa-users" aria-hidden="true"></i>
                                 </div>
@@ -159,7 +164,7 @@
                                 </div>
                             </div>
                             
-                            <div class="feature-item">
+                            <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
                                 <div class="feature-icon">
                                     <i class="fas fa-award" aria-hidden="true"></i>
                                 </div>
@@ -181,21 +186,21 @@
                             </a>
                         </div>
                     </div>
-                    <div class="about-logo">
+                    <div class="about-logo" data-aos="fade-left" data-aos-delay="200">
                         <div class="logo-container">
                             <img src="images/logo.png" alt="شعار اتحاد البلاد" class="company-logo-main" loading="lazy">
                             <div class="logo-glow"></div>
                         </div>
                         <div class="company-stats">
-                            <div class="stat-item-small">
+                            <div class="stat-item-small" data-aos="zoom-in" data-aos-delay="300">
                                 <span class="stat-number">15+</span>
                                 <span class="stat-label">سنة خبرة</span>
                             </div>
-                            <div class="stat-item-small">
+                            <div class="stat-item-small" data-aos="zoom-in" data-aos-delay="400">
                                 <span class="stat-number">2500+</span>
                                 <span class="stat-label">فعالية ناجحة</span>
                             </div>
-                            <div class="stat-item-small">
+                            <div class="stat-item-small" data-aos="zoom-in" data-aos-delay="500">
                                 <span class="stat-number">1500+</span>
                                 <span class="stat-label">عميل راضي</span>
                             </div>
@@ -205,61 +210,134 @@
             </div>
         </section>
 
-        <!-- Companies Section -->
-        <section id="companies" class="companies-section section-padding" aria-labelledby="companies-title">
+        <!-- Mission & Vision Section -->
+        <section class="mission-vision-section section-padding">
             <div class="container">
-                <div class="section-header">
-                    <h2 id="companies-title" class="section-title">شركاتنا</h2>
-                    <p class="section-subtitle">نفتخر بشراكاتنا مع كبرى الشركات المساهمة في صناعة النجاح</p>
-                    <a href="companies.html" class="section-link">عرض جميع شركاتنا</a>
-                </div>
-                
-                <div class="companies-grid" id="companies-container">
-                    <!-- Company profile cards will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section section-padding" aria-labelledby="projects-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="projects-title" class="section-title">مشاريعنا</h2>
-                    <a href="projects.html" class="section-link">معرفة المزيد</a>
-                </div>
-                
-                <div class="projects-gallery">
-                    <div class="swiper projects-swiper">
-                        <div class="swiper-wrapper" id="projects-container">
-                            <!-- Project gallery cards will be populated by JavaScript -->
+                <!-- Section Header -->
+                <div class="section-header text-center">
+                    <h2 class="section-title">رؤيتنا ورسالتنا وقيمنا</h2>
+                    <p class="section-subtitle">أسس نجاحنا وتميزنا في خدمة عملائنا</p>
+                    <div class="section-divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-icon">
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        
-                        <!-- Navigation -->
-                        <div class="swiper-button-next projects-nav-next"></div>
-                        <div class="swiper-button-prev projects-nav-prev"></div>
+                        <div class="divider-line"></div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Media Center Section -->
-        <section id="media" class="media-section section-padding" aria-labelledby="media-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="media-title" class="section-title">المركز الإعلامي / مدوناتنا</h2>
-                    <p class="section-subtitle">أحدث الأخبار والمقالات والرؤى في عالم الفعاليات والإنتاج الإعلامي</p>
-                    <a href="media-center.html" class="section-link">عرض جميع المقالات</a>
-                </div>
-                
-                <div class="media-blog-grid">
-                    <div class="swiper media-swiper">
-                        <div class="swiper-wrapper" id="media-articles">
-                            <!-- Professional blog cards will be populated by JavaScript -->
+                <div class="mission-vision-grid">
+                    <!-- Vision Card -->
+                    <div class="mission-card vision-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-background">
+                            <div class="card-pattern"></div>
                         </div>
-                        
-                        <!-- Navigation -->
-                        <div class="swiper-button-next media-nav-next"></div>
-                        <div class="swiper-button-prev media-nav-prev"></div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper">
+                                <div class="card-icon">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                </div>
+                                <div class="icon-glow"></div>
+                            </div>
+                            <div class="card-header">
+                                <h3 class="card-title">رؤيتنا</h3>
+                                <div class="card-subtitle">الطموح والهدف</div>
+                            </div>
+                            <p class="card-description">
+                                أن نكون الشركة الرائدة في مجال صناعة وإدارة الفعاليات والإنتاج الإعلامي في المملكة العربية السعودية والمنطقة، وأن نساهم في تحقيق رؤية المملكة 2030 من خلال تقديم خدمات متميزة ومبتكرة.
+                            </p>
+                            <div class="card-highlight">
+                                <i class="fas fa-flag" aria-hidden="true"></i>
+                                <span>رؤية 2030</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mission Card -->
+                    <div class="mission-card mission-card-main" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-background">
+                            <div class="card-pattern"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper">
+                                <div class="card-icon">
+                                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                                </div>
+                                <div class="icon-glow"></div>
+                            </div>
+                            <div class="card-header">
+                                <h3 class="card-title">رسالتنا</h3>
+                                <div class="card-subtitle">الهدف والغاية</div>
+                            </div>
+                            <p class="card-description">
+                                نسعى لتقديم حلول إبداعية ومبتكرة في مجال الفعاليات والإنتاج الإعلامي، مع الالتزام بأعلى معايير الجودة والتميز، لنكون شريكاً موثوقاً لعملائنا في تحقيق أهدافهم وطموحاتهم.
+                            </p>
+                            <div class="card-highlight">
+                                <i class="fas fa-handshake" aria-hidden="true"></i>
+                                <span>شراكة موثوقة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Values Card -->
+                    <div class="mission-card values-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-background">
+                            <div class="card-pattern"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon-wrapper">
+                                <div class="card-icon">
+                                    <i class="fas fa-gem" aria-hidden="true"></i>
+                                </div>
+                                <div class="icon-glow"></div>
+                            </div>
+                            <div class="card-header">
+                                <h3 class="card-title">قيمنا</h3>
+                                <div class="card-subtitle">المبادئ والأسس</div>
+                            </div>
+                            <p class="card-description">
+                                نؤمن بالجودة والتميز في كل ما نقدمه، ونلتزم بالشفافية والنزاهة في تعاملاتنا، ونسعى للابتكار والتطوير المستمر، مع الحفاظ على القيم الأصيلة والهوية الوطنية.
+                            </p>
+                            <div class="card-highlight">
+                                <i class="fas fa-heart" aria-hidden="true"></i>
+                                <span>الهوية الوطنية</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values Breakdown -->
+                <div class="values-breakdown" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="breakdown-title">قيمنا الأساسية</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-award" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="value-title">الجودة والتميز</h4>
+                            <p class="value-description">نلتزم بأعلى معايير الجودة في كل مشروع</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="value-title">الشفافية والنزاهة</h4>
+                            <p class="value-description">نؤمن بالشفافية في جميع تعاملاتنا</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="value-title">الابتكار والتطوير</h4>
+                            <p class="value-description">نسعى للتطوير المستمر والابتكار</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-flag" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="value-title">الهوية الوطنية</h4>
+                            <p class="value-description">نحافظ على القيم الأصيلة والهوية الوطنية</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,128 +346,53 @@
         <!-- Statistics Section -->
         <section class="stats-section section-padding" aria-labelledby="stats-title">
             <div class="container">
-                <div class="stats-header">
+                <div class="stats-header" data-aos="fade-up" data-aos-delay="100">
                     <h2 id="stats-title" class="section-title text-center">إحصائياتنا</h2>
                     <p class="stats-subtitle">أرقام تتحدث عن نجاحنا وتميزنا في خدمة عملائنا</p>
                 </div>
                 
                 <div class="stats-grid">
-                    <div class="stat-item" data-target="1500" data-suffix="+">
-                        <div class="stat-icon">
-                            <i class="fas fa-users" aria-hidden="true"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">عميل سعيد</div>
-                            <div class="stat-description">عملاء راضون عن خدماتنا</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item" data-target="8" data-suffix="">
-                        <div class="stat-icon">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">مناطق حول المملكة</div>
-                            <div class="stat-description">نقدم خدماتنا في جميع أنحاء المملكة</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item" data-target="2500" data-suffix="+">
-                        <div class="stat-icon">
-                            <i class="fas fa-project-diagram" aria-hidden="true"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">مشروع تم إنجازه</div>
-                            <div class="stat-description">مشاريع ناجحة ومتميزة</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-item" data-target="15" data-suffix="">
+                    <div class="stat-item" data-target="15" data-suffix="" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-icon">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                         </div>
                         <div class="stat-content">
-                            <div class="stat-number">0</div>
+                            <div class="stat-number">15</div>
                             <div class="stat-label">عام في خدمتكم</div>
                             <div class="stat-description">سنوات من الخبرة والتميز</div>
                         </div>
                     </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <!-- Clients Section -->
-        <section class="clients-section section-padding" aria-labelledby="clients-title">
-            <div class="container">
-                <h2 id="clients-title" class="section-title text-center">عملائنا</h2>
-                <div class="clients-carousel">
-                    <div class="swiper clients-swiper">
-                        <div class="swiper-wrapper">
-                            <!-- Client logos will be populated -->
-                            <div class="swiper-slide">
-                                <img src="images/client1.png" alt="عميل 1" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client2.png" alt="عميل 2" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client3.png" alt="عميل 3" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client4.png" alt="عميل 4" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client5.png" alt="عميل 5" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/company1-logo.png" alt="عميل 6" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/company2-logo.png" alt="عميل 7" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/atihad group.jpeg" alt="عميل 8" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/atthad albilad cpmtractic .jpeg" alt="عميل 9" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/etthad albilad mintenance.jpeg" alt="عميل 10" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/maayeer alturuq.jpeg" alt="عميل 11" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/suhul alttijah for shipping .jpeg" alt="عميل 12" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/logo.png" alt="عميل 13" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/logo-light.png" alt="عميل 14" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/logo-placeholder.png" alt="عميل 15" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client1.png" alt="عميل 16" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client2.png" alt="عميل 17" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client3.png" alt="عميل 18" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client4.png" alt="عميل 19" class="client-logo" loading="lazy">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="images/client5.png" alt="عميل 20" class="client-logo" loading="lazy">
-                            </div>
+                    
+                    <div class="stat-item" data-target="2500" data-suffix="+" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2500+</div>
+                            <div class="stat-label">فعالية ناجحة</div>
+                            <div class="stat-description">فعاليات ومشاريع متميزة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item" data-target="1500" data-suffix="+" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">1500+</div>
+                            <div class="stat-label">عميل راضي</div>
+                            <div class="stat-description">عملاء راضون عن خدماتنا</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item" data-target="8" data-suffix="" data-aos="fade-up" data-aos-delay="500">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">مناطق حول المملكة</div>
+                            <div class="stat-description">نقدم خدماتنا في جميع أنحاء المملكة</div>
                         </div>
                     </div>
                 </div>
@@ -630,9 +633,20 @@
         </div>
     </footer>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>

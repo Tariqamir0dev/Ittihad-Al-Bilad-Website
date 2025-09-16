@@ -400,6 +400,34 @@ p {
     cursor: pointer;
     min-height: 44px;
     min-width: 44px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+}
+
+.mobile-toggle:hover {
+    background: rgba(47, 90, 142, 0.1);
+}
+
+.mobile-toggle:focus {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+.mobile-toggle:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+.mobile-toggle[aria-expanded="true"] {
+    background: rgba(47, 90, 142, 0.1);
+    box-shadow: 0 2px 8px rgba(47, 90, 142, 0.2);
+}
+
+/* Enhanced X animation for better visibility */
+.mobile-toggle[aria-expanded="true"] .hamburger {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger {
@@ -407,19 +435,34 @@ p {
     height: 3px;
     background: var(--primary-blue);
     border-radius: 2px;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    display: block;
+    position: relative;
 }
 
 .mobile-toggle[aria-expanded="true"] .hamburger:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
+    background: var(--accent-gold) !important;
+    width: 25px;
+    height: 3px;
+    border-radius: 2px;
 }
 
 .mobile-toggle[aria-expanded="true"] .hamburger:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
+    width: 0;
+    height: 0;
+    border-radius: 2px;
 }
 
 .mobile-toggle[aria-expanded="true"] .hamburger:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--accent-gold) !important;
+    width: 25px;
+    height: 3px;
+    border-radius: 2px;
 }
 
 /* ===== HERO SECTION ===== */
@@ -2500,7 +2543,9 @@ p {
     
     /* Mobile Navigation */
     .mobile-toggle {
-        display: flex;
+        display: flex !important;
+        visibility: visible;
+        opacity: 1;
     }
     
     .nav-menu {
@@ -3976,5 +4021,381 @@ p {
     .article-read-more {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+}
+
+/* ===== MISSION VISION VALUES ENHANCED STYLES ===== */
+
+/* Section Header */
+.mission-vision-section .section-header {
+    margin-bottom: 4rem;
+}
+
+.mission-vision-section .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.mission-vision-section .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.divider-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.divider-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(244, 198, 58, 0.3);
+}
+
+/* Mission Vision Grid */
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Mission Cards */
+.mission-card {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.mission-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.mission-card:hover::before {
+    transform: scaleX(1);
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card Background */
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.03;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23000"/><circle cx="75" cy="75" r="1" fill="%23000"/><circle cx="50" cy="10" r="0.5" fill="%23000"/><circle cx="10" cy="60" r="0.5" fill="%23000"/><circle cx="90" cy="40" r="0.5" fill="%23000"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+}
+
+.card-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(47, 90, 142, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(244, 198, 58, 0.1) 0%, transparent 50%);
+}
+
+/* Card Content */
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Icon Wrapper */
+.card-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 25px rgba(47, 90, 142, 0.3);
+}
+
+.icon-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.2; }
+    100% { transform: scale(1.1); opacity: 0.4; }
+}
+
+/* Card Header */
+.card-header {
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: var(--accent-gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card Description */
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Card Highlight */
+.card-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(47, 90, 142, 0.1), rgba(244, 198, 58, 0.1));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(47, 90, 142, 0.2);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+}
+
+.card-highlight i {
+    color: var(--accent-gold);
+}
+
+/* Special Card Styles */
+.mission-card-main {
+    transform: scale(1.05);
+    border: 2px solid var(--accent-gold);
+}
+
+.mission-card-main .card-icon {
+    background: linear-gradient(135deg, var(--accent-gold), var(--primary-blue));
+}
+
+.vision-card .card-icon {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.values-card .card-icon {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+/* Values Breakdown */
+.values-breakdown {
+    background: linear-gradient(135deg, rgba(47, 90, 142, 0.05), rgba(244, 198, 58, 0.05));
+    border-radius: var(--border-radius-lg);
+    padding: 3rem;
+    border: 1px solid rgba(47, 90, 142, 0.1);
+}
+
+.breakdown-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.breakdown-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+    border-radius: 2px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.value-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-light);
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 15px rgba(47, 90, 142, 0.3);
+}
+
+.value-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.value-description {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .mission-card {
+        padding: 2rem;
+    }
+    
+    .mission-card-main {
+        transform: none;
+    }
+    
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+    
+    .values-breakdown {
+        padding: 2rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .section-divider {
+        gap: 0.5rem;
+    }
+    
+    .divider-line {
+        width: 40px;
+    }
+    
+    .divider-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mission-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .card-title {
+        font-size: 1.3rem;
+    }
+    
+    .card-description {
+        font-size: 1rem;
+    }
+    
+    .values-breakdown {
+        padding: 1.5rem;
+    }
+    
+    .value-item {
+        padding: 1rem;
     }
 }
