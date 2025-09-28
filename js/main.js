@@ -7,8 +7,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // ===== INITIALIZE ALL FEATURES =====
     initMobileNavigation();
+    initHeaderScrollEffect();
     initCarousels();
-    initCompanyProfiles();
+    initCompaniesShowcase();
     initStatisticsCounter();
     initScrollAnimations();
     initLazyLoading();
@@ -74,6 +75,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // ===== HEADER SCROLL EFFECT =====
+    function initHeaderScrollEffect() {
+        const header = document.querySelector('.header');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function updateHeader() {
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollY = scrollY;
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+    }
+    
     // ===== CAROUSEL INITIALIZATION =====
     function initCarousels() {
         // Companies section now uses grid layout - no swiper needed
@@ -121,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 disableOnInteraction: false,
             },
             navigation: {
-                nextEl: '.media-nav-next',
                 prevEl: '.media-nav-prev',
             },
             breakpoints: {
@@ -178,191 +207,146 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ===== COMPANY PROFILES INITIALIZATION =====
-    function initCompanyProfiles() {
-        const companiesContainer = document.getElementById('companies-container');
-        
-        // Company data with contact information
-        const companies = [
-            {
-                name: "اتحاد البلاد للمقاولات",
-                tagline: "الريادة في مجال المقاولات والإنشاءات",
-                logo: "images/atthad albilad cpmtractic .jpeg",
-                website: "https://www.ittihadbilad-contracting.com",
-                phone: "+966 11 123 4567",
-                email: "info@ittihadbilad-contracting.com",
-                linkedin: "https://linkedin.com/company/ittihadbilad-contracting",
-                twitter: "https://twitter.com/ittihadbilad_cont",
-                instagram: "https://instagram.com/ittihadbilad_contracting"
+    // ===== COMPANIES SHOWCASE =====
+    function initCompaniesShowcase() {
+        const companiesData = {
+            'ittihad-group': {
+                name: 'اتحاد جروب',
+                description: 'شركة رائدة في مجال الاستثمار والتطوير، تقدم حلولاً متكاملة للمشاريع الاستراتيجية والاستثمارات طويلة المدى مع التركيز على الابتكار والجودة.',
+                image: 'images/atihad group.jpeg',
+                link: 'companies.html#ittihad-group'
             },
-            {
-                name: "اتحاد البلاد للصيانة",
-                tagline: "خدمات الصيانة والتشغيل المتخصصة",
-                logo: "images/etthad albilad mintenance.jpeg",
-                website: "https://www.ittihadbilad-maintenance.com",
-                phone: "+966 11 123 4568",
-                email: "info@ittihadbilad-maintenance.com",
-                linkedin: "https://linkedin.com/company/ittihadbilad-maintenance",
-                twitter: "https://twitter.com/ittihadbilad_maint",
-                instagram: "https://instagram.com/ittihadbilad_maintenance"
+            'ittihad-contracting': {
+                name: 'اتحاد البلاد للمقاولات',
+                description: 'متخصصة في المقاولات العامة والإنشاءات، تنفذ مشاريع البنية التحتية والمباني السكنية والتجارية بأعلى معايير الجودة والسلامة.',
+                image: 'images/atthad albilad cpmtractic .jpeg',
+                link: 'companies.html#ittihad-contracting'
             },
-            {
-                name: "سهوة اتجاه النقل",
-                tagline: "حلول النقل واللوجستيات المتطورة",
-                logo: "images/suhul alttijah for shipping .jpeg",
-                website: "https://www.suhul-attijah.com",
-                phone: "+966 11 123 4569",
-                email: "info@suhul-attijah.com",
-                linkedin: "https://linkedin.com/company/suhul-attijah",
-                twitter: "https://twitter.com/suhul_attijah",
-                instagram: "https://instagram.com/suhul_attijah"
+            'ittihad-maintenance': {
+                name: 'اتحاد البلاد للصيانة',
+                description: 'تقدم خدمات الصيانة الشاملة للمباني والمرافق، مع فريق متخصص يضمن استمرارية العمل وأعلى مستويات الأداء والكفاءة.',
+                image: 'images/etthad albilad mintenance.jpeg',
+                link: 'companies.html#ittihad-maintenance'
             },
-            {
-                name: "معاير الطرق",
-                tagline: "تطوير وتنفيذ مشاريع الطرق والبنية التحتية",
-                logo: "images/maayeer alturuq.jpeg",
-                website: "https://www.maayeer-alturuq.com",
-                phone: "+966 11 123 4570",
-                email: "info@maayeer-alturuq.com",
-                linkedin: "https://linkedin.com/company/maayeer-alturuq",
-                twitter: "https://twitter.com/maayeer_alturuq",
-                instagram: "https://instagram.com/maayeer_alturuq"
+            'maayeer-roads': {
+                name: 'معايير الطرق',
+                description: 'شركة متخصصة في إنشاء وتطوير الطرق والبنية التحتية، تطبق أحدث التقنيات والمعايير العالمية في مشاريع النقل والمواصلات.',
+                image: 'images/maayeer alturuq.jpeg',
+                link: 'companies.html#maayeer-roads'
             },
-            {
-                name: "مجموعة اتحاد البلاد",
-                tagline: "الشركة الأم لإدارة الاستثمارات والمشاريع",
-                logo: "images/atihad group.jpeg",
-                website: "https://www.ittihadbilad-group.com",
-                phone: "+966 11 123 4571",
-                email: "info@ittihadbilad-group.com",
-                linkedin: "https://linkedin.com/company/ittihadbilad-group",
-                twitter: "https://twitter.com/ittihadbilad_group",
-                instagram: "https://instagram.com/ittihadbilad_group"
-            },
-            {
-                name: "اتحاد البلاد للفعاليات",
-                tagline: "تنظيم وإدارة الفعاليات والمؤتمرات",
-                logo: "images/logo.png",
-                website: "https://www.ittihadbilad-events.com",
-                phone: "+966 11 123 4572",
-                email: "info@ittihadbilad-events.com",
-                linkedin: "https://linkedin.com/company/ittihadbilad-events",
-                twitter: "https://twitter.com/ittihadbilad_events",
-                instagram: "https://instagram.com/ittihadbilad_events"
+            'suhul-shipping': {
+                name: 'سهول التجاه للشحن',
+                description: 'تقدم خدمات الشحن واللوجستيات المتكاملة، مع شبكة واسعة من الخدمات التي تغطي جميع احتياجات النقل والتوزيع المحلي والدولي.',
+                image: 'images/suhul alttijah for shipping .jpeg',
+                link: 'companies.html#suhul-shipping'
             }
-        ];
-        
-        if (companiesContainer) {
-            companies.forEach(company => {
-                const card = createCompanyProfileCard(company);
-                companiesContainer.appendChild(card);
+        };
+
+        const logoCards = document.querySelectorAll('.company-logo-card');
+        const detailsPanel = document.getElementById('companyDetailsPanel');
+        const companyName = document.getElementById('companyName');
+        const companyDescription = document.getElementById('companyDescription');
+        const companyImage = document.getElementById('companyImage');
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        if (!logoCards.length || !detailsPanel) return;
+
+        let currentActiveCard = logoCards[0]; // Set first card as initially active
+
+        // Handle logo card clicks
+        logoCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const companyId = this.getAttribute('data-company');
+                const companyData = companiesData[companyId];
+                
+                if (!companyData) return;
+
+                // Remove active class from all cards
+                logoCards.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked card
+                this.classList.add('active');
+                currentActiveCard = this;
+
+                // Update details panel content
+                companyName.textContent = companyData.name;
+                companyDescription.textContent = companyData.description;
+                companyImage.src = companyData.image;
+                companyImage.alt = companyData.name;
+                learnMoreBtn.href = companyData.link;
+
+                // Set data attribute for specific styling
+                detailsPanel.setAttribute('data-company', companyId);
+
+                // Show details panel with animation
+                detailsPanel.classList.add('show');
+
+                // Smooth scroll to details panel
+                setTimeout(() => {
+                    detailsPanel.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 200);
             });
-        }
-        
-        // Initialize card interactions
-        initCompanyCardInteractions();
-    }
-    
-    // ===== CREATE COMPANY PROFILE CARD =====
-    function createCompanyProfileCard(company) {
-        const card = document.createElement('div');
-        card.className = 'company-profile-card';
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', `معلومات شركة ${company.name}`);
-        
-        card.innerHTML = `
-            <div class="company-card-header">
-                <div class="company-logo-container">
-                    <div class="company-logo">
-                        <img src="${company.logo}" alt="شعار ${company.name}" loading="lazy">
-                    </div>
-                </div>
-                <div class="company-info">
-                    <h3 class="company-name">${company.name}</h3>
-                    <p class="company-tagline">${company.tagline}</p>
-                    
-                </div>
-            </div>
-            <div class="company-profile-overlay">
-                <div class="overlay-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-globe" aria-hidden="true"></i>
-                            <a href="${company.website}" target="_blank" rel="noopener noreferrer">الموقع الإلكتروني</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <a href="tel:${company.phone}">${company.phone}</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <a href="mailto:${company.email}">${company.email}</a>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="${company.linkedin}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                        </a>
-                        <a href="${company.twitter}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a href="${company.instagram}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        return card;
-    }
-    
-    // ===== COMPANY CARD INTERACTIONS =====
-    function initCompanyCardInteractions() {
-        const companyCards = document.querySelectorAll('.company-profile-card');
-        
-        companyCards.forEach(card => {
-            // Handle keyboard navigation
-            card.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    // Focus management for accessibility
-                    const overlay = this.querySelector('.company-profile-overlay');
-                    if (overlay) {
-                        overlay.setAttribute('aria-live', 'polite');
-                    }
+
+            // Add hover effects
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(-4px) scale(1.01)';
                 }
             });
-            
-            // Handle focus/blur for accessibility
-            card.addEventListener('focus', function() {
-                this.classList.add('focused');
-            });
-            
-            card.addEventListener('blur', function() {
-                this.classList.remove('focused');
+
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = '';
+                }
             });
         });
+
+
+        // Auto-show first company details on page load
+        if (logoCards.length > 0) {
+            const firstCard = logoCards[0];
+            const firstCompanyId = firstCard.getAttribute('data-company');
+            const firstCompanyData = companiesData[firstCompanyId];
+            
+            if (firstCompanyData) {
+                // Set first card as active
+                firstCard.classList.add('active');
+                currentActiveCard = firstCard;
+
+                // Update details panel content
+                companyName.textContent = firstCompanyData.name;
+                companyDescription.textContent = firstCompanyData.description;
+                companyImage.src = firstCompanyData.image;
+                companyImage.alt = firstCompanyData.name;
+                learnMoreBtn.href = firstCompanyData.link;
+
+                // Set data attribute for specific styling
+                detailsPanel.setAttribute('data-company', firstCompanyId);
+
+                // Show details panel immediately
+                detailsPanel.classList.add('show');
+            }
+        }
     }
     
-    // ===== ENHANCED STATISTICS COUNTER ANIMATION =====
+    // ===== ENHANCED ACHIEVEMENTS COUNTER ANIMATION =====
     function initStatisticsCounter() {
-        const statItems = document.querySelectorAll('.stat-item');
+        const achievementCards = document.querySelectorAll('.achievement-card');
         let hasAnimated = false;
         
-        function animateCounter(element) {
-            const target = parseInt(element.dataset.target);
-            const suffix = element.dataset.suffix || '';
-            const numberElement = element.querySelector('.stat-number');
-            const duration = 2500; // 2.5 seconds
-            const steps = 80;
+        function animateCounter(card) {
+            const target = parseInt(card.dataset.target);
+            const suffix = card.dataset.suffix || '';
+            const numberElement = card.querySelector('.achievement-number');
+            const duration = 2000; // 2 seconds
+            const steps = 60;
             const increment = target / steps;
             const stepDuration = duration / steps;
             
-            // Add loading animation
-            numberElement.style.opacity = '0.7';
-            numberElement.style.transform = 'scale(0.8)';
+            // Add counting animation class
+            numberElement.classList.add('counting');
             
             let current = 0;
             const timer = setInterval(() => {
@@ -371,47 +355,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     current = target;
                     clearInterval(timer);
                     
-                    // Final animation
-                    numberElement.style.opacity = '1';
-                    numberElement.style.transform = 'scale(1)';
-                    
-                    // Add completion effect
-                    element.classList.add('completed');
-                    
-                    // Trigger icon animation
-                    const icon = element.querySelector('.stat-icon');
-                    if (icon) {
-                        icon.style.animation = 'pulse 0.6s ease-out';
-                    }
+                    // Remove counting class after animation
+                    setTimeout(() => {
+                        numberElement.classList.remove('counting');
+                    }, 300);
                 }
                 
-                // Format number with suffix
-                const formattedNumber = Math.floor(current).toLocaleString('ar-SA');
-                numberElement.textContent = formattedNumber + suffix;
+                // Update number with proper formatting
+                const displayNumber = Math.floor(current);
+                const existingPlus = numberElement.querySelector('.plus-sign');
+                if (existingPlus) {
+                    numberElement.innerHTML = displayNumber + '<span class="plus-sign">' + suffix + '</span>';
+                } else {
+                    numberElement.textContent = displayNumber + suffix;
+                }
             }, stepDuration);
         }
         
         // Enhanced Intersection Observer for counter animation
-        const statsObserver = new IntersectionObserver((entries) => {
+        const achievementsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
                     hasAnimated = true;
                     
-                    // Add entrance animation to each stat item
-                    statItems.forEach((item, index) => {
+                    // Add entrance animation to each achievement card
+                    achievementCards.forEach((card, index) => {
                         // Initial state
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(50px) scale(0.8)';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(50px) scale(0.8)';
                         
                         // Animate entrance
                         setTimeout(() => {
-                            item.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0) scale(1)';
+                            card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                            card.classList.add('animate-in');
                             
                             // Start counter animation after entrance
                             setTimeout(() => {
-                                animateCounter(item);
+                                animateCounter(card);
                             }, 300);
                         }, index * 150);
                     });
@@ -422,30 +404,36 @@ document.addEventListener('DOMContentLoaded', function() {
             rootMargin: '0px 0px -100px 0px'
         });
         
-        if (statItems.length > 0) {
-            statsObserver.observe(document.querySelector('.stats-section'));
+        if (achievementCards.length > 0) {
+            achievementsObserver.observe(document.querySelector('.achievements-section'));
         }
         
-        // Add hover effects for stat items
-        statItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                if (this.classList.contains('completed')) {
-                    const numberElement = this.querySelector('.stat-number');
-                    const icon = this.querySelector('.stat-icon');
-                    
-                    // Add hover animation
-                    numberElement.style.transform = 'scale(1.1)';
-                    icon.style.transform = 'scale(1.15) rotate(10deg)';
+        // Add enhanced hover effects for achievement cards
+        achievementCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const numberElement = this.querySelector('.achievement-number');
+                const icon = this.querySelector('.achievement-icon');
+                
+                // Add hover animation
+                if (numberElement) {
+                    numberElement.style.transform = 'scale(1.05)';
+                }
+                if (icon) {
+                    icon.style.transform = 'scale(1.1)';
                 }
             });
             
-            item.addEventListener('mouseleave', function() {
-                const numberElement = this.querySelector('.stat-number');
-                const icon = this.querySelector('.stat-icon');
+            card.addEventListener('mouseleave', function() {
+                const numberElement = this.querySelector('.achievement-number');
+                const icon = this.querySelector('.achievement-icon');
                 
                 // Reset hover animation
-                numberElement.style.transform = 'scale(1)';
-                icon.style.transform = 'scale(1) rotate(0deg)';
+                if (numberElement) {
+                    numberElement.style.transform = 'scale(1)';
+                }
+                if (icon) {
+                    icon.style.transform = 'scale(1)';
+                }
             });
         });
     }
@@ -707,59 +695,70 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== PROJECTS GALLERY DATA =====
     function initProjectsData() {
         const projectsContainer = document.getElementById('projects-container');
+        const horizontalContainer = document.getElementById('projects-horizontal-carousel');
+        const gridContainer = document.getElementById('projects-grid');
         
         // Projects gallery data with detailed information
         const projects = [
             {
                 title: "مشروع الفعاليات الكبرى",
                 description: "تنظيم وإدارة أكبر الفعاليات في المملكة مع حضور أكثر من 50 ألف زائر ومشاركة 200+ شركة رائدة في مختلف القطاعات",
+                shortDescription: "فعاليات كبرى مع 50 ألف زائر و 200+ شركة رائدة",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "مؤتمر الابتكار التقني",
                 description: "مؤتمر متخصص في التقنيات الحديثة والابتكار يجمع أبرز الخبراء والمختصين في مجال التكنولوجيا والذكاء الاصطناعي",
+                shortDescription: "مؤتمر تقني يجمع خبراء التكنولوجيا والذكاء الاصطناعي",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "معرض التراث السعودي",
                 description: "معرض يسلط الضوء على التراث والثقافة السعودية الأصيلة بمشاركة أكثر من 150 فنان ومبدع من مختلف مناطق المملكة",
+                shortDescription: "معرض للتراث السعودي مع 150 فنان ومبدع",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "فعالية الرياضة للجميع",
                 description: "فعالية رياضية تهدف لتشجيع النشاط البدني والصحة العامة مع مشاركة 10,000+ شخص من مختلف الفئات العمرية",
+                shortDescription: "فعالية رياضية مع 10,000+ مشارك من جميع الأعمار",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "ملتقى رواد الأعمال",
                 description: "ملتقى يجمع رواد الأعمال والمستثمرين لتقديم فرص الاستثمار والشراكات الاستراتيجية في السوق السعودي",
+                shortDescription: "ملتقى يجمع رواد الأعمال والمستثمرين للشراكات",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "مهرجان الفنون المعاصرة",
                 description: "مهرجان يعرض أعمال الفنانين المعاصرين السعوديين والدوليين مع أكثر من 300 عمل فني متنوع ومبتكر",
+                shortDescription: "مهرجان فنون مع 300 عمل فني متنوع ومبتكر",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "قمة الاستدامة البيئية",
                 description: "قمة متخصصة في الاستدامة البيئية والطاقة المتجددة بمشاركة خبراء دوليين ومسؤولين حكوميين",
+                shortDescription: "قمة للاستدامة البيئية مع خبراء دوليين",
                 image: "images/project1.jpg",
                 link: "#"
             },
             {
                 title: "معرض التعليم والتدريب",
                 description: "معرض يقدم أحدث برامج التعليم والتدريب المهني لتطوير الكوادر الوطنية ورفع مستوى المهارات",
+                shortDescription: "معرض للتعليم والتدريب المهني لتطوير الكوادر",
                 image: "images/project1.jpg",
                 link: "#"
             }
         ];
         
+        // Initialize old gallery (for backward compatibility)
         if (projectsContainer) {
             projects.forEach(project => {
                 const slide = document.createElement('div');
@@ -785,14 +784,445 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
+        // Initialize new horizontal gallery
+        if (horizontalContainer) {
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'project-horizontal-card';
+                
+                card.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="project-horizontal-image" loading="lazy">
+                    <div class="project-horizontal-content">
+                        <h3 class="project-horizontal-title">${project.title}</h3>
+                        <p class="project-horizontal-description">${project.description}</p>
+                        <a href="${project.link}" class="project-horizontal-link" aria-label="تفاصيل المشروع: ${project.title}">
+                            <span>معرفة المزيد</span>
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="project-horizontal-tooltip">
+                        ${project.shortDescription}
+                    </div>
+                `;
+                
+                horizontalContainer.appendChild(card);
+            });
+        }
+        
+        // Initialize new carousel gallery
+        const carouselContainer = document.getElementById('projects-carousel');
+        const progressDotsContainer = document.getElementById('projects-progress-dots');
+        
+        if (carouselContainer) {
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.style.animationDelay = `${(index + 1) * 0.1}s`;
+                
+                card.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
+                    <div class="project-overlay">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.shortDescription}</p>
+                        <a href="${project.link}" class="project-link" aria-label="تفاصيل المشروع: ${project.title}">
+                            <span>معرفة المزيد</span>
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                `;
+                
+                carouselContainer.appendChild(card);
+            });
+            
+            // Create progress dots
+            if (progressDotsContainer) {
+                projects.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'progress-dot';
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        updateProgressDots(index);
+                    });
+                    progressDotsContainer.appendChild(dot);
+                });
+            }
+            
+            // Initialize carousel navigation
+            initProjectsCarousel();
+        }
+        
         // Initialize gallery card interactions
         initGalleryCardInteractions();
+        
+        // Initialize horizontal carousel
+        initHorizontalCarousel();
+        
+        // Initialize grid interactions
+        initGridInteractions();
+    }
+    
+    // ===== PROJECTS CAROUSEL FUNCTIONALITY =====
+    function initProjectsCarousel() {
+        const carousel = document.querySelector('.projects-carousel');
+        const prevBtn = document.querySelector('.projects-nav-prev');
+        const nextBtn = document.querySelector('.projects-nav-next');
+        const cards = document.querySelectorAll('.project-card');
+        const progressDots = document.querySelectorAll('.progress-dot');
+        
+        if (!carousel || !prevBtn || !nextBtn || cards.length === 0) return;
+        
+        let currentIndex = 0;
+        const cardWidth = 350; // Width of each card including gap
+        const gap = 32; // Gap between cards
+        const visibleCards = Math.floor(carousel.parentElement.offsetWidth / (cardWidth + gap));
+        const maxIndex = Math.max(0, cards.length - visibleCards);
+        
+        function updateCarousel() {
+            const translateX = -currentIndex * (cardWidth + gap);
+            carousel.style.transform = `translateX(${translateX}px)`;
+            updateProgressDots(currentIndex);
+        }
+        
+        function updateProgressDots(activeIndex) {
+            progressDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }
+        
+        function goToSlide(index) {
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+            updateCarousel();
+        }
+        
+        function nextSlide() {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Touch/swipe support
+        let startX = 0;
+        let isDragging = false;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+        
+        // Auto-play (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentIndex >= maxIndex) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                updateCarousel();
+            }, 5000);
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Start auto-play
+        startAutoPlay();
+        
+        // Pause auto-play on hover
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+        
+        // Update on window resize
+        window.addEventListener('resize', () => {
+            const newVisibleCards = Math.floor(carousel.parentElement.offsetWidth / (cardWidth + gap));
+            const newMaxIndex = Math.max(0, cards.length - newVisibleCards);
+            currentIndex = Math.min(currentIndex, newMaxIndex);
+            updateCarousel();
+        });
+        
+        // Initialize
+        updateCarousel();
+    }
+    
+    // ===== GRID INTERACTIONS =====
+    function initGridInteractions() {
+        const gridCards = document.querySelectorAll('.project-grid-card');
+        
+        gridCards.forEach(card => {
+            // Handle keyboard navigation
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const link = this.querySelector('.project-grid-link');
+                    if (link) {
+                        link.click();
+                    }
+                }
+            });
+            
+            // Handle focus/blur for accessibility
+            card.addEventListener('focus', function() {
+                this.classList.add('focused');
+            });
+            
+            card.addEventListener('blur', function() {
+                this.classList.remove('focused');
+            });
+            
+            // Handle click to navigate
+            card.addEventListener('click', function(e) {
+                // Don't navigate if clicking on the link itself
+                if (e.target.closest('.project-grid-link')) return;
+                
+                const link = this.querySelector('.project-grid-link');
+                if (link) {
+                    link.click();
+                }
+            });
+            
+            // Add hover effects for touch devices
+            card.addEventListener('touchstart', function() {
+                this.classList.add('touch-hover');
+            });
+            
+            card.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.classList.remove('touch-hover');
+                }, 300);
+            });
+            
+            // Lazy loading with intersection observer
+            const image = card.querySelector('.project-grid-image');
+            if (image) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                            }
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                imageObserver.observe(image);
+            }
+        });
+    }
+    
+    // ===== HORIZONTAL CAROUSEL FUNCTIONALITY =====
+    function initHorizontalCarousel() {
+        const carousel = document.querySelector('.projects-horizontal-carousel');
+        const prevBtn = document.querySelector('.carousel-nav-prev');
+        const nextBtn = document.querySelector('.carousel-nav-next');
+        const progressBar = document.querySelector('.scroll-progress');
+        
+        if (!carousel || !prevBtn || !nextBtn) return;
+        
+        let currentIndex = 0;
+        const cardWidth = 320; // Width of each card + gap
+        const gap = 32; // 2rem gap
+        const totalCardWidth = cardWidth + gap;
+        const visibleCards = Math.floor(carousel.parentElement.offsetWidth / totalCardWidth);
+        const totalCards = carousel.children.length;
+        const maxIndex = Math.max(0, totalCards - visibleCards);
+        
+        // Update carousel position
+        function updateCarousel() {
+            const translateX = -currentIndex * totalCardWidth;
+            carousel.style.transform = `translateX(${translateX}px)`;
+            
+            // Update progress bar
+            if (progressBar) {
+                const progress = (currentIndex / maxIndex) * 100;
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+            }
+            
+            // Update button states
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+            
+            prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        }
+        
+        // Navigation functions
+        function goToPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+        
+        function goToNext() {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', goToPrev);
+        nextBtn.addEventListener('click', goToNext);
+        
+        // Touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // Only handle horizontal swipes
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    goToNext();
+                } else {
+                    goToPrev();
+                }
+            }
+            
+            isDragging = false;
+        });
+        
+        // Mouse drag support
+        let mouseStartX = 0;
+        let isMouseDragging = false;
+        
+        carousel.addEventListener('mousedown', (e) => {
+            mouseStartX = e.clientX;
+            isMouseDragging = true;
+            carousel.style.cursor = 'grabbing';
+        });
+        
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isMouseDragging) return;
+            e.preventDefault();
+        });
+        
+        carousel.addEventListener('mouseup', (e) => {
+            if (!isMouseDragging) return;
+            
+            const mouseEndX = e.clientX;
+            const diffX = mouseStartX - mouseEndX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    goToNext();
+                } else {
+                    goToPrev();
+                }
+            }
+            
+            isMouseDragging = false;
+            carousel.style.cursor = 'grab';
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            isMouseDragging = false;
+            carousel.style.cursor = 'grab';
+        });
+        
+        // Keyboard navigation
+        carousel.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                goToNext();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                goToPrev();
+            }
+        });
+        
+        // Make carousel focusable
+        carousel.setAttribute('tabindex', '0');
+        carousel.style.cursor = 'grab';
+        
+        // Initialize
+        updateCarousel();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newVisibleCards = Math.floor(carousel.parentElement.offsetWidth / totalCardWidth);
+            const newMaxIndex = Math.max(0, totalCards - newVisibleCards);
+            
+            if (currentIndex > newMaxIndex) {
+                currentIndex = newMaxIndex;
+            }
+            
+            updateCarousel();
+        });
     }
     
     // ===== GALLERY CARD INTERACTIONS =====
     function initGalleryCardInteractions() {
         const galleryCards = document.querySelectorAll('.project-gallery-card');
+        const horizontalCards = document.querySelectorAll('.project-horizontal-card');
         
+        // Old gallery cards
         galleryCards.forEach(card => {
             // Handle keyboard navigation
             card.addEventListener('keydown', function(e) {
@@ -812,6 +1242,51 @@ document.addEventListener('DOMContentLoaded', function() {
             
             card.addEventListener('blur', function() {
                 this.classList.remove('focused');
+            });
+        });
+        
+        // New horizontal cards
+        horizontalCards.forEach(card => {
+            // Handle keyboard navigation
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const link = this.querySelector('.project-horizontal-link');
+                    if (link) {
+                        link.click();
+                    }
+                }
+            });
+            
+            // Handle focus/blur for accessibility
+            card.addEventListener('focus', function() {
+                this.classList.add('focused');
+            });
+            
+            card.addEventListener('blur', function() {
+                this.classList.remove('focused');
+            });
+            
+            // Handle click to navigate
+            card.addEventListener('click', function(e) {
+                // Don't navigate if clicking on the link itself
+                if (e.target.closest('.project-horizontal-link')) return;
+                
+                const link = this.querySelector('.project-horizontal-link');
+                if (link) {
+                    link.click();
+                }
+            });
+            
+            // Add hover effects for touch devices
+            card.addEventListener('touchstart', function() {
+                this.classList.add('touch-hover');
+            });
+            
+            card.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.classList.remove('touch-hover');
+                }, 300);
             });
         });
     }

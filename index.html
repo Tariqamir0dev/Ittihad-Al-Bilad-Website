@@ -54,17 +54,10 @@
             <div class="nav-container">
                 <!-- Logo -->
                 <div class="nav-logo">
-                    <a href="index.html" title="العودة إلى الصفحة الرئيسية">
+                    <a href="index.html" title="العودة إلى الصفحة الرئيسية" class="logo-link">
                         <img src="images/logo.png" alt="اتحاد البلاد" class="logo-img">
                     </a>
                 </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-toggle" aria-label="فتح القائمة" aria-expanded="false">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
 
                 <!-- Navigation Menu -->
                 <div class="nav-menu" role="navigation">
@@ -81,7 +74,7 @@
                         <li class="nav-item dropdown">
                             <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                                 مجلس الإدارة
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="chairman-message.html" class="dropdown-link" role="menuitem">كلمة رئيس مجلس الإدارة</a></li>
@@ -102,12 +95,26 @@
                             <a href="contact.html" class="nav-link">اتصل بنا</a>
                         </li>
                     </ul>
-                    
+                </div>
+
+                <!-- Right Side Actions -->
+                <div class="nav-actions">
                     <!-- Language Switcher -->
                     <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ar">العربية</button>
-                        <button class="lang-btn" data-lang="en">English</button>
+                        <button class="lang-btn active" data-lang="ar" aria-label="تغيير اللغة إلى العربية">
+                            <span class="lang-text">ع</span>
+                        </button>
+                        <button class="lang-btn" data-lang="en" aria-label="Change language to English">
+                            <span class="lang-text">EN</span>
+                        </button>
                     </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -138,47 +145,47 @@
                             </p>
                         </div>
                         
-                        <div class="about-features">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>الإبداع والابتكار</h3>
-                                    <p>نبتكر حلولاً إبداعية مبتكرة لكل فعالية لضمان تجربة لا تُنسى</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-users" aria-hidden="true"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>فريق محترف</h3>
-                                    <p>فريق عمل متخصص ومحترف يمتلك خبرة واسعة في مجال الفعاليات</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-award" aria-hidden="true"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>الجودة والتميز</h3>
-                                    <p>نلتزم بأعلى معايير الجودة لضمان نجاح كل فعالية ننظمها</p>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="about-cta">
-                            <a href="#" class="cta-button primary" download="company-profile.pdf">
-                                <i class="fas fa-download" aria-hidden="true"></i>
-                                ملف الشركة
-                            </a>
-                            <a href="contact.html" class="cta-button secondary">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
-                                تواصل معنا
-                            </a>
+                            <div class="cta-container">
+                                <div class="cta-split-card">
+                                    <!-- Left Side - Download -->
+                                    <a href="company-profile.html" class="cta-side cta-download">
+                                        <div class="cta-icon-wrapper">
+                                            <div class="cta-icon-bg"></div>
+                                            <i class="fas fa-file-download cta-icon" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="cta-content">
+                                            <span class="cta-title">ملف الشركة</span>
+                                            <span class="cta-subtitle">تحميل PDF</span>
+                                        </div>
+                                        <div class="cta-arrow">
+                                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                    
+                                    <!-- Diagonal Divider -->
+                                    <div class="cta-divider">
+                                        <div class="divider-line"></div>
+                                        <div class="divider-dot"></div>
+                                    </div>
+                                    
+                                    <!-- Right Side - Contact -->
+                                    <a href="contact.html" class="cta-side cta-contact">
+                                        <div class="cta-icon-wrapper">
+                                            <div class="cta-icon-bg"></div>
+                                            <i class="fas fa-comments cta-icon" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="cta-content">
+                                            <span class="cta-title">تواصل معنا</span>
+                                            <span class="cta-subtitle">دردشة مباشرة</span>
+                                        </div>
+                                        <div class="cta-arrow">
+                                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="about-logo">
@@ -214,8 +221,56 @@
                     <a href="companies.html" class="section-link">عرض جميع شركاتنا</a>
                 </div>
                 
-                <div class="companies-grid" id="companies-container">
-                    <!-- Company profile cards will be populated by JavaScript -->
+                <!-- Companies Grid -->
+                <div class="companies-showcase">
+                    <div class="companies-logos-grid">
+                        <div class="company-logo-card active" data-company="ittihad-group">
+                            <div class="logo-wrapper">
+                                <img src="images/atihad group.jpeg" alt="اتحاد جروب" class="company-logo">
+                            </div>
+                        </div>
+                        
+                        <div class="company-logo-card" data-company="ittihad-contracting">
+                            <div class="logo-wrapper">
+                                <img src="images/atthad albilad cpmtractic .jpeg" alt="اتحاد البلاد للمقاولات" class="company-logo">
+                            </div>
+                        </div>
+                        
+                        <div class="company-logo-card" data-company="ittihad-maintenance">
+                            <div class="logo-wrapper">
+                                <img src="images/etthad albilad mintenance.jpeg" alt="اتحاد البلاد للصيانة" class="company-logo">
+                            </div>
+                        </div>
+                        
+                        <div class="company-logo-card" data-company="maayeer-roads">
+                            <div class="logo-wrapper">
+                                <img src="images/maayeer alturuq.jpeg" alt="معايير الطرق" class="company-logo">
+                            </div>
+                        </div>
+                        
+                        <div class="company-logo-card" data-company="suhul-shipping">
+                            <div class="logo-wrapper">
+                                <img src="images/suhul alttijah for shipping .jpeg" alt="سهول التجاه للشحن" class="company-logo">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Details Panel -->
+                    <div class="company-details-panel show" id="companyDetailsPanel">
+                        <div class="details-content">
+                            <div class="details-text">
+                                <h3 class="company-name" id="companyName">اتحاد جروب</h3>
+                                <p class="company-description" id="companyDescription">شركة رائدة في مجال الاستثمار والتطوير، تقدم حلولاً متكاملة للمشاريع الاستراتيجية والاستثمارات طويلة المدى مع التركيز على الابتكار والجودة.</p>
+                                <a href="companies.html#ittihad-group" class="learn-more-btn" id="learnMoreBtn">
+                                    <span>معرفة المزيد</span>
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="details-image">
+                                <img src="images/atihad group.jpeg" alt="اتحاد جروب" id="companyImage" class="company-detail-image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -225,24 +280,36 @@
             <div class="container">
                 <div class="section-header">
                     <h2 id="projects-title" class="section-title">مشاريعنا</h2>
-                    <a href="projects.html" class="section-link">معرفة المزيد</a>
+                    <p class="section-subtitle">اكتشف مجموعة متنوعة من مشاريعنا المتميزة والإبداعية</p>
+                    <a href="projects.html" class="section-link">عرض جميع المشاريع</a>
                 </div>
                 
-                <div class="projects-gallery">
-                    <div class="swiper projects-swiper">
-                        <div class="swiper-wrapper" id="projects-container">
-                            <!-- Project gallery cards will be populated by JavaScript -->
+                <!-- Projects Carousel -->
+                <div class="projects-carousel-container">
+                    <div class="projects-carousel" id="projects-carousel">
+                        <!-- Project cards will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Navigation Controls -->
+                    <button class="projects-nav-btn projects-nav-prev" aria-label="المشروع السابق">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="projects-nav-btn projects-nav-next" aria-label="المشروع التالي">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <!-- Progress Indicators -->
+                    <div class="projects-progress">
+                        <div class="progress-dots" id="projects-progress-dots">
+                            <!-- Dots will be populated by JavaScript -->
                         </div>
-                        
-                        <!-- Navigation -->
-                        <div class="swiper-button-next projects-nav-next"></div>
-                        <div class="swiper-button-prev projects-nav-prev"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Media Center Section -->
+        <!-- Media Center Section - COMMENTED OUT -->
+        <!--
         <section id="media" class="media-section section-padding" aria-labelledby="media-title">
             <div class="container">
                 <div class="section-header">
@@ -257,65 +324,55 @@
                             <!-- Professional blog cards will be populated by JavaScript -->
                         </div>
                         
-                        <!-- Navigation -->
-                        <div class="swiper-button-next media-nav-next"></div>
-                        <div class="swiper-button-prev media-nav-prev"></div>
                     </div>
                 </div>
             </div>
         </section>
+        -->
 
-        <!-- Statistics Section -->
-        <section class="stats-section section-padding" aria-labelledby="stats-title">
+        <!-- Achievements Section -->
+        <section class="achievements-section section-padding" aria-labelledby="achievements-title">
             <div class="container">
-                <div class="stats-header">
-                    <h2 id="stats-title" class="section-title text-center">إحصائياتنا</h2>
-                    <p class="stats-subtitle">أرقام تتحدث عن نجاحنا وتميزنا في خدمة عملائنا</p>
+                <div class="achievements-title">
+                    <h2 id="achievements-title">إنجازاتنا</h2>
+                    <p class="achievements-subtitle">نفخر بتاريخ حافل من النجاح والتميز</p>
                 </div>
                 
-                <div class="stats-grid">
-                    <div class="stat-item" data-target="1500" data-suffix="+">
-                        <div class="stat-icon">
+                <div class="achievements-grid">
+                    <div class="achievement-card" data-target="1500" data-suffix="+">
+                        <div class="achievement-icon">
                             <i class="fas fa-users" aria-hidden="true"></i>
                         </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">عميل سعيد</div>
-                            <div class="stat-description">عملاء راضون عن خدماتنا</div>
-                        </div>
+                        <div class="achievement-number">0<span class="plus-sign">+</span></div>
+                        <div class="achievement-label">عميل سعيد</div>
+                        <div class="achievement-description">عملاء راضون عن خدماتنا</div>
                     </div>
                     
-                    <div class="stat-item" data-target="8" data-suffix="">
-                        <div class="stat-icon">
+                    <div class="achievement-card" data-target="8" data-suffix="">
+                        <div class="achievement-icon national">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">مناطق حول المملكة</div>
-                            <div class="stat-description">نقدم خدماتنا في جميع أنحاء المملكة</div>
-                        </div>
+                        <div class="achievement-number">0</div>
+                        <div class="achievement-label">مناطق حول المملكة</div>
+                        <div class="achievement-description">نقدم خدماتنا في جميع أنحاء المملكة</div>
                     </div>
                     
-                    <div class="stat-item" data-target="2500" data-suffix="+">
-                        <div class="stat-icon">
+                    <div class="achievement-card" data-target="2500" data-suffix="+">
+                        <div class="achievement-icon">
                             <i class="fas fa-project-diagram" aria-hidden="true"></i>
                         </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">مشروع تم إنجازه</div>
-                            <div class="stat-description">مشاريع ناجحة ومتميزة</div>
-                        </div>
+                        <div class="achievement-number">0<span class="plus-sign">+</span></div>
+                        <div class="achievement-label">مشروع تم إنجازه</div>
+                        <div class="achievement-description">مشاريع ناجحة ومتميزة</div>
                     </div>
                     
-                    <div class="stat-item" data-target="15" data-suffix="">
-                        <div class="stat-icon">
+                    <div class="achievement-card" data-target="15" data-suffix="">
+                        <div class="achievement-icon">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                         </div>
-                        <div class="stat-content">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">عام في خدمتكم</div>
-                            <div class="stat-description">سنوات من الخبرة والتميز</div>
-                        </div>
+                        <div class="achievement-number">0</div>
+                        <div class="achievement-label">عام في خدمتكم</div>
+                        <div class="achievement-description">سنوات من الخبرة والتميز</div>
                     </div>
                 </div>
                 

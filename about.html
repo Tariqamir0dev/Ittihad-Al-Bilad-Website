@@ -54,17 +54,10 @@
             <div class="nav-container">
                 <!-- Logo -->
                 <div class="nav-logo">
-                    <a href="index.html" title="العودة إلى الصفحة الرئيسية">
+                    <a href="index.html" title="العودة إلى الصفحة الرئيسية" class="logo-link">
                         <img src="images/logo.png" alt="اتحاد البلاد" class="logo-img">
                     </a>
                 </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-toggle" aria-label="فتح القائمة" aria-expanded="false">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
 
                 <!-- Navigation Menu -->
                 <div class="nav-menu" role="navigation">
@@ -81,7 +74,7 @@
                         <li class="nav-item dropdown">
                             <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                                 مجلس الإدارة
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="chairman-message.html" class="dropdown-link" role="menuitem">كلمة رئيس مجلس الإدارة</a></li>
@@ -102,12 +95,26 @@
                             <a href="contact.html" class="nav-link">اتصل بنا</a>
                         </li>
                     </ul>
-                    
+                </div>
+
+                <!-- Right Side Actions -->
+                <div class="nav-actions">
                     <!-- Language Switcher -->
                     <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ar">العربية</button>
-                        <button class="lang-btn" data-lang="en">English</button>
+                        <button class="lang-btn active" data-lang="ar" aria-label="تغيير اللغة إلى العربية">
+                            <span class="lang-text">ع</span>
+                        </button>
+                        <button class="lang-btn" data-lang="en" aria-label="Change language to English">
+                            <span class="lang-text">EN</span>
+                        </button>
                     </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
                 </div>
             </div>
         </nav>
