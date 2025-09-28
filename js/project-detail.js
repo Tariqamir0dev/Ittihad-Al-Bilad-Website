@@ -1,194 +1,215 @@
 // ===== PROJECT DETAIL PAGE JAVASCRIPT =====
 
-// Simple JavaScript for project detail page
-// Focus on minimal functionality as requested
-
-// DOM Elements
-let imageModal;
-let modalImage;
+// Media Carousel and Modal functionality
+let mediaCarousel;
+let mediaItems;
+let currentSlide = 0;
+let totalSlides;
+let mediaModal;
+let modalMedia;
 let modalClose;
-let modalPrev;
-let modalNext;
-let galleryImages;
-let currentImageIndex = 0;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    initializeProjectDetailPage();
+    initializeMediaCarousel();
+    initializeMediaModal();
 });
 
-function initializeProjectDetailPage() {
-    // Get DOM elements
-    imageModal = document.getElementById('imageModal');
-    modalImage = document.getElementById('modalImage');
-    modalClose = document.getElementById('modalClose');
-    modalPrev = document.getElementById('modalPrev');
-    modalNext = document.getElementById('modalNext');
-    galleryImages = document.querySelectorAll('.gallery-zoom-btn');
+function initializeMediaCarousel() {
+    mediaCarousel = document.getElementById('mediaCarousel');
+    mediaItems = document.querySelectorAll('.media-item');
+    totalSlides = mediaItems.length;
     
-    // Setup event listeners
-    setupEventListeners();
+    if (!mediaCarousel || totalSlides === 0) return;
     
-    // Initialize animations
-    initializeAnimations();
-}
-
-function setupEventListeners() {
-    // Gallery zoom buttons
-    galleryImages.forEach((btn, index) => {
-        btn.addEventListener('click', function() {
-            const imageSrc = this.getAttribute('data-image');
-            openImageModal(imageSrc, index);
+    // Setup navigation buttons
+    const prevBtn = document.querySelector('.media-prev');
+    const nextBtn = document.querySelector('.media-next');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+    }
+    
+    // Setup indicators
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
         });
     });
     
-    // Modal close
-    if (modalClose) {
-        modalClose.addEventListener('click', closeImageModal);
-    }
+    // Setup touch/swipe support
+    setupTouchSupport();
     
-    // Modal overlay click to close
-    if (imageModal) {
-        imageModal.addEventListener('click', function(e) {
-            if (e.target === imageModal || e.target.classList.contains('modal-overlay')) {
-                closeImageModal();
+    // Setup media zoom buttons
+    setupMediaZoomButtons();
+}
+
+function updateCarousel() {
+    if (!mediaCarousel) return;
+    
+    const translateX = -currentSlide * 100;
+    mediaCarousel.style.transform = `translateX(${translateX}%)`;
+    
+    // Update indicators
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function setupTouchSupport() {
+    if (!mediaCarousel) return;
+    
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
+    
+    mediaCarousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+    });
+    
+    mediaCarousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    mediaCarousel.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const diffX = startX - endX;
+        const diffY = startY - endY;
+        
+        // Only handle horizontal swipes
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                // Swipe left - next slide
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else {
+                // Swipe right - previous slide
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+            updateCarousel();
+        }
+        
+        isDragging = false;
+    });
+}
+
+function setupMediaZoomButtons() {
+    const zoomButtons = document.querySelectorAll('.media-zoom-btn');
+    zoomButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const mediaType = btn.getAttribute('data-type');
+            const mediaSrc = btn.getAttribute('data-src');
+            openMediaModal(mediaType, mediaSrc);
+        });
+    });
+    
+    // Video play buttons
+    const videoPlayButtons = document.querySelectorAll('.video-play-btn');
+    videoPlayButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const video = btn.closest('.media-item').querySelector('video');
+            if (video) {
+                openMediaModal('video', video.src);
             }
         });
-    }
+    });
+}
+
+function initializeMediaModal() {
+    mediaModal = document.getElementById('mediaModal');
+    modalMedia = document.getElementById('modalMedia');
+    modalClose = document.getElementById('modalClose');
     
-    // Modal navigation
-    if (modalPrev) {
-        modalPrev.addEventListener('click', showPreviousImage);
-    }
+    if (!mediaModal || !modalClose) return;
     
-    if (modalNext) {
-        modalNext.addEventListener('click', showNextImage);
-    }
+    // Close modal events
+    modalClose.addEventListener('click', closeMediaModal);
     
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (imageModal && imageModal.classList.contains('active')) {
-            switch(e.key) {
-                case 'Escape':
-                    closeImageModal();
-                    break;
-                case 'ArrowLeft':
-                    showNextImage();
-                    break;
-                case 'ArrowRight':
-                    showPreviousImage();
-                    break;
-            }
+    // Close on overlay click
+    mediaModal.addEventListener('click', (e) => {
+        if (e.target === mediaModal || e.target.classList.contains('modal-overlay')) {
+            closeMediaModal();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mediaModal.classList.contains('active')) {
+            closeMediaModal();
         }
     });
 }
 
-function openImageModal(imageSrc, index) {
-    if (!imageModal || !modalImage) return;
+function openMediaModal(type, src) {
+    if (!mediaModal || !modalMedia) return;
     
-    currentImageIndex = index;
-    modalImage.src = imageSrc;
-    modalImage.alt = `صورة ${index + 1} من المعرض`;
+    modalMedia.innerHTML = '';
     
-    imageModal.classList.add('active');
+    if (type === 'image') {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'صورة المشروع';
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '100%';
+        img.style.objectFit = 'contain';
+        modalMedia.appendChild(img);
+    } else if (type === 'video') {
+        const video = document.createElement('video');
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.style.maxWidth = '100%';
+        video.style.maxHeight = '100%';
+        modalMedia.appendChild(video);
+    }
+    
+    mediaModal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
-    // Update navigation buttons visibility
-    updateNavigationButtons();
 }
 
-function closeImageModal() {
-    if (!imageModal) return;
+function closeMediaModal() {
+    if (!mediaModal) return;
     
-    imageModal.classList.remove('active');
+    mediaModal.classList.remove('active');
     document.body.style.overflow = '';
+    
+    // Stop any playing videos
+    const videos = modalMedia.querySelectorAll('video');
+    videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+    });
 }
 
-function showPreviousImage() {
-    if (galleryImages.length === 0) return;
-    
-    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-    const imageSrc = galleryImages[currentImageIndex].getAttribute('data-image');
-    
-    if (modalImage) {
-        modalImage.src = imageSrc;
-        modalImage.alt = `صورة ${currentImageIndex + 1} من المعرض`;
-    }
-    
-    updateNavigationButtons();
+// Auto-play carousel (optional)
+function startAutoPlay() {
+    setInterval(() => {
+        if (totalSlides > 1) {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+    }, 5000); // Change slide every 5 seconds
 }
 
-function showNextImage() {
-    if (galleryImages.length === 0) return;
-    
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    const imageSrc = galleryImages[currentImageIndex].getAttribute('data-image');
-    
-    if (modalImage) {
-        modalImage.src = imageSrc;
-        modalImage.alt = `صورة ${currentImageIndex + 1} من المعرض`;
-    }
-    
-    updateNavigationButtons();
-}
-
-function updateNavigationButtons() {
-    // Navigation buttons are always visible for simplicity
-    // In a more complex implementation, you could hide them when there's only one image
-    if (modalPrev && modalNext) {
-        modalPrev.style.display = galleryImages.length > 1 ? 'flex' : 'none';
-        modalNext.style.display = galleryImages.length > 1 ? 'flex' : 'none';
-    }
-}
-
-function initializeAnimations() {
-    // Simple intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach(el => observer.observe(el));
-}
-
-// Utility function to get URL parameters (for future backend integration)
-function getUrlParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-// Simple function to load project data (placeholder for backend integration)
-function loadProjectData(projectId) {
-    // This would be replaced with actual API call
-    console.log('Loading project data for ID:', projectId);
-    
-    // For now, we'll use static data
-    // In the future, this would fetch from backend
-    return {
-        id: projectId,
-        title: "فعالية يوم التأسيس 24",
-        location: "الرياض (حديقة الملتقى)",
-        sponsor: "أمانة منطقة الرياض",
-        year: "2024 م",
-        description: "تغطيات للحفل المقدم من أمانة منطقة الرياض للمواطنين في بعض الحدائق العامة بمنطقة الرياض، ومشاركة احتفالهم وسعادتهم بيوم التأسيس."
-    };
-}
-
-// Export functions for potential external use
-window.ProjectDetailPage = {
-    openImageModal,
-    closeImageModal,
-    showPreviousImage,
-    showNextImage,
-    loadProjectData
-};
+// Uncomment the line below to enable auto-play
+// startAutoPlay();

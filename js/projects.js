@@ -160,9 +160,7 @@ const projectsData = [
 
 // DOM Elements
 let projectsContainer;
-let filterButtons;
 let loadMoreBtn;
-let currentFilter = 'all';
 let visibleProjects = 6;
 let allProjects = [];
 
@@ -174,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeProjectsPage() {
     // Get DOM elements
     projectsContainer = document.getElementById('projects-container');
-    filterButtons = document.querySelectorAll('.filter-btn');
     loadMoreBtn = document.getElementById('loadMoreBtn');
     
     if (!projectsContainer) {
@@ -197,14 +194,6 @@ function initializeProjectsPage() {
 }
 
 function setupEventListeners() {
-    // Filter buttons
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            setActiveFilter(filter);
-            filterProjects(filter);
-        });
-    });
     
     // Load more button
     if (loadMoreBtn) {
@@ -224,38 +213,6 @@ function setupEventListeners() {
     });
 }
 
-function setActiveFilter(filter) {
-    // Remove active class from all buttons
-    filterButtons.forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Add active class to clicked button
-    const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
-    if (activeBtn) {
-        activeBtn.classList.add('active');
-    }
-    
-    currentFilter = filter;
-}
-
-function filterProjects(filter) {
-    const filteredProjects = filter === 'all' 
-        ? allProjects 
-        : allProjects.filter(project => project.category === filter);
-    
-    // Reset visible projects count
-    visibleProjects = 6;
-    
-    // Clear container
-    projectsContainer.innerHTML = '';
-    
-    // Render filtered projects
-    renderProjects(filteredProjects);
-    
-    // Update load more button visibility
-    updateLoadMoreButton(filteredProjects);
-}
 
 function renderProjects(projects = allProjects) {
     const projectsToShow = projects.slice(0, visibleProjects);
@@ -322,20 +279,16 @@ function formatDate(dateString) {
 }
 
 function loadMoreProjects() {
-    const filteredProjects = currentFilter === 'all' 
-        ? allProjects 
-        : allProjects.filter(project => project.category === currentFilter);
-    
     visibleProjects += 6;
     
     // Clear container
     projectsContainer.innerHTML = '';
     
     // Render projects with new count
-    renderProjects(filteredProjects);
+    renderProjects(allProjects);
     
     // Update load more button
-    updateLoadMoreButton(filteredProjects);
+    updateLoadMoreButton(allProjects);
     
     // Scroll to new projects
     setTimeout(() => {
@@ -454,7 +407,6 @@ function searchProjects(query) {
 // Export functions for potential external use
 window.ProjectsPage = {
     searchProjects,
-    filterProjects,
     loadMoreProjects,
     initializeProjectsPage
 };

@@ -1,129 +1,5 @@
 /* ===== PROJECTS PAGE STYLES ===== */
 
-/* Projects Filter Section */
-.projects-filter-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.projects-filter-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(47,90,142,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-    opacity: 0.5;
-}
-
-.filter-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 2;
-}
-
-.filter-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900;
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.filter-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--primary-blue));
-    border-radius: 2px;
-}
-
-.filter-subtitle {
-    color: var(--text-gray);
-    font-size: 1.2rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2;
-}
-
-.filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: var(--white);
-    border: 2px solid var(--border-light);
-    border-radius: var(--border-radius);
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    min-height: 44px;
-    min-width: 44px;
-}
-
-.filter-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(47, 90, 142, 0.1), transparent);
-    transition: left 0.6s ease;
-}
-
-.filter-btn:hover::before {
-    left: 100%;
-}
-
-.filter-btn:hover {
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.filter-btn.active {
-    background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
-    border-color: var(--primary-blue);
-    color: var(--white);
-    box-shadow: var(--shadow-lg);
-}
-
-.filter-btn.active:hover {
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(47, 90, 142, 0.3);
-}
-
-.filter-btn i {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-}
-
-.filter-btn:hover i {
-    transform: scale(1.1);
-}
 
 /* Projects Grid Section */
 .projects-grid-section {
@@ -811,14 +687,6 @@
         gap: 2rem;
     }
     
-    .filter-buttons {
-        gap: 0.75rem;
-    }
-    
-    .filter-btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-    }
     
     .cta-content {
         flex-direction: column;
@@ -838,18 +706,6 @@
 
 /* Mobile (≤640px) */
 @media (max-width: 640px) {
-    .filter-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    
-    .filter-btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-        padding: 1rem 1.5rem;
-    }
     
     .projects-grid {
         grid-template-columns: 1fr;
@@ -994,12 +850,6 @@
 .project-card:nth-child(7) { animation-delay: 0.7s; }
 .project-card:nth-child(8) { animation-delay: 0.8s; }
 
-/* Filter button animation delays */
-.filter-btn:nth-child(1) { animation-delay: 0.1s; }
-.filter-btn:nth-child(2) { animation-delay: 0.2s; }
-.filter-btn:nth-child(3) { animation-delay: 0.3s; }
-.filter-btn:nth-child(4) { animation-delay: 0.4s; }
-.filter-btn:nth-child(5) { animation-delay: 0.5s; }
 
 /* Stat item animation delays */
 .stat-item:nth-child(1) { animation-delay: 0.1s; }
