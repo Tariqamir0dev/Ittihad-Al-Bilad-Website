@@ -176,17 +176,22 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="subject" class="form-label">الموضوع</label>
-                                <select id="subject" name="subject" class="form-select">
-                                    <option value="">اختر الموضوع</option>
-                                    <option value="general">استفسار عام</option>
-                                    <option value="events">الفعاليات</option>
-                                    <option value="media">الإنتاج الإعلامي</option>
-                                    <option value="marketing">التسويق</option>
-                                    <option value="partnership">شراكة</option>
-                                    <option value="career">الوظائف</option>
-                                    <option value="other">أخرى</option>
-                                </select>
+                                <label for="subject" class="form-label">اختر الموضوع *</label>
+                                <div class="dropdown-container">
+                                    <button type="button" class="dropdown-toggle" id="subjectDropdown" aria-expanded="false" aria-haspopup="true">
+                                        <span class="dropdown-text">اختر الموضوع</span>
+                                        <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" id="subjectMenu">
+                                        <li><a href="#" class="dropdown-item" data-value="design" role="menuitem">التصميم</a></li>
+                                        <li><a href="#" class="dropdown-item" data-value="programming" role="menuitem">البرمجة</a></li>
+                                        <li><a href="#" class="dropdown-item" data-value="consulting" role="menuitem">الاستشارات</a></li>
+                                        <li><a href="#" class="dropdown-item" data-value="employment" role="menuitem">التوظيف</a></li>
+                                        <li><a href="#" class="dropdown-item" data-value="other" role="menuitem">أخرى</a></li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" id="subject" name="subject" required>
+                                <span class="form-error" id="subjectError"></span>
                             </div>
                             
                             <div class="form-group">

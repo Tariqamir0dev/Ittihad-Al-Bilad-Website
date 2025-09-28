@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize contact page features
     initContactForm();
+    initSubjectDropdown();
     initQuickContactButtons();
     initMapInteractions();
     
@@ -79,6 +80,12 @@ function validateField(event) {
     if (fieldName === 'message' && fieldValue && fieldValue.length < 10) {
         isValid = false;
         errorMessage = 'الرسالة يجب أن تكون على الأقل 10 أحرف';
+    }
+    
+    // Subject validation
+    if (fieldName === 'subject' && field.hasAttribute('required') && !fieldValue) {
+        isValid = false;
+        errorMessage = 'يرجى اختيار الموضوع';
     }
     
     // Display validation result
@@ -202,6 +209,99 @@ function showFormMessage(message, type) {
             messageElement.classList.remove('show');
             setTimeout(() => messageElement.remove(), 300);
         }, 5000);
+    }
+}
+
+// ===== SUBJECT DROPDOWN HANDLING =====
+function initSubjectDropdown() {
+    const dropdownToggle = document.getElementById('subjectDropdown');
+    const dropdownMenu = document.getElementById('subjectMenu');
+    const hiddenInput = document.getElementById('subject');
+    const dropdownText = dropdownToggle.querySelector('.dropdown-text');
+    const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+    
+    if (!dropdownToggle || !dropdownMenu || !hiddenInput) {
+        console.warn('Subject dropdown elements not found');
+        return;
+    }
+    
+    // Toggle dropdown on button click
+    dropdownToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = dropdownMenu.classList.contains('show');
+        
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+    
+    // Handle dropdown item selection
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const value = this.getAttribute('data-value');
+            const text = this.textContent.trim();
+            
+            // Update hidden input
+            hiddenInput.value = value;
+            
+            // Update dropdown text
+            dropdownText.textContent = text;
+            dropdownText.style.color = '#333333';
+            dropdownText.style.fontStyle = 'normal';
+            
+            // Update visual state
+            dropdownToggle.classList.add('active');
+            
+            // Remove previous selection
+            dropdownItems.forEach(dropdownItem => {
+                dropdownItem.classList.remove('selected');
+            });
+            
+            // Mark current item as selected
+            this.classList.add('selected');
+            
+            // Close dropdown
+            closeDropdown();
+            
+            // Mark field as touched for validation
+            hiddenInput.classList.add('touched');
+            
+            // Validate the field
+            validateField({ target: hiddenInput });
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+    
+    function openDropdown() {
+        dropdownMenu.classList.add('show');
+        dropdownToggle.classList.add('active');
+        dropdownToggle.setAttribute('aria-expanded', 'true');
+    }
+    
+    function closeDropdown() {
+        dropdownMenu.classList.remove('show');
+        dropdownToggle.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
     }
 }
 
