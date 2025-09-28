@@ -6874,7 +6874,7 @@ p {
 }
 
 .company-logo {
-    width: 120px;
+    width: 240px;
     height: 120px;
     object-fit: contain;
     border-radius: 16px;
@@ -6955,7 +6955,7 @@ p {
     }
     
     .company-logo {
-        width: 100px;
+        width: 200px;
         height: 100px;
     }
 }
@@ -6975,7 +6975,7 @@ p {
     }
     
     .company-logo {
-        width: 90px;
+        width: 180px;
         height: 90px;
     }
     
@@ -6994,7 +6994,7 @@ p {
     }
     
     .company-logo {
-        width: 80px;
+        width: 160px;
         height: 80px;
         padding: 15px;
     }
