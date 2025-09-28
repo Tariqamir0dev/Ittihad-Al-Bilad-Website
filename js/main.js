@@ -705,56 +705,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: "تنظيم وإدارة أكبر الفعاليات في المملكة مع حضور أكثر من 50 ألف زائر ومشاركة 200+ شركة رائدة في مختلف القطاعات",
                 shortDescription: "فعاليات كبرى مع 50 ألف زائر و 200+ شركة رائدة",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "مؤتمر الابتكار التقني",
                 description: "مؤتمر متخصص في التقنيات الحديثة والابتكار يجمع أبرز الخبراء والمختصين في مجال التكنولوجيا والذكاء الاصطناعي",
                 shortDescription: "مؤتمر تقني يجمع خبراء التكنولوجيا والذكاء الاصطناعي",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "معرض التراث السعودي",
                 description: "معرض يسلط الضوء على التراث والثقافة السعودية الأصيلة بمشاركة أكثر من 150 فنان ومبدع من مختلف مناطق المملكة",
                 shortDescription: "معرض للتراث السعودي مع 150 فنان ومبدع",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "فعالية الرياضة للجميع",
                 description: "فعالية رياضية تهدف لتشجيع النشاط البدني والصحة العامة مع مشاركة 10,000+ شخص من مختلف الفئات العمرية",
                 shortDescription: "فعالية رياضية مع 10,000+ مشارك من جميع الأعمار",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "ملتقى رواد الأعمال",
                 description: "ملتقى يجمع رواد الأعمال والمستثمرين لتقديم فرص الاستثمار والشراكات الاستراتيجية في السوق السعودي",
                 shortDescription: "ملتقى يجمع رواد الأعمال والمستثمرين للشراكات",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "مهرجان الفنون المعاصرة",
                 description: "مهرجان يعرض أعمال الفنانين المعاصرين السعوديين والدوليين مع أكثر من 300 عمل فني متنوع ومبتكر",
                 shortDescription: "مهرجان فنون مع 300 عمل فني متنوع ومبتكر",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "قمة الاستدامة البيئية",
                 description: "قمة متخصصة في الاستدامة البيئية والطاقة المتجددة بمشاركة خبراء دوليين ومسؤولين حكوميين",
                 shortDescription: "قمة للاستدامة البيئية مع خبراء دوليين",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             },
             {
                 title: "معرض التعليم والتدريب",
                 description: "معرض يقدم أحدث برامج التعليم والتدريب المهني لتطوير الكوادر الوطنية ورفع مستوى المهارات",
                 shortDescription: "معرض للتعليم والتدريب المهني لتطوير الكوادر",
                 image: "images/project1.jpg",
-                link: "#"
+                link: "project-detail.html"
             }
         ];
         
