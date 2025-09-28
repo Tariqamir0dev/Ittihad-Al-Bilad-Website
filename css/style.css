@@ -5550,7 +5550,7 @@ p {
 
 .social-media {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
     margin-bottom: 1.5rem;
 }
@@ -5903,9 +5903,6 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .social-media {
-        grid-template-columns: repeat(3, 1fr);
-    }
     
     .footer-bottom-content {
         flex-direction: column;
@@ -7673,3 +7670,5 @@ p {
         margin: 0 auto;
     }
 }
+
+
