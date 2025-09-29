@@ -64,7 +64,7 @@ class AdminDashboard {
 
         // Close sidebar on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.body.classList.contains('sidebar-open')) {
+            if (e.key === 'Escape' && this.sidebar?.classList.contains('open')) {
                 this.closeSidebar();
             }
         });
@@ -76,43 +76,43 @@ class AdminDashboard {
     toggleSidebar() {
         if (!this.sidebar) return;
         
-        // Only toggle on mobile devices
-        if (window.innerWidth <= 767) {
-            const isOpen = document.body.classList.contains('sidebar-open');
-            
-            if (isOpen) {
-                this.closeSidebar();
-            } else {
-                this.openSidebar();
-            }
+        const isOpen = this.sidebar.classList.contains('open');
+        
+        if (isOpen) {
+            this.closeSidebar();
+        } else {
+            this.openSidebar();
         }
     }
 
     openSidebar() {
         if (!this.sidebar || !this.sidebarOverlay) return;
         
-        // Only open sidebar on mobile devices
-        if (window.innerWidth <= 767) {
-            // Add sidebar-open class to body
-            document.body.classList.add('sidebar-open');
-            
-            // Update aria attributes
-            this.mobileMenuBtn?.setAttribute('aria-expanded', 'true');
-            
-            // Focus management
-            const firstFocusableElement = this.sidebar.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            firstFocusableElement?.focus();
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-        }
+        // Add open class to sidebar
+        this.sidebar.classList.add('open');
+        
+        // Show overlay
+        this.sidebarOverlay.classList.add('show');
+        
+        // Update aria attributes
+        this.mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+        
+        // Focus management
+        const firstFocusableElement = this.sidebar.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        firstFocusableElement?.focus();
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
     }
 
     closeSidebar() {
         if (!this.sidebar || !this.sidebarOverlay) return;
         
-        // Remove sidebar-open class from body
-        document.body.classList.remove('sidebar-open');
+        // Remove open class from sidebar
+        this.sidebar.classList.remove('open');
+        
+        // Hide overlay
+        this.sidebarOverlay.classList.remove('show');
         
         // Update aria attributes
         this.mobileMenuBtn?.setAttribute('aria-expanded', 'false');
@@ -129,29 +129,17 @@ class AdminDashboard {
         const isTablet = window.innerWidth >= 768 && window.innerWidth <= 1023;
         const isDesktop = window.innerWidth >= 1024;
         
-        if (isDesktop) {
-            // Desktop - sidebar always visible, close mobile drawer if open
-            if (document.body.classList.contains('sidebar-open')) {
-                document.body.classList.remove('sidebar-open');
+        if (isDesktop || isTablet) {
+            // Desktop/Tablet - sidebar always visible, close mobile drawer if open
+            if (this.sidebar?.classList.contains('open')) {
+                this.sidebar.classList.remove('open');
+            }
+            if (this.sidebarOverlay?.classList.contains('show')) {
+                this.sidebarOverlay.classList.remove('show');
                 document.body.style.overflow = '';
             }
             
-            // Show search box on desktop
-            if (this.searchBox) {
-                this.searchBox.style.display = 'flex';
-            }
-            if (this.searchToggle) {
-                this.searchToggle.style.display = 'none';
-            }
-            
-        } else if (isTablet) {
-            // Tablet - sidebar always visible, close mobile drawer if open
-            if (document.body.classList.contains('sidebar-open')) {
-                document.body.classList.remove('sidebar-open');
-                document.body.style.overflow = '';
-            }
-            
-            // Show search box on tablet
+            // Show search box on desktop/tablet
             if (this.searchBox) {
                 this.searchBox.style.display = 'flex';
             }
@@ -406,10 +394,26 @@ class AdminDashboard {
             }
         });
 
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.sidebar?.classList.contains('open') && 
+                !this.sidebar.contains(e.target) && 
+                !this.mobileMenuBtn?.contains(e.target)) {
+                this.closeSidebar();
+            }
+        });
+
         // Close user menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.userMenuDropdown?.classList.contains('open')) {
                 this.closeUserMenu();
+            }
+        });
+
+        // Close sidebar on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.sidebar?.classList.contains('open')) {
+                this.closeSidebar();
             }
         });
 

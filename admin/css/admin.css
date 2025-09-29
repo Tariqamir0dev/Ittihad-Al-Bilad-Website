@@ -133,22 +133,19 @@ body {
 /* ===== SIDEBAR STYLES ===== */
 .sidebar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
+    top: 64px; /* Below the topbar */
+    right: 0;
+    width: 260px;
+    height: calc(100vh - 64px); /* Full height minus topbar */
     background-color: var(--white);
-    box-shadow: var(--shadow-xl);
-    transform: translateX(-100%);
-    transition: transform var(--transition-normal);
-    z-index: 1000;
+    border-left: 1px solid #eee;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+    z-index: 999;
     overflow-y: auto;
+    transition: right 0.3s ease-in-out;
 }
 
-/* Body class for sidebar state */
-.sidebar-open .sidebar {
-    transform: translateX(0);
-}
+/* Body class for sidebar state - Not needed for new RTL design */
 
 /* Overlay styles */
 .sidebar-overlay {
@@ -161,7 +158,7 @@ body {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: all var(--transition-normal);
+    transition: all 0.3s ease;
     z-index: 999;
     backdrop-filter: blur(2px);
 }
@@ -375,21 +372,29 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin-left: 0;
-    transition: margin-left var(--transition-normal);
+    background-color: #f9fafc;
+    margin-right: 260px;
+    padding: 24px;
+    padding-top: 88px; /* 64px (topbar height) + 24px (padding) */
+    overflow-y: auto;
+    transition: margin-right 0.3s ease;
 }
 
 /* ===== TOPBAR STYLES ===== */
 .topbar {
-    background-color: var(--white);
-    box-shadow: var(--shadow-sm);
-    padding: var(--spacing-md) var(--spacing-lg);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 64px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 0 var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .topbar-left {
@@ -1072,33 +1077,42 @@ body {
 @media (max-width: 767px) {
     /* Enhanced Mobile Sidebar */
     .sidebar {
-        width: 80%;
-        max-width: 320px;
+        width: 240px;
+        height: calc(100vh - 56px); /* Full height minus topbar */
+        top: 56px; /* Below the topbar */
+        right: -240px;
     }
 
-    .sidebar-open .sidebar {
-        transform: translateX(0);
+    .sidebar.open {
+        right: 0;
     }
 
-    .sidebar-open .sidebar-overlay {
-        opacity: 1;
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .sidebar-overlay.show {
         visibility: visible;
-        pointer-events: auto;
+        opacity: 1;
     }
 
     .main-content {
-        margin-left: 0;
+        margin-right: 0;
+        padding: 16px;
+        padding-top: 72px; /* 56px (topbar height) + 16px (padding) */
         width: 100%;
     }
 
     /* Enhanced Topbar */
     .topbar {
-        padding: var(--spacing-md) var(--spacing-lg);
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        background-color: var(--white);
-        box-shadow: var(--shadow-sm);
+        height: 56px;
+        padding: 0 var(--spacing-md);
     }
 
     .mobile-menu-btn {
@@ -1336,7 +1350,8 @@ body {
     }
 
     .topbar {
-        padding: var(--spacing-sm) var(--spacing-md);
+        height: 52px;
+        padding: 0 var(--spacing-sm);
     }
 
     .stats-grid,
@@ -1393,16 +1408,32 @@ body {
         left: 12px;
         border-radius: 8px;
     }
+
+    .sidebar {
+        width: 240px;
+        height: calc(100vh - 52px); /* Full height minus topbar */
+        top: 52px; /* Below the topbar */
+        right: -240px;
+    }
+
+    .main-content {
+        padding: 12px;
+        padding-top: 64px; /* 52px (topbar height) + 12px (padding) */
+    }
 }
 
 /* Very Small Mobile Screens */
 @media (max-width: 320px) {
     .sidebar {
-        width: 95%;
+        width: 80%;
+        height: calc(100vh - 48px); /* Full height minus topbar */
+        top: 48px; /* Below the topbar */
+        right: -80%;
     }
 
     .topbar {
-        padding: var(--spacing-xs) var(--spacing-sm);
+        height: 48px;
+        padding: 0 var(--spacing-xs);
     }
 
     .stat-card {
@@ -1432,19 +1463,31 @@ body {
         left: 8px;
         border-radius: 6px;
     }
+
+    .main-content {
+        padding: 8px;
+        padding-top: 56px; /* 48px (topbar height) + 8px (padding) */
+    }
 }
 
 /* Tablet Styles */
 @media (min-width: 768px) {
     .sidebar {
-        position: relative;
-        transform: translateX(0) !important;
-        width: 280px;
-        flex-shrink: 0;
+        position: fixed;
+        top: 64px; /* Below the topbar */
+        right: 0;
+        width: 260px;
+        height: calc(100vh - 64px); /* Full height minus topbar */
     }
     
     .main-content {
-        margin-left: 0;
+        margin-right: 260px;
+        padding: 20px;
+        padding-top: 84px; /* 64px (topbar height) + 20px (padding) */
+    }
+
+    .topbar {
+        height: 64px;
     }
     
     .mobile-menu-btn {
@@ -1462,10 +1505,7 @@ body {
         pointer-events: none !important;
     }
     
-    /* Prevent body class from affecting desktop/tablet */
-    .sidebar-open .sidebar {
-        transform: translateX(0) !important;
-    }
+    /* Desktop/Tablet sidebar positioning */
     
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1518,7 +1558,21 @@ body {
 @media (min-width: 1024px) {
     /* Ensure sidebar is always visible on desktop */
     .sidebar {
-        transform: translateX(0) !important;
+        position: fixed;
+        top: 64px; /* Below the topbar */
+        right: 0;
+        width: 260px;
+        height: calc(100vh - 64px); /* Full height minus topbar */
+    }
+    
+    .main-content {
+        margin-right: 260px;
+        padding: 24px;
+        padding-top: 88px; /* 64px (topbar height) + 24px (padding) */
+    }
+
+    .topbar {
+        height: 64px;
     }
     
     .sidebar-overlay {
@@ -1563,8 +1617,21 @@ body {
 /* Large Desktop Styles */
 @media (min-width: 1280px) {
     .sidebar {
-        width: 320px;
-        transform: translateX(0) !important;
+        width: 260px;
+        position: fixed;
+        top: 64px; /* Below the topbar */
+        right: 0;
+        height: calc(100vh - 64px); /* Full height minus topbar */
+    }
+    
+    .main-content {
+        margin-right: 260px;
+        padding: 32px;
+        padding-top: 96px; /* 64px (topbar height) + 32px (padding) */
+    }
+
+    .topbar {
+        height: 64px;
     }
     
     .sidebar-overlay {
@@ -1605,6 +1672,28 @@ body {
 /* ===== UTILITIES ===== */
 .hidden {
     display: none !important;
+}
+
+/* ===== SIDEBAR OVERLAY FIXES ===== */
+/* Ensure sidebar overlay works properly on mobile only */
+@media (min-width: 768px) {
+    .sidebar-overlay {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .sidebar {
+        right: 0 !important;
+        top: 64px !important;
+        height: calc(100vh - 64px) !important;
+    }
+
+    .main-content {
+        margin-right: 260px !important;
+        padding-top: 88px !important;
+    }
 }
 
 /* ===== USER MENU OVERLAY FIXES ===== */
@@ -1652,10 +1741,7 @@ body {
         pointer-events: auto !important;
     }
     
-    /* Ensure sidebar is properly positioned on mobile */
-    .sidebar-open .sidebar {
-        transform: translateX(0) !important;
-    }
+    /* Mobile sidebar positioning */
     
     /* Prevent body scroll when sidebar is open on mobile */
     .sidebar-open {
