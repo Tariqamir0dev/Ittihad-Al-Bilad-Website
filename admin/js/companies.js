@@ -145,16 +145,6 @@ class CompaniesManager {
             cancelBtn.addEventListener('click', () => this.closeModal());
         }
 
-        // Preview Modal Close Buttons
-        const closePreviewModalBtn = document.getElementById('closePreviewModal');
-        if (closePreviewModalBtn) {
-            closePreviewModalBtn.addEventListener('click', () => this.closePreviewModal());
-        }
-
-        const closePreviewBtn = document.getElementById('closePreviewBtn');
-        if (closePreviewBtn) {
-            closePreviewBtn.addEventListener('click', () => this.closePreviewModal());
-        }
 
         // Confirmation Modal Close Buttons
         const closeConfirmModalBtn = document.getElementById('closeConfirmModal');
@@ -191,7 +181,7 @@ class CompaniesManager {
         document.addEventListener('keydown', (e) => this.handleKeyDown(e));
         
         // Add click listeners to modal backdrops
-        const modals = ['companyModal', 'previewModal', 'confirmModal'];
+        const modals = ['companyModal', 'confirmModal'];
         modals.forEach(modalId => {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -270,14 +260,29 @@ class CompaniesManager {
      * Open edit company modal
      */
     openEditModal(companyId) {
+        console.log('openEditModal called with companyId:', companyId);
+        console.log('Available companies:', this.companies);
+        
         const company = this.companies.find(c => c.id === companyId);
-        if (!company) return;
+        console.log('Found company:', company);
+        
+        if (!company) {
+            console.error('Company not found with id:', companyId);
+            return;
+        }
 
         this.isEditing = true;
         this.currentCompanyId = companyId;
+        console.log('Setting isEditing to true and currentCompanyId to:', companyId);
+        
+        // Reset form first to clear any previous data
+        this.resetForm();
+        
+        // Then populate with company data
         this.populateDetailedForm(company);
         this.showModal('تعديل الشركة');
     }
+
 
     /**
      * Show modal
@@ -286,6 +291,11 @@ class CompaniesManager {
         console.log('showModal called with title:', title);
         const modal = document.getElementById('companyModal');
         const modalTitle = document.getElementById('modalTitle');
+        
+        console.log('Modal elements found:', {
+            modal: !!modal,
+            modalTitle: !!modalTitle
+        });
         
         if (modal && modalTitle) {
             modalTitle.textContent = title;
@@ -296,10 +306,13 @@ class CompaniesManager {
             modal.style.zIndex = '99999';
             document.body.style.overflow = 'hidden';
             
+            console.log('Modal shown successfully with title:', title);
+            
             // Focus first input
             const firstInput = modal.querySelector('input, textarea, select');
             if (firstInput) {
                 setTimeout(() => firstInput.focus(), 100);
+                console.log('Focused first input:', firstInput);
             }
         } else {
             console.error('Modal or modalTitle not found!');
@@ -322,151 +335,8 @@ class CompaniesManager {
         }
     }
 
-    /**
-     * Show preview modal
-     */
-    showPreviewModal(companyId) {
-        const company = this.companies.find(c => c.id === companyId);
-        if (!company) return;
 
-        const modal = document.getElementById('previewModal');
-        const previewLogo = document.getElementById('previewLogo');
-        const previewName = document.getElementById('previewName');
-        const previewDescription = document.getElementById('previewDescription');
-        const previewBanner = document.getElementById('previewBanner');
-        const previewBannerImg = document.getElementById('previewBannerImg');
-
-        if (modal && previewLogo && previewName && previewDescription) {
-            previewLogo.src = company.logo;
-            previewLogo.alt = company.name;
-            previewName.textContent = company.name;
-            previewDescription.textContent = company.description;
-            
-            // Show banner if exists
-            if (company.banner && previewBanner && previewBannerImg) {
-                previewBannerImg.src = company.banner;
-                previewBannerImg.alt = `${company.name} - بانر الشركة`;
-                previewBanner.style.display = 'block';
-            } else if (previewBanner) {
-                previewBanner.style.display = 'none';
-            }
-            
-            
-            // Add overview
-            const overviewContainer = document.querySelector('.preview-overview');
-            if (overviewContainer && company.overview) {
-                overviewContainer.textContent = company.overview;
-                overviewContainer.style.display = 'block';
-            }
-
-            // Add stats
-            const statsContainer = document.querySelector('.preview-stats');
-            if (statsContainer && company.stats) {
-                statsContainer.innerHTML = '';
-                if (company.stats.years) {
-                    const yearsItem = document.createElement('div');
-                    yearsItem.className = 'stat-item';
-                    yearsItem.innerHTML = `<i class="fas fa-calendar-alt"></i><span>${company.stats.years} سنة خبرة</span>`;
-                    statsContainer.appendChild(yearsItem);
-                }
-                if (company.stats.events) {
-                    const eventsItem = document.createElement('div');
-                    eventsItem.className = 'stat-item';
-                    eventsItem.innerHTML = `<i class="fas fa-calendar-check"></i><span>${company.stats.events} فعالية</span>`;
-                    statsContainer.appendChild(eventsItem);
-                }
-                if (company.stats.clients) {
-                    const clientsItem = document.createElement('div');
-                    clientsItem.className = 'stat-item';
-                    clientsItem.    innerHTML = `<i class="fas fa-users"></i><span>${company.stats.clients} عميل</span>`;
-                    statsContainer.appendChild(clientsItem);
-                }
-                if (company.stats.areas) {
-                    const areasItem = document.createElement('div');
-                    areasItem.className = 'stat-item';
-                    areasItem.innerHTML = `<i class="fas fa-map-marker-alt"></i><span>${company.stats.areas} منطقة</span>`;
-                    statsContainer.appendChild(areasItem);
-                }
-            }
-            
-            // Add services
-            const servicesContainer = document.querySelector('.preview-services');
-            if (servicesContainer && company.services && company.services.length > 0) {
-                servicesContainer.innerHTML = '';
-                servicesContainer.style.display = 'block';
-                company.services.forEach(service => {
-                    const serviceItem = document.createElement('div');
-                    serviceItem.className = 'service-item';
-                    serviceItem.innerHTML = `
-                        <i class="${service.icon}"></i>
-                        <div>
-                            <strong>${service.title}</strong>
-                            <p>${service.description}</p>
-                        </div>
-                    `;
-                    servicesContainer.appendChild(serviceItem);
-                });
-            }
-
-            // Add contact information
-            const contactContainer = document.querySelector('.preview-contact');
-            if (contactContainer && company.contact) {
-                contactContainer.innerHTML = '';
-                if (company.contact.email || company.contact.phone) {
-                    contactContainer.style.display = 'block';
-                    if (company.contact.email) {
-                        const emailItem = document.createElement('div');
-                        emailItem.className = 'contact-item';
-                        emailItem.innerHTML = `<i class="fas fa-envelope"></i><span>${company.contact.email}</span>`;
-                        contactContainer.appendChild(emailItem);
-                    }
-                    if (company.contact.phone) {
-                        const phoneItem = document.createElement('div');
-                        phoneItem.className = 'contact-item';
-                        phoneItem.innerHTML = `<i class="fas fa-phone"></i><span>${company.contact.phone}</span>`;
-                        contactContainer.appendChild(phoneItem);
-                    }
-                }
-            }
-
-            // Add social media
-            const socialContainer = document.querySelector('.preview-social');
-            if (socialContainer && company.social) {
-                socialContainer.innerHTML = '';
-                const socialLinks = [];
-                if (company.social.facebook) socialLinks.push(`<a href="${company.social.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>`);
-                if (company.social.twitter) socialLinks.push(`<a href="${company.social.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>`);
-                if (company.social.instagram) socialLinks.push(`<a href="${company.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>`);
-                if (company.social.linkedin) socialLinks.push(`<a href="${company.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>`);
-                
-                if (socialLinks.length > 0) {
-                    socialContainer.style.display = 'block';
-                    socialContainer.innerHTML = socialLinks.join(' ');
-                }
-            }
-            
-            modal.style.display = 'flex';
-            modal.style.visibility = 'visible';
-            modal.style.opacity = '1';
-            modal.style.zIndex = '99999';
-            document.body.style.overflow = 'hidden';
-        }
-    }
     
-    /**
-     * Close preview modal
-     */
-    closePreviewModal() {
-        const modal = document.getElementById('previewModal');
-        if (modal) {
-            modal.style.display = 'none';
-            modal.style.visibility = 'hidden';
-            modal.style.opacity = '0';
-            modal.style.zIndex = '-1';
-            document.body.style.overflow = 'auto';
-        }
-    }
-
     /**
      * Show confirmation modal
      */
@@ -513,6 +383,8 @@ class CompaniesManager {
      * Reset form
      */
     resetForm() {
+        console.log('resetForm called');
+        
         const form = document.getElementById('companyForm');
         if (form) {
             form.reset();
@@ -552,6 +424,9 @@ class CompaniesManager {
             
             // Update character counts
             this.updateOverviewCharCount();
+            console.log('resetForm completed successfully');
+        } else {
+            console.error('companyForm not found in resetForm!');
         }
     }
 
@@ -559,23 +434,42 @@ class CompaniesManager {
      * Populate form with company data
      */
     populateForm(company) {
+        console.log('populateForm called with company:', company);
+        
         const form = document.getElementById('companyForm');
-        if (!form) return;
+        if (!form) {
+            console.error('companyForm not found!');
+            return;
+        }
 
         // Set form values
         const nameInput = document.getElementById('companyName');
         const descriptionTextarea = document.getElementById('companyDescription');
         const statusSelect = document.getElementById('companyStatus');
 
-        if (nameInput) nameInput.value = company.name;
+        console.log('Form elements found:', {
+            nameInput: !!nameInput,
+            descriptionTextarea: !!descriptionTextarea,
+            statusSelect: !!statusSelect
+        });
+
+        if (nameInput) {
+            nameInput.value = company.name;
+            console.log('Set company name to:', company.name);
+        }
         if (descriptionTextarea) {
             descriptionTextarea.value = company.description;
+            console.log('Set company description to:', company.description);
             this.updateCharCount();
         }
-        if (statusSelect) statusSelect.value = company.status;
+        if (statusSelect) {
+            statusSelect.value = company.status;
+            console.log('Set company status to:', company.status);
+        }
 
         // Show logo preview
         this.showImagePreview(company.logo);
+        console.log('populateForm completed');
     }
 
     /**
@@ -970,8 +864,6 @@ class CompaniesManager {
         if (e.target.classList.contains('modal') && e.target === e.currentTarget) {
             if (e.target.id === 'companyModal') {
                 this.closeModal();
-            } else if (e.target.id === 'previewModal') {
-                this.closePreviewModal();
             } else if (e.target.id === 'confirmModal') {
                 this.closeConfirmModal();
             }
@@ -985,13 +877,10 @@ class CompaniesManager {
         if (e.key === 'Escape') {
             // Close the currently visible modal
             const companyModal = document.getElementById('companyModal');
-            const previewModal = document.getElementById('previewModal');
             const confirmModal = document.getElementById('confirmModal');
             
             if (companyModal && companyModal.style.display === 'flex') {
                 this.closeModal();
-            } else if (previewModal && previewModal.style.display === 'flex') {
-                this.closePreviewModal();
             } else if (confirmModal && confirmModal.style.display === 'flex') {
                 this.closeConfirmModal();
             }
@@ -1362,6 +1251,8 @@ class CompaniesManager {
      * Populate detailed form data
      */
     populateDetailedForm(company) {
+        console.log('populateDetailedForm called with company:', company);
+        
         // Basic data
         this.populateForm(company);
 
@@ -1419,6 +1310,8 @@ class CompaniesManager {
         if (company.pdf) {
             this.showPDFPreview({ name: company.pdf });
         }
+        
+        console.log('populateDetailedForm completed successfully');
     }
 
     /**
@@ -1465,14 +1358,14 @@ class CompaniesManager {
 
 // Global functions for onclick handlers
 function editCompany(companyId) {
+    console.log('editCompany called with companyId:', companyId);
+    console.log('window.companiesManager:', window.companiesManager);
+    
     if (window.companiesManager) {
+        console.log('Opening edit modal for company:', companyId);
         window.companiesManager.openEditModal(companyId);
-    }
-}
-
-function previewCompany(companyId) {
-    if (window.companiesManager) {
-        window.companiesManager.showPreviewModal(companyId);
+    } else {
+        console.error('CompaniesManager not found!');
     }
 }
 

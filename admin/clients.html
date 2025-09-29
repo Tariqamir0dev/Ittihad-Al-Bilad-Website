@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة العملاء - لوحة التحكم</title>
+    <meta name="description" content="إدارة العملاء في لوحة تحكم اتحاد البلاد">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/clients.css">
+</head>
+<body class="admin-body sf-pro-ar clients-page">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="img/logo.png" alt="اتحاد البلاد" class="logo-img">
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="إغلاق القائمة">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="content.html" class="nav-link">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <span class="nav-text">إدارة المحتوى</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">
+                            <i class="fas fa-project-diagram nav-icon"></i>
+                            <span class="nav-text">المشاريع</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="companies.html" class="nav-link">
+                            <i class="fas fa-building nav-icon"></i>
+                            <span class="nav-text">الشركات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="clients.html" class="nav-link active">
+                            <i class="fas fa-handshake nav-icon"></i>
+                            <span class="nav-text">العملاء</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="media.html" class="nav-link">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span class="nav-text">الوسائط</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">المستخدمين</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span class="nav-text">التحليلات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog nav-icon"></i>
+                            <span class="nav-text">الإعدادات</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">طارق عامر</span>
+                        <span class="user-role">مدير عام</span>
+                    </div>
+                </div>
+                <a href="logout.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">لوحة التحكم</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item active">إدارة العملاء</span>
+                    </div>
+                </div>
+                
+                <div class="topbar-right">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <button class="search-toggle" id="searchToggle" aria-label="البحث">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="text" placeholder="البحث..." class="search-input">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn" aria-label="الإشعارات">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h3>الإشعارات</h3>
+                                <button class="mark-all-read">تعليم الكل كمقروء</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">عميل جديد تم إضافته</p>
+                                        <p class="notification-time">منذ 5 دقائق</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">مستخدم جديد انضم للفريق</p>
+                                        <p class="notification-time">منذ ساعة</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">تقرير التحليلات الشهرية جاهز</p>
+                                        <p class="notification-time">منذ يوم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn" aria-label="قائمة المستخدم">
+                            <div class="user-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name-small">طارق عامر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-menu-dropdown" id="userMenuDropdown">
+                            <a href="profile.html" class="user-menu-item">
+                                <i class="fas fa-user"></i>
+                                الملف الشخصي
+                            </a>
+                            <a href="settings.html" class="user-menu-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <div class="user-menu-divider"></div>
+                            <a href="logout.html" class="user-menu-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Clients Content -->
+            <div class="content-page">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title-section">
+                        <h1 class="page-title" style="color: white;">إدارة عملائنا</h1>
+                        <p class="page-subtitle" style="color: white;">إدارة وعرض بيانات العملاء المعروضة في واجهة المستخدم</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn btn-primary" id="addClientBtn">
+                            <i class="fas fa-plus"></i>
+                            إضافة عميل جديد
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="content-filters">
+                    <div class="filter-group">
+                        <label for="searchClients" class="filter-label">البحث في العملاء</label>
+                        <div class="search-input-group">
+                            <input type="text" id="searchClients" class="form-input" placeholder="ابحث باسم العميل...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label for="statusFilter" class="filter-label">حالة العرض</label>
+                        <select id="statusFilter" class="form-select">
+                            <option value="">جميع الحالات</option>
+                            <option value="active">مفعل</option>
+                            <option value="inactive">غير مفعل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Clients Table -->
+                <div class="content-section">
+                    <div class="table-container">
+                        <table class="clients-table" id="clientsTable">
+                            <thead>
+                                <tr>
+                                    <th>الشعار</th>
+                                    <th>اسم العميل</th>
+                                    <th>حالة العرض</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="client-logo">
+                                            <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=C1" alt="عميل 1" class="logo-img">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="client-name">
+                                            <strong>شركة التقنية المتقدمة</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-active">مفعل</span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-primary" onclick="editClient(1)">
+                                                <i class="fas fa-edit"></i>
+                                                تعديل
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" onclick="deleteClient(1)">
+                                                <i class="fas fa-trash"></i>
+                                                حذف
+                                            </button>
+                                            <button class="btn btn-sm btn-warning" onclick="hideClient(1)">
+                                                <i class="fas fa-eye-slash"></i>
+                                                إخفاء
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-logo">
+                                            <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=C2" alt="عميل 2" class="logo-img">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="client-name">
+                                            <strong>مؤسسة الإبداع الرقمي</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-active">مفعل</span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-primary" onclick="editClient(2)">
+                                                <i class="fas fa-edit"></i>
+                                                تعديل
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" onclick="deleteClient(2)">
+                                                <i class="fas fa-trash"></i>
+                                                حذف
+                                            </button>
+                                            <button class="btn btn-sm btn-warning" onclick="hideClient(2)">
+                                                <i class="fas fa-eye-slash"></i>
+                                                إخفاء
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-logo">
+                                            <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=C3" alt="عميل 3" class="logo-img">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="client-name">
+                                            <strong>مجموعة الحلول المتكاملة</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-inactive">غير مفعل</span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-primary" onclick="editClient(3)">
+                                                <i class="fas fa-edit"></i>
+                                                تعديل
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" onclick="deleteClient(3)">
+                                                <i class="fas fa-trash"></i>
+                                                حذف
+                                            </button>
+                                            <button class="btn btn-sm btn-warning" onclick="hideClient(3)">
+                                                <i class="fas fa-eye-slash"></i>
+                                                إخفاء
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Clients Grid (Mobile) -->
+                    <div class="clients-grid" id="clientsGrid">
+                        <div class="client-card">
+                            <div class="card-header">
+                                <div class="client-logo">
+                                    <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=C1" alt="عميل 1" class="logo-img">
+                                </div>
+                                <div class="client-info">
+                                    <h3 class="client-name">شركة التقنية المتقدمة</h3>
+                                    <span class="status-badge status-active">مفعل</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-primary" onclick="editClient(1)">
+                                    <i class="fas fa-edit"></i>
+                                    تعديل
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteClient(1)">
+                                    <i class="fas fa-trash"></i>
+                                    حذف
+                                </button>
+                                <button class="btn btn-sm btn-warning" onclick="hideClient(1)">
+                                    <i class="fas fa-eye-slash"></i>
+                                    إخفاء
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="client-card">
+                            <div class="card-header">
+                                <div class="client-logo">
+                                    <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=C2" alt="عميل 2" class="logo-img">
+                                </div>
+                                <div class="client-info">
+                                    <h3 class="client-name">مؤسسة الإبداع الرقمي</h3>
+                                    <span class="status-badge status-active">مفعل</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-primary" onclick="editClient(2)">
+                                    <i class="fas fa-edit"></i>
+                                    تعديل
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteClient(2)">
+                                    <i class="fas fa-trash"></i>
+                                    حذف
+                                </button>
+                                <button class="btn btn-sm btn-warning" onclick="hideClient(2)">
+                                    <i class="fas fa-eye-slash"></i>
+                                    إخفاء
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="client-card">
+                            <div class="card-header">
+                                <div class="client-logo">
+                                    <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=C3" alt="عميل 3" class="logo-img">
+                                </div>
+                                <div class="client-info">
+                                    <h3 class="client-name">مجموعة الحلول المتكاملة</h3>
+                                    <span class="status-badge status-inactive">غير مفعل</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-primary" onclick="editClient(3)">
+                                    <i class="fas fa-edit"></i>
+                                    تعديل
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteClient(3)">
+                                    <i class="fas fa-trash"></i>
+                                    حذف
+                                </button>
+                                <button class="btn btn-sm btn-warning" onclick="hideClient(3)">
+                                    <i class="fas fa-eye-slash"></i>
+                                    إخفاء
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                            السابق
+                        </button>
+                        <div class="pagination-info">
+                            <span>صفحة 1 من 1</span>
+                            <span>•</span>
+                            <span>3 عملاء</span>
+                        </div>
+                        <button class="pagination-btn" disabled>
+                            التالي
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Client Modal -->
+    <div class="modal" id="clientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">إضافة عميل جديد</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="clientForm" class="client-form">
+                    <div class="form-group">
+                        <label for="clientLogo" class="form-label">شعار العميل *</label>
+                        <div class="file-upload-area" id="logoUploadArea">
+                            <input type="file" id="clientLogo" accept="image/*" class="file-input">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>انقر لرفع الشعار أو اسحب الصورة هنا</p>
+                                <small>الصورة يجب أن تكون مربعة (1:1)</small>
+                            </div>
+                        </div>
+                        <div class="image-preview" id="logoPreview" style="display: none;">
+                            <img id="previewImg" src="" alt="معاينة الشعار">
+                            <button type="button" class="remove-image" onclick="removeLogo()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientName" class="form-label">اسم العميل *</label>
+                        <input type="text" id="clientName" class="form-input" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="clientStatus" class="form-label">حالة العرض *</label>
+                        <select id="clientStatus" class="form-select" required>
+                            <option value="active">مفعل</option>
+                            <option value="inactive">غير مفعل</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelBtn">إلغاء</button>
+                <button type="submit" form="clientForm" class="btn btn-primary" id="saveBtn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">تأكيد الحذف</h2>
+                <button class="modal-close" id="closeConfirmModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>هل أنت متأكد من حذف هذا العميل؟</p>
+                    <p class="confirm-warning">لا يمكن التراجع عن هذا الإجراء.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">إلغاء</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">حذف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin.js"></script>
+    <script src="js/clients.js"></script>
+    <script>
+        // Initialize Clients Manager
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded, initializing ClientsManager');
+            window.clientsManager = new ClientsManager();
+            console.log('ClientsManager initialized:', window.clientsManager);
+        });
+    </script>
+</body>
+</html>
