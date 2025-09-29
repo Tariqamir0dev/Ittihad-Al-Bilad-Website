@@ -6,7 +6,6 @@
 class AdminDashboard {
     constructor() {
         this.sidebar = null;
-        this.sidebarOverlay = null;
         this.mobileMenuBtn = null;
         this.sidebarToggle = null;
         this.searchToggle = null;
@@ -46,7 +45,6 @@ class AdminDashboard {
     // ===== SIDEBAR FUNCTIONALITY =====
     initializeSidebar() {
         this.sidebar = document.getElementById('sidebar');
-        this.sidebarOverlay = document.getElementById('sidebarOverlay');
         this.mobileMenuBtn = document.getElementById('mobileMenuBtn');
         this.sidebarToggle = document.getElementById('sidebarToggle');
 
@@ -58,9 +56,6 @@ class AdminDashboard {
             this.sidebarToggle.addEventListener('click', () => this.closeSidebar());
         }
 
-        if (this.sidebarOverlay) {
-            this.sidebarOverlay.addEventListener('click', () => this.closeSidebar());
-        }
 
         // Close sidebar on escape key
         document.addEventListener('keydown', (e) => {
@@ -86,13 +81,12 @@ class AdminDashboard {
     }
 
     openSidebar() {
-        if (!this.sidebar || !this.sidebarOverlay) return;
+        if (!this.sidebar) return;
         
         // Add open class to sidebar
         this.sidebar.classList.add('open');
         
         // Show overlay
-        this.sidebarOverlay.classList.add('show');
         
         // Update aria attributes
         this.mobileMenuBtn?.setAttribute('aria-expanded', 'true');
@@ -106,13 +100,12 @@ class AdminDashboard {
     }
 
     closeSidebar() {
-        if (!this.sidebar || !this.sidebarOverlay) return;
+        if (!this.sidebar) return;
         
         // Remove open class from sidebar
         this.sidebar.classList.remove('open');
         
         // Hide overlay
-        this.sidebarOverlay.classList.remove('show');
         
         // Update aria attributes
         this.mobileMenuBtn?.setAttribute('aria-expanded', 'false');
@@ -134,10 +127,7 @@ class AdminDashboard {
             if (this.sidebar?.classList.contains('open')) {
                 this.sidebar.classList.remove('open');
             }
-            if (this.sidebarOverlay?.classList.contains('show')) {
-                this.sidebarOverlay.classList.remove('show');
-                document.body.style.overflow = '';
-            }
+            document.body.style.overflow = '';
             
             // Show search box on desktop/tablet
             if (this.searchBox) {

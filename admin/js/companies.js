@@ -5,30 +5,103 @@
 
 class CompaniesManager {
     constructor() {
+        console.log('CompaniesManager constructor called'); // Debug log
         this.companies = [
             {
                 id: 1,
-                name: 'شركة التقنية المتقدمة',
-                description: 'شركة رائدة في مجال التقنية والحلول الذكية',
-                logo: '../images/companies/company1.jpg',
-                link: 'https://example.com/company1',
-                status: 'active'
+                name: 'شركة الأحداث المتقدمة',
+                description: 'شركة رائدة في مجال صناعة الفعاليات والإنتاج الإعلامي',
+                logo: 'https://via.placeholder.com/60x60/3b82f6/ffffff?text=EP',
+                status: 'active',
+                overview: 'شركة رائدة في مجال صناعة الفعاليات والإنتاج الإعلامي مع خبرة تزيد عن 12 عاماً في السوق المحلي والإقليمي.',
+                banner: 'https://via.placeholder.com/1200x400/3b82f6/ffffff?text=شركة+الأحداث+المتقدمة',
+                stats: {
+                    years: '12',
+                    events: '500',
+                    clients: '250',
+                    areas: '15'
+                },
+                pdf: '',
+                services: [
+                    { title: 'تنظيم الفعاليات', description: 'تنظيم وإدارة الفعاليات الكبرى', icon: 'fas fa-calendar-alt' },
+                    { title: 'الإنتاج الإعلامي', description: 'إنتاج المحتوى الإعلامي والمرئي', icon: 'fas fa-video' },
+                    { title: 'التصوير الاحترافي', description: 'خدمات التصوير الفوتوغرافي والفيديو', icon: 'fas fa-camera' }
+                ],
+                social: {
+                    facebook: 'https://facebook.com/eventscompany',
+                    twitter: 'https://twitter.com/eventscompany',
+                    instagram: 'https://instagram.com/eventscompany',
+                    linkedin: 'https://linkedin.com/company/eventscompany'
+                },
+                contact: {
+                    email: 'info@events.com',
+                    phone: '+966501234567'
+                },
+                map: 'https://maps.google.com/@24.7136,46.6753,15z'
             },
             {
                 id: 2,
-                name: 'مجموعة الاستثمار الوطنية',
-                description: 'مجموعة استثمارية رائدة في السوق المحلي',
-                logo: '../images/companies/company2.jpg',
-                link: 'https://example.com/company2',
-                status: 'active'
+                name: 'شركة الإنتاج الإعلامي',
+                description: 'شركة متخصصة في الإنتاج الإعلامي والمرئي',
+                logo: 'https://via.placeholder.com/60x60/10b981/ffffff?text=MP',
+                status: 'active',
+                overview: 'شركة متخصصة في الإنتاج الإعلامي والمرئي مع فريق من الخبراء في مجال التصوير والإنتاج التلفزيوني.',
+                banner: 'https://via.placeholder.com/1200x400/10b981/ffffff?text=شركة+الإنتاج+الإعلامي',
+                stats: {
+                    years: '8',
+                    events: '300',
+                    clients: '150',
+                    areas: '8'
+                },
+                pdf: '',
+                services: [
+                    { title: 'الإنتاج التلفزيوني', description: 'إنتاج البرامج والمحتوى التلفزيوني', icon: 'fas fa-tv' },
+                    { title: 'التصوير الفوتوغرافي', description: 'خدمات التصوير الفوتوغرافي والمهني', icon: 'fas fa-camera' },
+                    { title: 'البث المباشر', description: 'خدمات البث المباشر والتغطية الإعلامية', icon: 'fas fa-broadcast-tower' }
+                ],
+                social: {
+                    facebook: 'https://facebook.com/mediaproduction',
+                    twitter: 'https://twitter.com/mediaproduction',
+                    instagram: 'https://instagram.com/mediaproduction',
+                    linkedin: 'https://linkedin.com/company/mediaproduction'
+                },
+                contact: {
+                    email: 'info@media.com',
+                    phone: '+966501234568'
+                },
+                map: 'https://maps.google.com/@24.7136,46.6753,15z'
             },
             {
                 id: 3,
-                name: 'شركة البناء الحديث',
-                description: 'شركة متخصصة في أعمال البناء والتشييد',
-                logo: '../images/companies/company3.jpg',
-                link: '',
-                status: 'inactive'
+                name: 'شركة التقنية والتسويق',
+                description: 'شركة متخصصة في التقنية والتسويق الرقمي',
+                logo: 'https://via.placeholder.com/60x60/f59e0b/ffffff?text=TM',
+                status: 'inactive',
+                overview: 'شركة متخصصة في التقنية والتسويق الرقمي مع خبرة واسعة في تطوير الحلول التقنية والتسويق الإلكتروني.',
+                banner: 'https://via.placeholder.com/1200x400/f59e0b/ffffff?text=شركة+التقنية+والتسويق',
+                stats: {
+                    years: '5',
+                    events: '200',
+                    clients: '100',
+                    areas: '5'
+                },
+                pdf: '',
+                services: [
+                    { title: 'التطوير التقني', description: 'تطوير التطبيقات والمواقع الإلكترونية', icon: 'fas fa-code' },
+                    { title: 'التسويق الرقمي', description: 'خدمات التسويق الرقمي والإعلان', icon: 'fas fa-bullhorn' },
+                    { title: 'تحليل البيانات', description: 'تحليل البيانات وذكاء الأعمال', icon: 'fas fa-chart-line' }
+                ],
+                social: {
+                    facebook: 'https://facebook.com/techmarketing',
+                    twitter: 'https://twitter.com/techmarketing',
+                    instagram: 'https://instagram.com/techmarketing',
+                    linkedin: 'https://linkedin.com/company/techmarketing'
+                },
+                contact: {
+                    email: 'info@tech.com',
+                    phone: '+966501234569'
+                },
+                map: 'https://maps.google.com/@24.7136,46.6753,15z'
             }
         ];
         
@@ -40,16 +113,25 @@ class CompaniesManager {
         this.initializeFileUpload();
         this.initializeSearch();
         this.initializeFilters();
+        this.initializeDetailsCard();
+        console.log('CompaniesManager initialization completed'); // Debug log
     }
 
     /**
      * Initialize all event listeners
      */
     initializeEventListeners() {
+        console.log('initializeEventListeners called'); // Debug log
         // Add Company Button
         const addCompanyBtn = document.getElementById('addCompanyBtn');
+        console.log('Add Company Button:', addCompanyBtn); // Debug log
         if (addCompanyBtn) {
-            addCompanyBtn.addEventListener('click', () => this.openAddModal());
+            addCompanyBtn.addEventListener('click', () => {
+                console.log('Add Company Button clicked!'); // Debug log
+                this.openAddModal();
+            });
+        } else {
+            console.error('Add Company Button not found!'); // Debug log
         }
 
         // Modal Close Buttons
@@ -107,6 +189,15 @@ class CompaniesManager {
         
         // Close modals with Escape key
         document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+        
+        // Add click listeners to modal backdrops
+        const modals = ['companyModal', 'previewModal', 'confirmModal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.addEventListener('click', (e) => this.handleOutsideClick(e));
+            }
+        });
     }
 
     /**
@@ -168,6 +259,7 @@ class CompaniesManager {
      * Open add company modal
      */
     openAddModal() {
+        console.log('openAddModal called'); // Debug log
         this.isEditing = false;
         this.currentCompanyId = null;
         this.resetForm();
@@ -183,7 +275,7 @@ class CompaniesManager {
 
         this.isEditing = true;
         this.currentCompanyId = companyId;
-        this.populateForm(company);
+        this.populateDetailedForm(company);
         this.showModal('تعديل الشركة');
     }
 
@@ -191,12 +283,17 @@ class CompaniesManager {
      * Show modal
      */
     showModal(title) {
+        console.log('showModal called with title:', title);
         const modal = document.getElementById('companyModal');
         const modalTitle = document.getElementById('modalTitle');
         
         if (modal && modalTitle) {
             modalTitle.textContent = title;
+            modal.classList.add('show');
             modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.style.zIndex = '99999';
             document.body.style.overflow = 'hidden';
             
             // Focus first input
@@ -204,6 +301,8 @@ class CompaniesManager {
             if (firstInput) {
                 setTimeout(() => firstInput.focus(), 100);
             }
+        } else {
+            console.error('Modal or modalTitle not found!');
         }
     }
 
@@ -213,7 +312,11 @@ class CompaniesManager {
     closeModal() {
         const modal = document.getElementById('companyModal');
         if (modal) {
+            modal.classList.remove('show');
             modal.style.display = 'none';
+            modal.style.visibility = 'hidden';
+            modal.style.opacity = '0';
+            modal.style.zIndex = '-1';
             document.body.style.overflow = 'auto';
             this.resetForm();
         }
@@ -230,26 +333,126 @@ class CompaniesManager {
         const previewLogo = document.getElementById('previewLogo');
         const previewName = document.getElementById('previewName');
         const previewDescription = document.getElementById('previewDescription');
-        const previewLink = document.getElementById('previewLink');
+        const previewBanner = document.getElementById('previewBanner');
+        const previewBannerImg = document.getElementById('previewBannerImg');
 
-        if (modal && previewLogo && previewName && previewDescription && previewLink) {
+        if (modal && previewLogo && previewName && previewDescription) {
             previewLogo.src = company.logo;
             previewLogo.alt = company.name;
             previewName.textContent = company.name;
             previewDescription.textContent = company.description;
             
-            if (company.link) {
-                previewLink.href = company.link;
-                previewLink.style.display = 'inline-flex';
-            } else {
-                previewLink.style.display = 'none';
+            // Show banner if exists
+            if (company.banner && previewBanner && previewBannerImg) {
+                previewBannerImg.src = company.banner;
+                previewBannerImg.alt = `${company.name} - بانر الشركة`;
+                previewBanner.style.display = 'block';
+            } else if (previewBanner) {
+                previewBanner.style.display = 'none';
+            }
+            
+            
+            // Add overview
+            const overviewContainer = document.querySelector('.preview-overview');
+            if (overviewContainer && company.overview) {
+                overviewContainer.textContent = company.overview;
+                overviewContainer.style.display = 'block';
             }
 
+            // Add stats
+            const statsContainer = document.querySelector('.preview-stats');
+            if (statsContainer && company.stats) {
+                statsContainer.innerHTML = '';
+                if (company.stats.years) {
+                    const yearsItem = document.createElement('div');
+                    yearsItem.className = 'stat-item';
+                    yearsItem.innerHTML = `<i class="fas fa-calendar-alt"></i><span>${company.stats.years} سنة خبرة</span>`;
+                    statsContainer.appendChild(yearsItem);
+                }
+                if (company.stats.events) {
+                    const eventsItem = document.createElement('div');
+                    eventsItem.className = 'stat-item';
+                    eventsItem.innerHTML = `<i class="fas fa-calendar-check"></i><span>${company.stats.events} فعالية</span>`;
+                    statsContainer.appendChild(eventsItem);
+                }
+                if (company.stats.clients) {
+                    const clientsItem = document.createElement('div');
+                    clientsItem.className = 'stat-item';
+                    clientsItem.    innerHTML = `<i class="fas fa-users"></i><span>${company.stats.clients} عميل</span>`;
+                    statsContainer.appendChild(clientsItem);
+                }
+                if (company.stats.areas) {
+                    const areasItem = document.createElement('div');
+                    areasItem.className = 'stat-item';
+                    areasItem.innerHTML = `<i class="fas fa-map-marker-alt"></i><span>${company.stats.areas} منطقة</span>`;
+                    statsContainer.appendChild(areasItem);
+                }
+            }
+            
+            // Add services
+            const servicesContainer = document.querySelector('.preview-services');
+            if (servicesContainer && company.services && company.services.length > 0) {
+                servicesContainer.innerHTML = '';
+                servicesContainer.style.display = 'block';
+                company.services.forEach(service => {
+                    const serviceItem = document.createElement('div');
+                    serviceItem.className = 'service-item';
+                    serviceItem.innerHTML = `
+                        <i class="${service.icon}"></i>
+                        <div>
+                            <strong>${service.title}</strong>
+                            <p>${service.description}</p>
+                        </div>
+                    `;
+                    servicesContainer.appendChild(serviceItem);
+                });
+            }
+
+            // Add contact information
+            const contactContainer = document.querySelector('.preview-contact');
+            if (contactContainer && company.contact) {
+                contactContainer.innerHTML = '';
+                if (company.contact.email || company.contact.phone) {
+                    contactContainer.style.display = 'block';
+                    if (company.contact.email) {
+                        const emailItem = document.createElement('div');
+                        emailItem.className = 'contact-item';
+                        emailItem.innerHTML = `<i class="fas fa-envelope"></i><span>${company.contact.email}</span>`;
+                        contactContainer.appendChild(emailItem);
+                    }
+                    if (company.contact.phone) {
+                        const phoneItem = document.createElement('div');
+                        phoneItem.className = 'contact-item';
+                        phoneItem.innerHTML = `<i class="fas fa-phone"></i><span>${company.contact.phone}</span>`;
+                        contactContainer.appendChild(phoneItem);
+                    }
+                }
+            }
+
+            // Add social media
+            const socialContainer = document.querySelector('.preview-social');
+            if (socialContainer && company.social) {
+                socialContainer.innerHTML = '';
+                const socialLinks = [];
+                if (company.social.facebook) socialLinks.push(`<a href="${company.social.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>`);
+                if (company.social.twitter) socialLinks.push(`<a href="${company.social.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>`);
+                if (company.social.instagram) socialLinks.push(`<a href="${company.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>`);
+                if (company.social.linkedin) socialLinks.push(`<a href="${company.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>`);
+                
+                if (socialLinks.length > 0) {
+                    socialContainer.style.display = 'block';
+                    socialContainer.innerHTML = socialLinks.join(' ');
+                }
+            }
+            
             modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.style.zIndex = '99999';
             document.body.style.overflow = 'hidden';
         }
     }
-
+    
     /**
      * Close preview modal
      */
@@ -257,6 +460,9 @@ class CompaniesManager {
         const modal = document.getElementById('previewModal');
         if (modal) {
             modal.style.display = 'none';
+            modal.style.visibility = 'hidden';
+            modal.style.opacity = '0';
+            modal.style.zIndex = '-1';
             document.body.style.overflow = 'auto';
         }
     }
@@ -269,7 +475,22 @@ class CompaniesManager {
         const modal = document.getElementById('confirmModal');
         if (modal) {
             modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.style.zIndex = '99999';
             document.body.style.overflow = 'hidden';
+        }
+    }
+
+    /**
+     * Hide company
+     */
+    hideCompany(companyId) {
+        const companyIndex = this.companies.findIndex(c => c.id === companyId);
+        if (companyIndex !== -1) {
+            this.companies[companyIndex].status = 'hidden';
+            this.updateTable();
+            this.showNotification('تم إخفاء الشركة بنجاح', 'success');
         }
     }
 
@@ -280,6 +501,9 @@ class CompaniesManager {
         const modal = document.getElementById('confirmModal');
         if (modal) {
             modal.style.display = 'none';
+            modal.style.visibility = 'hidden';
+            modal.style.opacity = '0';
+            modal.style.zIndex = '-1';
             document.body.style.overflow = 'auto';
             this.currentCompanyId = null;
         }
@@ -295,6 +519,39 @@ class CompaniesManager {
             this.clearFieldErrors();
             this.hideImagePreview();
             this.updateCharCount();
+            
+            // Reset details card fields
+            document.getElementById('companyOverview').value = '';
+            document.getElementById('yearsExperience').value = '';
+            document.getElementById('successfulEvents').value = '';
+            document.getElementById('satisfiedClients').value = '';
+            document.getElementById('coverageAreas').value = '';
+            document.getElementById('facebookLink').value = '';
+            document.getElementById('twitterLink').value = '';
+            document.getElementById('instagramLink').value = '';
+            document.getElementById('linkedinLink').value = '';
+            document.getElementById('companyEmail').value = '';
+            document.getElementById('companyPhone').value = '';
+            document.getElementById('mapLink').value = '';
+            
+            // Reset services
+            const servicesContainer = document.getElementById('servicesContainer');
+            if (servicesContainer) {
+                servicesContainer.innerHTML = '';
+                this.addServiceToContainer(); // Add one default service
+            }
+            
+            // Reset banner preview
+            document.getElementById('bannerPreview').style.display = 'none';
+            
+            // Reset PDF preview
+            document.getElementById('pdfPreview').style.display = 'none';
+            
+            // Reset map preview
+            document.getElementById('mapPreview').style.display = 'none';
+            
+            // Update character counts
+            this.updateOverviewCharCount();
         }
     }
 
@@ -308,7 +565,6 @@ class CompaniesManager {
         // Set form values
         const nameInput = document.getElementById('companyName');
         const descriptionTextarea = document.getElementById('companyDescription');
-        const linkInput = document.getElementById('companyLink');
         const statusSelect = document.getElementById('companyStatus');
 
         if (nameInput) nameInput.value = company.name;
@@ -316,7 +572,6 @@ class CompaniesManager {
             descriptionTextarea.value = company.description;
             this.updateCharCount();
         }
-        if (linkInput) linkInput.value = company.link;
         if (statusSelect) statusSelect.value = company.status;
 
         // Show logo preview
@@ -333,7 +588,7 @@ class CompaniesManager {
             return;
         }
 
-        const formData = this.getFormData();
+        const formData = this.getDetailedFormData();
         
         if (this.isEditing) {
             this.updateCompany(this.currentCompanyId, formData);
@@ -357,7 +612,6 @@ class CompaniesManager {
         return {
             name: formData.get('companyName') || document.getElementById('companyName').value,
             description: formData.get('companyDescription') || document.getElementById('companyDescription').value,
-            link: formData.get('companyLink') || document.getElementById('companyLink').value,
             status: formData.get('companyStatus') || document.getElementById('companyStatus').value,
             logo: fileInput.files[0] || this.getCurrentLogo()
         };
@@ -382,9 +636,16 @@ class CompaniesManager {
             id: Date.now(),
             name: companyData.name,
             description: companyData.description,
-            link: companyData.link,
             status: companyData.status,
-            logo: companyData.logo || '../images/companies/default.jpg'
+            logo: companyData.logo || '../images/companies/default.jpg',
+            overview: companyData.overview || '',
+            banner: companyData.banner || '',
+            stats: companyData.stats || { years: '0', events: '0', clients: '0', areas: '0' },
+            pdf: companyData.pdf || '',
+            services: companyData.services || [],
+            social: companyData.social || { facebook: '', twitter: '', instagram: '', linkedin: '' },
+            contact: companyData.contact || { email: '', phone: '' },
+            map: companyData.map || ''
         };
 
         this.companies.push(newCompany);
@@ -403,9 +664,16 @@ class CompaniesManager {
             ...this.companies[companyIndex],
             name: companyData.name,
             description: companyData.description,
-            link: companyData.link,
             status: companyData.status,
-            logo: companyData.logo || this.companies[companyIndex].logo
+            logo: companyData.logo || this.companies[companyIndex].logo,
+            overview: companyData.overview || this.companies[companyIndex].overview,
+            banner: companyData.banner || this.companies[companyIndex].banner,
+            stats: companyData.stats || this.companies[companyIndex].stats,
+            pdf: companyData.pdf || this.companies[companyIndex].pdf,
+            services: companyData.services || this.companies[companyIndex].services,
+            social: companyData.social || this.companies[companyIndex].social,
+            contact: companyData.contact || this.companies[companyIndex].contact,
+            map: companyData.map || this.companies[companyIndex].map
         };
 
         this.updateTable();
@@ -643,10 +911,6 @@ class CompaniesManager {
             errorMessage = 'وصف الشركة يجب أن يكون على الأقل 10 أحرف';
         }
 
-        if (field.id === 'companyLink' && value && !this.isValidUrl(value)) {
-            isValid = false;
-            errorMessage = 'يرجى إدخال رابط صحيح';
-        }
 
         this.showFieldError(field, errorMessage);
         return isValid;
@@ -702,7 +966,8 @@ class CompaniesManager {
      * Handle outside click
      */
     handleOutsideClick(e) {
-        if (e.target.classList.contains('modal')) {
+        // Check if clicked element is the modal backdrop (not the modal content)
+        if (e.target.classList.contains('modal') && e.target === e.currentTarget) {
             if (e.target.id === 'companyModal') {
                 this.closeModal();
             } else if (e.target.id === 'previewModal') {
@@ -718,9 +983,18 @@ class CompaniesManager {
      */
     handleKeyDown(e) {
         if (e.key === 'Escape') {
-            this.closeModal();
-            this.closePreviewModal();
-            this.closeConfirmModal();
+            // Close the currently visible modal
+            const companyModal = document.getElementById('companyModal');
+            const previewModal = document.getElementById('previewModal');
+            const confirmModal = document.getElementById('confirmModal');
+            
+            if (companyModal && companyModal.style.display === 'flex') {
+                this.closeModal();
+            } else if (previewModal && previewModal.style.display === 'flex') {
+                this.closePreviewModal();
+            } else if (confirmModal && confirmModal.style.display === 'flex') {
+                this.closeConfirmModal();
+            }
         }
     }
 
@@ -760,6 +1034,433 @@ class CompaniesManager {
             setTimeout(() => notification.remove(), 300);
         });
     }
+
+    /**
+     * Initialize details card functionality
+     */
+    initializeDetailsCard() {
+        // Overview character count
+        const overviewTextarea = document.getElementById('companyOverview');
+        if (overviewTextarea) {
+            overviewTextarea.addEventListener('input', this.updateOverviewCharCount.bind(this));
+        }
+
+        // Banner upload
+        const bannerInput = document.getElementById('companyBanner');
+        if (bannerInput) {
+            bannerInput.addEventListener('change', this.handleBannerUpload.bind(this));
+        }
+
+        // PDF upload
+        const pdfInput = document.getElementById('companyPDF');
+        if (pdfInput) {
+            pdfInput.addEventListener('change', this.handlePDFUpload.bind(this));
+        }
+
+        // Map link
+        const mapInput = document.getElementById('mapLink');
+        if (mapInput) {
+            mapInput.addEventListener('input', this.handleMapLink.bind(this));
+        }
+
+        // Social media links validation
+        const socialInputs = ['facebookLink', 'twitterLink', 'instagramLink', 'linkedinLink'];
+        socialInputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                input.addEventListener('blur', (e) => this.validateSocialLink(e.target));
+            }
+        });
+
+        // Contact validation
+        const emailInput = document.getElementById('companyEmail');
+        if (emailInput) {
+            emailInput.addEventListener('blur', (e) => this.validateEmail(e.target));
+        }
+
+        const phoneInput = document.getElementById('companyPhone');
+        if (phoneInput) {
+            phoneInput.addEventListener('blur', (e) => this.validatePhone(e.target));
+        }
+    }
+
+    /**
+     * Update overview character count
+     */
+    updateOverviewCharCount() {
+        const textarea = document.getElementById('companyOverview');
+        const charCount = document.getElementById('overviewCharCount');
+        
+        if (textarea && charCount) {
+            const count = textarea.value.length;
+            charCount.textContent = count;
+            
+            if (count > 500) {
+                charCount.style.color = 'var(--danger)';
+            } else if (count > 400) {
+                charCount.style.color = 'var(--warning)';
+            } else {
+                charCount.style.color = 'var(--gray-500)';
+            }
+        }
+    }
+
+    /**
+     * Handle banner upload
+     */
+    handleBannerUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Validate file size (5MB max for images)
+        if (file.size > 5 * 1024 * 1024) {
+            this.showNotification('حجم الصورة يجب أن يكون أقل من 5MB', 'error');
+            event.target.value = '';
+            return;
+        }
+
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            this.showNotification('يرجى رفع صورة فقط', 'error');
+            event.target.value = '';
+            return;
+        }
+
+        // Validate image dimensions
+        const img = new Image();
+        img.onload = () => {
+            const aspectRatio = img.width / img.height;
+            const recommendedRatio = 1200 / 400; // 3:1 ratio
+            
+            if (Math.abs(aspectRatio - recommendedRatio) > 0.5) {
+                this.showNotification('نسبة العرض للارتفاع الموصى بها هي 3:1 (1200x400 بكسل)', 'warning');
+            }
+            
+            // Show preview regardless of ratio
+            this.showBannerPreview(file);
+        };
+        
+        img.src = URL.createObjectURL(file);
+    }
+
+    /**
+     * Handle PDF upload
+     */
+    handlePDFUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        // Validate file size (10MB max)
+        if (file.size > 10 * 1024 * 1024) {
+            this.showNotification('حجم الملف يجب أن يكون أقل من 10MB', 'error');
+            event.target.value = '';
+            return;
+        }
+
+        // Validate file type
+        if (file.type !== 'application/pdf') {
+            this.showNotification('يرجى رفع ملف PDF فقط', 'error');
+            event.target.value = '';
+            return;
+        }
+
+        // Show preview
+        this.showPDFPreview(file);
+    }
+
+    /**
+     * Show banner preview
+     */
+    showBannerPreview(file) {
+        const preview = document.getElementById('bannerPreview');
+        const previewImg = document.getElementById('bannerPreviewImg');
+        
+        if (preview && previewImg) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    /**
+     * Show PDF preview
+     */
+    showPDFPreview(file) {
+        const preview = document.getElementById('pdfPreview');
+        const fileName = document.querySelector('#pdfPreview .file-name');
+        
+        if (preview && fileName) {
+            fileName.textContent = file.name;
+            preview.style.display = 'block';
+        }
+    }
+
+    /**
+     * Handle map link
+     */
+    handleMapLink(event) {
+        const url = event.target.value.trim();
+        const preview = document.getElementById('mapPreview');
+        const iframe = document.getElementById('mapIframe');
+        
+        if (!url) {
+            if (preview) preview.style.display = 'none';
+            return;
+        }
+
+        if (this.isValidMapUrl(url) && preview && iframe) {
+            const embedUrl = this.convertToEmbedUrl(url);
+            iframe.src = embedUrl;
+            preview.style.display = 'block';
+        } else {
+            if (preview) preview.style.display = 'none';
+        }
+    }
+
+    /**
+     * Validate map URL
+     */
+    isValidMapUrl(url) {
+        return url.includes('maps.google.com') || url.includes('goo.gl/maps') || url.includes('maps.app.goo.gl');
+    }
+
+    /**
+     * Convert map URL to embed URL
+     */
+    convertToEmbedUrl(url) {
+        // Extract coordinates or place ID from URL
+        let embedUrl = url;
+        
+        if (url.includes('/@')) {
+            // Extract coordinates from URL like: /@lat,lng,zoom
+            const coordsMatch = url.match(/\/@(-?\d+\.?\d*),(-?\d+\.?\d*),(\d+\.?\d*)z/);
+            if (coordsMatch) {
+                const [, lat, lng, zoom] = coordsMatch;
+                embedUrl = `https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dO1l5Vx8X1pZc&center=${lat},${lng}&zoom=${zoom}`;
+            }
+        } else if (url.includes('place_id=')) {
+            // Extract place ID
+            const placeIdMatch = url.match(/place_id=([^&]+)/);
+            if (placeIdMatch) {
+                const placeId = placeIdMatch[1];
+                embedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dO1l5Vx8X1pZc&place_id=${placeId}`;
+            }
+        }
+        
+        return embedUrl;
+    }
+
+    /**
+     * Validate social media link
+     */
+    validateSocialLink(input) {
+        const value = input.value.trim();
+        if (!value) return true;
+
+        const urlPattern = /^https?:\/\/.+/;
+        if (!urlPattern.test(value)) {
+            this.showFieldError(input, 'يرجى إدخال رابط صحيح يبدأ بـ http:// أو https://');
+            return false;
+        }
+
+        this.clearFieldError(input);
+        return true;
+    }
+
+    /**
+     * Validate email
+     */
+    validateEmail(input) {
+        const value = input.value.trim();
+        if (!value) return true;
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(value)) {
+            this.showFieldError(input, 'يرجى إدخال بريد إلكتروني صحيح');
+            return false;
+        }
+
+        this.clearFieldError(input);
+        return true;
+    }
+
+    /**
+     * Validate phone number
+     */
+    validatePhone(input) {
+        const value = input.value.trim();
+        if (!value) return true;
+
+        const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
+        if (!phonePattern.test(value.replace(/[\s\-\(\)]/g, ''))) {
+            this.showFieldError(input, 'يرجى إدخال رقم هاتف صحيح');
+            return false;
+        }
+
+        this.clearFieldError(input);
+        return true;
+    }
+
+    /**
+     * Get all form data including details
+     */
+    getDetailedFormData() {
+        const basicData = this.getFormData();
+        
+        // Get services
+        const services = [];
+        const serviceItems = document.querySelectorAll('.service-item');
+        serviceItems.forEach(item => {
+            const title = item.querySelector('.service-title').value.trim();
+            const description = item.querySelector('.service-description').value.trim();
+            const icon = item.querySelector('.service-icon').value;
+            
+            if (title && description) {
+                services.push({ title, description, icon });
+            }
+        });
+
+        // Get statistics
+        const stats = {
+            years: document.getElementById('yearsExperience').value || '0',
+            events: document.getElementById('successfulEvents').value || '0',
+            clients: document.getElementById('satisfiedClients').value || '0',
+            areas: document.getElementById('coverageAreas').value || '0'
+        };
+
+        // Get social media
+        const social = {
+            facebook: document.getElementById('facebookLink').value.trim(),
+            twitter: document.getElementById('twitterLink').value.trim(),
+            instagram: document.getElementById('instagramLink').value.trim(),
+            linkedin: document.getElementById('linkedinLink').value.trim()
+        };
+
+        // Get contact
+        const contact = {
+            email: document.getElementById('companyEmail').value.trim(),
+            phone: document.getElementById('companyPhone').value.trim()
+        };
+
+        return {
+            ...basicData,
+            overview: document.getElementById('companyOverview').value.trim(),
+            banner: document.getElementById('companyBanner').files[0] || null,
+            pdf: document.getElementById('companyPDF').files[0] || null,
+            stats,
+            services,
+            social,
+            contact,
+            map: document.getElementById('mapLink').value.trim()
+        };
+    }
+
+    /**
+     * Populate detailed form data
+     */
+    populateDetailedForm(company) {
+        // Basic data
+        this.populateForm(company);
+
+        // Overview
+        const overview = document.getElementById('companyOverview');
+        if (overview) {
+            overview.value = company.overview || '';
+            this.updateOverviewCharCount();
+        }
+
+        // Statistics
+        if (company.stats) {
+            document.getElementById('yearsExperience').value = company.stats.years || '';
+            document.getElementById('successfulEvents').value = company.stats.events || '';
+            document.getElementById('satisfiedClients').value = company.stats.clients || '';
+            document.getElementById('coverageAreas').value = company.stats.areas || '';
+        }
+
+        // Services
+        const servicesContainer = document.getElementById('servicesContainer');
+        if (servicesContainer && company.services && company.services.length > 0) {
+            servicesContainer.innerHTML = '';
+            company.services.forEach(service => {
+                this.addServiceToContainer(service);
+            });
+        }
+
+        // Social media
+        if (company.social) {
+            document.getElementById('facebookLink').value = company.social.facebook || '';
+            document.getElementById('twitterLink').value = company.social.twitter || '';
+            document.getElementById('instagramLink').value = company.social.instagram || '';
+            document.getElementById('linkedinLink').value = company.social.linkedin || '';
+        }
+
+        // Contact
+        if (company.contact) {
+            document.getElementById('companyEmail').value = company.contact.email || '';
+            document.getElementById('companyPhone').value = company.contact.phone || '';
+        }
+
+        // Map
+        const mapLink = document.getElementById('mapLink');
+        if (mapLink) {
+            mapLink.value = company.map || '';
+            this.handleMapLink({ target: mapLink });
+        }
+
+        // Banner preview if exists
+        if (company.banner) {
+            this.showBannerPreview({ name: company.banner });
+        }
+
+        // PDF preview if exists
+        if (company.pdf) {
+            this.showPDFPreview({ name: company.pdf });
+        }
+    }
+
+    /**
+     * Add service to container
+     */
+    addServiceToContainer(service = {}) {
+        const container = document.getElementById('servicesContainer');
+        if (!container) return;
+
+        const serviceItem = document.createElement('div');
+        serviceItem.className = 'service-item';
+        serviceItem.innerHTML = `
+            <div class="form-group">
+                <label class="form-label">عنوان الخدمة</label>
+                <input type="text" class="form-input service-title" placeholder="عنوان الخدمة" value="${service.title || ''}">
+            </div>
+            <div class="form-group">
+                <label class="form-label">وصف الخدمة</label>
+                <textarea class="form-textarea service-description" rows="2" placeholder="وصف قصير للخدمة">${service.description || ''}</textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">أيقونة الخدمة</label>
+                <div class="icon-input-group">
+                    <input type="text" class="form-input service-icon" placeholder="fas fa-calendar-alt" value="${service.icon || ''}">
+                    <button type="button" class="btn btn-secondary btn-sm icon-preview-btn" onclick="previewIcon(this)">
+                        <i class="fas fa-eye"></i>
+                        معاينة
+                    </button>
+                </div>
+                <div class="icon-preview" style="display: none;">
+                    <i class="preview-icon"></i>
+                    <small class="icon-help">أدخل كود الأيقونة من Font Awesome أو أي مكتبة أيقونات أخرى</small>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm remove-service" onclick="removeService(this)">
+                <i class="fas fa-trash"></i>
+                حذف الخدمة
+            </button>
+        `;
+
+        container.appendChild(serviceItem);
+    }
 }
 
 // Global functions for onclick handlers
@@ -784,6 +1485,103 @@ function deleteCompany(companyId) {
 function removeLogo() {
     if (window.companiesManager) {
         window.companiesManager.removeLogo();
+    }
+}
+
+// Details card functions
+function toggleCard(cardId) {
+    const header = document.querySelector(`#${cardId}Icon`).parentElement;
+    const content = document.getElementById(`${cardId}Content`);
+    const icon = document.getElementById(`${cardId}Icon`);
+    
+    if (content && icon) {
+        const isCollapsed = content.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            content.classList.remove('collapsed');
+            header.classList.remove('collapsed');
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            content.classList.add('collapsed');
+            header.classList.add('collapsed');
+            icon.style.transform = 'rotate(-90deg)';
+        }
+    }
+}
+
+function addService() {
+    if (window.companiesManager) {
+        window.companiesManager.addServiceToContainer();
+    }
+}
+
+function removeService(button) {
+    const serviceItem = button.closest('.service-item');
+    if (serviceItem) {
+        serviceItem.remove();
+    }
+}
+
+function removePDF() {
+    const pdfInput = document.getElementById('companyPDF');
+    const preview = document.getElementById('pdfPreview');
+    
+    if (pdfInput) pdfInput.value = '';
+    if (preview) preview.style.display = 'none';
+}
+
+function removeBanner() {
+    const bannerInput = document.getElementById('companyBanner');
+    const preview = document.getElementById('bannerPreview');
+    
+    if (bannerInput) bannerInput.value = '';
+    if (preview) preview.style.display = 'none';
+}
+
+function hideCompany(companyId) {
+    if (window.companiesManager) {
+        window.companiesManager.hideCompany(companyId);
+    }
+}
+
+function previewIcon(button) {
+    const serviceItem = button.closest('.service-item');
+    const iconInput = serviceItem.querySelector('.service-icon');
+    const iconPreview = serviceItem.querySelector('.icon-preview');
+    const previewIcon = serviceItem.querySelector('.preview-icon');
+    
+    if (!iconInput || !iconPreview || !previewIcon) return;
+    
+    const iconClass = iconInput.value.trim();
+    
+    if (!iconClass) {
+        iconPreview.style.display = 'none';
+        return;
+    }
+    
+    // Clear existing classes and add new one
+    previewIcon.className = `preview-icon ${iconClass}`;
+    
+    // Check if icon loaded successfully
+    const testIcon = document.createElement('i');
+    testIcon.className = iconClass;
+    document.body.appendChild(testIcon);
+    
+    // Check if the icon is visible (Font Awesome loads icons as pseudo-elements)
+    const computedStyle = window.getComputedStyle(testIcon, '::before');
+    const content = computedStyle.getPropertyValue('content');
+    
+    document.body.removeChild(testIcon);
+    
+    if (content && content !== 'none' && content !== '""') {
+        // Icon exists
+        previewIcon.style.color = 'var(--primary)';
+        iconPreview.style.display = 'flex';
+    } else {
+        // Icon doesn't exist
+        previewIcon.style.color = 'var(--danger)';
+        previewIcon.className = 'preview-icon fas fa-exclamation-triangle';
+        iconPreview.style.display = 'flex';
     }
 }
 

@@ -1,5 +1,29 @@
 /* ===== FORMS STYLES ===== */
 
+/* Font Face */
+@font-face {
+    font-family: 'SF Pro AR';
+    src: url('../fonts/alfont_com_SFProAR_semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* Apply SF Pro AR font to all form elements */
+.form-container * {
+    font-family: 'SF Pro AR', 'Tajawal', 'Inter', sans-serif !important;
+    font-weight: 600;
+}
+
+/* Ensure Font Awesome icons are not affected by SF Pro AR */
+.form-container .fas, .form-container .far, .form-container .fab, 
+.form-container .fal, .form-container .fad, .form-container .fa, 
+.form-container [class*="fa-"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro" !important;
+    font-weight: 900 !important;
+}
+
 /* Form Container */
 .form-container {
     padding: var(--spacing-lg);

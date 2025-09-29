@@ -1,5 +1,15 @@
 /* ===== ADMIN DASHBOARD - MOBILE FIRST DESIGN ===== */
 
+/* Font Face */
+@font-face {
+    font-family: 'SF Pro AR';
+    src: url('../fonts/alfont_com_SFProAR_semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
 /* CSS Variables */
 :root {
     /* Colors */
@@ -51,7 +61,7 @@
     --transition-slow: 0.5s ease-in-out;
     
     /* Typography */
-    --font-family-primary: 'Tajawal', 'Inter', sans-serif;
+    --font-family-primary: 'SF Pro AR', 'Tajawal', 'Inter', sans-serif;
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -67,6 +77,41 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font-family-primary);
+}
+
+/* Apply SF Pro AR font globally */
+body, html {
+    font-family: var(--font-family-primary);
+}
+
+.sf-pro-ar * {
+    font-family: var(--font-family-primary) !important;
+    font-weight: 600;
+}
+
+/* Ensure all text elements use SF Pro AR */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button, input, textarea, select,
+.nav-text, .page-title, .btn, .form-label {
+    font-family: var(--font-family-primary) !important;
+    font-weight: 600;
+}
+
+/* Ensure Font Awesome icons are not affected by SF Pro AR */
+.fas, .far, .fab, .fal, .fad, .fa, [class*="fa-"] {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro" !important;
+    font-weight: 900 !important;
+}
+
+.fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+
+.far {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 400 !important;
 }
 
 html {
@@ -148,36 +193,6 @@ body {
 /* Body class for sidebar state - Not needed for new RTL design */
 
 /* Overlay styles */
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 999;
-    backdrop-filter: blur(2px);
-}
-
-.sidebar-open .sidebar-overlay {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-/* Show overlay on mobile by default */
-@media (max-width: 767px) {
-    .sidebar-overlay {
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-}
 
 /* Prevent body scroll when sidebar is open */
 .sidebar-open {
@@ -195,19 +210,16 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    justify-content: center;
+    width: 100%;
+    padding: var(--spacing-sm);
 }
 
 .logo-img {
-    width: 32px;
-    height: 32px;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
     object-fit: contain;
-}
-
-.logo-text {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    color: var(--gray-800);
 }
 
 .sidebar-toggle {
@@ -347,24 +359,6 @@ body {
     color: var(--white);
 }
 
-/* Sidebar Overlay */
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-normal);
-}
-
-.sidebar-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
@@ -1087,26 +1081,21 @@ body {
         right: 0;
     }
 
-    .sidebar-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        visibility: hidden;
-        opacity: 0;
-        transition: all 0.3s ease-in-out;
-        z-index: 999;
-    }
-
-    .sidebar-overlay.show {
-        visibility: visible;
-        opacity: 1;
-    }
 
     .main-content {
         margin-right: 0;
         padding: 16px;
         padding-top: 72px; /* 56px (topbar height) + 16px (padding) */
         width: 100%;
+    }
+
+    /* Mobile Logo Styles */
+    .logo-container {
+        padding: var(--spacing-md);
+    }
+
+    .logo-img {
+        max-width: 160px;
     }
 
     /* Enhanced Topbar */
@@ -1498,13 +1487,6 @@ body {
         display: none;
     }
     
-    .sidebar-overlay {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
-    
     /* Desktop/Tablet sidebar positioning */
     
     .stats-grid {
@@ -1575,12 +1557,6 @@ body {
         height: 64px;
     }
     
-    .sidebar-overlay {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
     
     .stats-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -1634,12 +1610,6 @@ body {
         height: 64px;
     }
     
-    .sidebar-overlay {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
     
     .dashboard-content {
         padding: var(--spacing-2xl);
@@ -1677,12 +1647,6 @@ body {
 /* ===== SIDEBAR OVERLAY FIXES ===== */
 /* Ensure sidebar overlay works properly on mobile only */
 @media (min-width: 768px) {
-    .sidebar-overlay {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
 
     .sidebar {
         right: 0 !important;
@@ -1693,6 +1657,11 @@ body {
     .main-content {
         margin-right: 260px !important;
         padding-top: 88px !important;
+    }
+
+    /* Desktop Logo Styles */
+    .logo-img {
+        max-width: 200px;
     }
 }
 
@@ -1724,22 +1693,10 @@ body {
 /* ===== SIDEBAR OVERLAY FIXES ===== */
 /* Ensure overlay doesn't show on desktop/tablet even when sidebar-open class is present */
 @media (min-width: 768px) {
-    .sidebar-open .sidebar-overlay {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
-}
+    .sidebar-open }
 
 /* Ensure overlay works properly on mobile */
 @media (max-width: 767px) {
-    .sidebar-open .sidebar-overlay {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-    }
     
     /* Mobile sidebar positioning */
     
@@ -1749,23 +1706,6 @@ body {
     }
     
     /* Ensure overlay is clickable on mobile */
-    .sidebar-overlay {
-        pointer-events: none;
-    }
-    
-    .sidebar-open .sidebar-overlay {
-        pointer-events: auto !important;
-    }
-    
-    /* Ensure overlay is properly positioned */
-    .sidebar-overlay {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 999 !important;
-    }
 }
 
 .sr-only {

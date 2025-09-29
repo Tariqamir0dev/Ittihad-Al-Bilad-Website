@@ -19,9 +19,8 @@
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/forms.css">
     <link rel="stylesheet" href="css/companies.css">
-    <link rel="stylesheet" href="css/manage-company.css">
 </head>
-<body class="admin-body">
+<body class="admin-body sf-pro-ar companies-page">
     <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-spinner">
@@ -36,8 +35,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo-container">
-                    <img src="https://via.placeholder.com/40x40/1f2937/ffffff?text=إ" alt="اتحاد البلاد" class="logo-img">
-                    <span class="logo-text">اتحاد البلاد</span>
+                    <img src="img/logo.png" alt="اتحاد البلاد" class="logo-img">
                 </div>
                 <button class="sidebar-toggle" id="sidebarToggle" aria-label="إغلاق القائمة">
                     <i class="fas fa-times"></i>
@@ -114,7 +112,6 @@
         </aside>
 
         <!-- Sidebar Overlay (Mobile) -->
-        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- Main Content Area -->
         <main class="main-content">
@@ -221,14 +218,10 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="page-title-section">
-                        <h1 class="page-title">إدارة الشركات</h1>
-                        <p class="page-subtitle">إدارة وعرض الشركات المسجلة في الموقع</p>
+                        <h1 class="page-title" style="color: white;">إدارة الشركات</h1>
+                        <p class="page-subtitle" style="color: white;">إدارة وعرض بيانات الشركات المعروضة في واجهة المستخدم</p>
                     </div>
                     <div class="page-actions">
-                        <a href="manage-company.html" class="btn btn-secondary">
-                            <i class="fas fa-cog"></i>
-                            إدارة بيانات الشركات
-                        </a>
                         <button class="btn btn-primary" id="addCompanyBtn">
                             <i class="fas fa-plus"></i>
                             إضافة شركة جديدة
@@ -261,122 +254,155 @@
                 <div class="content-section">
                     <div class="table-container">
                         <table class="companies-table" id="companiesTable">
-                            <thead>
-                                <tr>
-                                    <th>الشعار</th>
-                                    <th>اسم الشركة</th>
-                                    <th>الوصف</th>
-                                    <th>حالة العرض</th>
-                                    <th>الإجراءات</th>
-                                </tr>
-                            </thead>
+                        <thead>
+                            <tr>
+                                <th>الشعار</th>
+                                <th>اسم الشركة</th>
+                                <th>الإحصائيات</th>
+                                <th>حالة العرض</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
                             <tbody>
                                 <tr>
                                     <td>
                                         <div class="company-logo">
-                                            <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=T1" alt="شركة التقنية المتقدمة" class="logo-img">
+                                            <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=EP" alt="شركة الأحداث المتقدمة" class="logo-img">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="company-name">
-                                            <strong>شركة التقنية المتقدمة</strong>
+                                            <strong>شركة الأحداث المتقدمة</strong>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="company-description">
-                                            شركة رائدة في مجال التقنية والحلول الذكية
+                                        <div class="company-stats">
+                                            <div class="stat-item">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span>12+ سنوات</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <i class="fas fa-video"></i>
+                                                <span>1000+ منتج</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <span class="status-badge status-active">مفعل</span>
                                     </td>
                                     <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-sm btn-primary" onclick="editCompany(1)">
-                                                <i class="fas fa-edit"></i>
-                                                تعديل
-                                            </button>
-                                            <button class="btn btn-sm btn-info" onclick="previewCompany(1)">
-                                                <i class="fas fa-eye"></i>
-                                                معاينة
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteCompany(1)">
-                                                <i class="fas fa-trash"></i>
-                                                حذف
-                                            </button>
-                                        </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-primary" onclick="editCompany(1)">
+                                            <i class="fas fa-edit"></i>
+                                            تعديل
+                                        </button>
+                                        <button class="btn btn-sm btn-info" onclick="previewCompany(1)">
+                                            <i class="fas fa-eye"></i>
+                                            معاينة
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="hideCompany(1)">
+                                            <i class="fas fa-eye-slash"></i>
+                                            إخفاء
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCompany(1)">
+                                            <i class="fas fa-trash"></i>
+                                            حذف
+                                        </button>
+                                    </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="company-logo">
-                                            <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=I1" alt="مجموعة الاستثمار الوطنية" class="logo-img">
+                                            <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=MP" alt="شركة الإنتاج الإعلامي" class="logo-img">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="company-name">
-                                            <strong>مجموعة الاستثمار الوطنية</strong>
+                                            <strong>شركة الإنتاج الإعلامي</strong>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="company-description">
-                                            مجموعة استثمارية رائدة في السوق المحلي
+                                        <div class="company-stats">
+                                            <div class="stat-item">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span>12+ سنوات</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <i class="fas fa-video"></i>
+                                                <span>1000+ منتج</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <span class="status-badge status-active">مفعل</span>
                                     </td>
                                     <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-sm btn-primary" onclick="editCompany(2)">
-                                                <i class="fas fa-edit"></i>
-                                                تعديل
-                                            </button>
-                                            <button class="btn btn-sm btn-info" onclick="previewCompany(2)">
-                                                <i class="fas fa-eye"></i>
-                                                معاينة
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteCompany(2)">
-                                                <i class="fas fa-trash"></i>
-                                                حذف
-                                            </button>
-                                        </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-primary" onclick="editCompany(2)">
+                                            <i class="fas fa-edit"></i>
+                                            تعديل
+                                        </button>
+                                        <button class="btn btn-sm btn-info" onclick="previewCompany(2)">
+                                            <i class="fas fa-eye"></i>
+                                            معاينة
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="hideCompany(2)">
+                                            <i class="fas fa-eye-slash"></i>
+                                            إخفاء
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCompany(2)">
+                                            <i class="fas fa-trash"></i>
+                                            حذف
+                                        </button>
+                                    </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="company-logo">
-                                            <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=C1" alt="شركة البناء الحديث" class="logo-img">
+                                            <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=TM" alt="شركة التقنية والتسويق" class="logo-img">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="company-name">
-                                            <strong>شركة البناء الحديث</strong>
+                                            <strong>شركة التقنية والتسويق</strong>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="company-description">
-                                            شركة متخصصة في أعمال البناء والتشييد
+                                        <div class="company-stats">
+                                            <div class="stat-item">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span>8+ سنوات</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <i class="fas fa-users"></i>
+                                                <span>200+ عميل</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <span class="status-badge status-inactive">غير مفعل</span>
                                     </td>
                                     <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-sm btn-primary" onclick="editCompany(3)">
-                                                <i class="fas fa-edit"></i>
-                                                تعديل
-                                            </button>
-                                            <button class="btn btn-sm btn-info" onclick="previewCompany(3)">
-                                                <i class="fas fa-eye"></i>
-                                                معاينة
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteCompany(3)">
-                                                <i class="fas fa-trash"></i>
-                                                حذف
-                                            </button>
-                                        </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-primary" onclick="editCompany(3)">
+                                            <i class="fas fa-edit"></i>
+                                            تعديل
+                                        </button>
+                                        <button class="btn btn-sm btn-info" onclick="previewCompany(3)">
+                                            <i class="fas fa-eye"></i>
+                                            معاينة
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="hideCompany(3)">
+                                            <i class="fas fa-eye-slash"></i>
+                                            إخفاء
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteCompany(3)">
+                                            <i class="fas fa-trash"></i>
+                                            حذف
+                                        </button>
+                                    </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -388,88 +414,127 @@
                         <div class="company-card">
                             <div class="card-header">
                                 <div class="company-logo">
-                                    <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=T1" alt="شركة التقنية المتقدمة" class="logo-img">
+                                    <img src="https://via.placeholder.com/60x60/3b82f6/ffffff?text=EP" alt="شركة الأحداث المتقدمة" class="logo-img">
                                 </div>
-                                <div class="company-info">
-                                    <h3 class="company-name">شركة التقنية المتقدمة</h3>
-                                    <span class="status-badge status-active">مفعل</span>
-                                </div>
+                                    <div class="company-info">
+                                        <h3 class="company-name">شركة الأحداث المتقدمة</h3>
+                                        <span class="status-badge status-active">مفعل</span>
+                                    </div>
                             </div>
                             <div class="card-content">
-                                <p class="company-description">شركة رائدة في مجال التقنية والحلول الذكية</p>
+                                <div class="company-stats">
+                                    <div class="stat-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>12+ سنوات</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-video"></i>
+                                        <span>1000+ منتج</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-primary" onclick="editCompany(1)">
-                                    <i class="fas fa-edit"></i>
-                                    تعديل
-                                </button>
-                                <button class="btn btn-sm btn-info" onclick="previewCompany(1)">
-                                    <i class="fas fa-eye"></i>
-                                    معاينة
-                                </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteCompany(1)">
-                                    <i class="fas fa-trash"></i>
-                                    حذف
-                                </button>
-                            </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-sm btn-primary" onclick="editCompany(1)">
+                                        <i class="fas fa-edit"></i>
+                                        تعديل
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="previewCompany(1)">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <button class="btn btn-sm btn-warning" onclick="hideCompany(1)">
+                                        <i class="fas fa-eye-slash"></i>
+                                        إخفاء
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteCompany(1)">
+                                        <i class="fas fa-trash"></i>
+                                        حذف
+                                    </button>
+                                </div>
                         </div>
 
                         <div class="company-card">
                             <div class="card-header">
                                 <div class="company-logo">
-                                    <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=I1" alt="مجموعة الاستثمار الوطنية" class="logo-img">
+                                    <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=MP" alt="شركة الإنتاج الإعلامي" class="logo-img">
                                 </div>
-                                <div class="company-info">
-                                    <h3 class="company-name">مجموعة الاستثمار الوطنية</h3>
-                                    <span class="status-badge status-active">مفعل</span>
-                                </div>
+                                    <div class="company-info">
+                                        <h3 class="company-name">شركة الإنتاج الإعلامي</h3>
+                                        <span class="status-badge status-active">مفعل</span>
+                                    </div>
                             </div>
                             <div class="card-content">
-                                <p class="company-description">مجموعة استثمارية رائدة في السوق المحلي</p>
+                                <div class="company-stats">
+                                    <div class="stat-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>12+ سنوات</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-video"></i>
+                                        <span>1000+ منتج</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-primary" onclick="editCompany(2)">
-                                    <i class="fas fa-edit"></i>
-                                    تعديل
-                                </button>
-                                <button class="btn btn-sm btn-info" onclick="previewCompany(2)">
-                                    <i class="fas fa-eye"></i>
-                                    معاينة
-                                </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteCompany(2)">
-                                    <i class="fas fa-trash"></i>
-                                    حذف
-                                </button>
-                            </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-sm btn-primary" onclick="editCompany(2)">
+                                        <i class="fas fa-edit"></i>
+                                        تعديل
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="previewCompany(2)">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <button class="btn btn-sm btn-warning" onclick="hideCompany(2)">
+                                        <i class="fas fa-eye-slash"></i>
+                                        إخفاء
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteCompany(2)">
+                                        <i class="fas fa-trash"></i>
+                                        حذف
+                                    </button>
+                                </div>
                         </div>
 
                         <div class="company-card">
                             <div class="card-header">
                                 <div class="company-logo">
-                                    <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=C1" alt="شركة البناء الحديث" class="logo-img">
+                                    <img src="https://via.placeholder.com/60x60/f59e0b/ffffff?text=TM" alt="شركة التقنية والتسويق" class="logo-img">
                                 </div>
-                                <div class="company-info">
-                                    <h3 class="company-name">شركة البناء الحديث</h3>
-                                    <span class="status-badge status-inactive">غير مفعل</span>
-                                </div>
+                                    <div class="company-info">
+                                        <h3 class="company-name">شركة التقنية والتسويق</h3>
+                                        <span class="status-badge status-inactive">غير مفعل</span>
+                                    </div>
                             </div>
                             <div class="card-content">
-                                <p class="company-description">شركة متخصصة في أعمال البناء والتشييد</p>
+                                <div class="company-stats">
+                                    <div class="stat-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>8+ سنوات</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>200+ عميل</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-actions">
-                                <button class="btn btn-sm btn-primary" onclick="editCompany(3)">
-                                    <i class="fas fa-edit"></i>
-                                    تعديل
-                                </button>
-                                <button class="btn btn-sm btn-info" onclick="previewCompany(3)">
-                                    <i class="fas fa-eye"></i>
-                                    معاينة
-                                </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteCompany(3)">
-                                    <i class="fas fa-trash"></i>
-                                    حذف
-                                </button>
-                            </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-sm btn-primary" onclick="editCompany(3)">
+                                        <i class="fas fa-edit"></i>
+                                        تعديل
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="previewCompany(3)">
+                                        <i class="fas fa-eye"></i>
+                                        معاينة
+                                    </button>
+                                    <button class="btn btn-sm btn-warning" onclick="hideCompany(3)">
+                                        <i class="fas fa-eye-slash"></i>
+                                        إخفاء
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteCompany(3)">
+                                        <i class="fas fa-trash"></i>
+                                        حذف
+                                    </button>
+                                </div>
                         </div>
                     </div>
 
@@ -537,16 +602,214 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="companyLink" class="form-label">رابط معرفة المزيد</label>
-                        <input type="url" id="companyLink" class="form-input" placeholder="https://example.com">
-                    </div>
-
-                    <div class="form-group">
                         <label for="companyStatus" class="form-label">حالة العرض *</label>
                         <select id="companyStatus" class="form-select" required>
                             <option value="active">مفعل</option>
                             <option value="inactive">غير مفعل</option>
                         </select>
+                    </div>
+
+                    <!-- Company Details Card -->
+                    <div class="details-card">
+                        <div class="card-header collapsible" onclick="toggleCard('detailsCard')">
+                            <h3 class="card-title">
+                                <i class="fas fa-info-circle"></i>
+                                تفاصيل الشركة
+                            </h3>
+                            <i class="fas fa-chevron-down collapse-icon" id="detailsCardIcon"></i>
+                        </div>
+                        <div class="card-content" id="detailsCardContent">
+                            <!-- Company Overview -->
+                            <div class="form-section">
+                                <h4 class="section-title">نبذة عن الشركة</h4>
+                                <div class="form-group">
+                                    <label for="companyOverview" class="form-label">نبذة مختصرة</label>
+                                    <textarea id="companyOverview" class="form-textarea" rows="4" maxlength="500" placeholder="اكتب نبذة مختصرة عن الشركة..."></textarea>
+                                    <div class="char-count">
+                                        <span id="overviewCharCount">0</span> / 500 حرف
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company Banner -->
+                            <div class="form-section">
+                                <h4 class="section-title">صورة البانر</h4>
+                                <div class="form-group">
+                                    <label for="companyBanner" class="form-label">صورة البانر</label>
+                                    <div class="file-upload-area" id="bannerUploadArea">
+                                        <input type="file" id="companyBanner" accept="image/*" class="file-input">
+                                        <div class="upload-content">
+                                            <i class="fas fa-image"></i>
+                                            <p>انقر لرفع صورة البانر أو اسحب الصورة هنا</p>
+                                            <small>الصورة يجب أن تكون بعرض 1200x400 بكسل أو نسبة مشابهة</small>
+                                        </div>
+                                    </div>
+                                    <div class="image-preview" id="bannerPreview" style="display: none;">
+                                        <div class="preview-item">
+                                            <img id="bannerPreviewImg" src="" alt="معاينة البانر" class="preview-image">
+                                            <button type="button" class="remove-file" onclick="removeBanner()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company PDF -->
+                            <div class="form-section">
+                                <h4 class="section-title">ملف الشركة</h4>
+                                <div class="form-group">
+                                    <label for="companyPDF" class="form-label">ملف PDF</label>
+                                    <div class="file-upload-area" id="pdfUploadArea">
+                                        <input type="file" id="companyPDF" accept=".pdf" class="file-input">
+                                        <div class="upload-content">
+                                            <i class="fas fa-file-pdf"></i>
+                                            <p>انقر لرفع ملف PDF أو اسحب الملف هنا</p>
+                                            <small>حجم الملف الأقصى: 10MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="file-preview" id="pdfPreview" style="display: none;">
+                                        <div class="preview-item">
+                                            <i class="fas fa-file-pdf"></i>
+                                            <span class="file-name"></span>
+                                            <button type="button" class="remove-file" onclick="removePDF()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company Statistics -->
+                            <div class="form-section">
+                                <h4 class="section-title">إحصائيات الشركة</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="yearsExperience" class="form-label">سنوات الخبرة</label>
+                                        <input type="number" id="yearsExperience" class="form-input" min="0" placeholder="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="successfulEvents" class="form-label">عدد الفعاليات الناجحة</label>
+                                        <input type="number" id="successfulEvents" class="form-input" min="0" placeholder="0">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="satisfiedClients" class="form-label">عدد العملاء الراضين</label>
+                                        <input type="number" id="satisfiedClients" class="form-input" min="0" placeholder="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="coverageAreas" class="form-label">عدد المناطق المغطاة</label>
+                                        <input type="number" id="coverageAreas" class="form-input" min="0" placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Company Services -->
+                            <div class="form-section">
+                                <h4 class="section-title">الخدمات</h4>
+                                <div class="services-container" id="servicesContainer">
+                                    <div class="service-item">
+                                        <div class="form-group">
+                                            <label class="form-label">عنوان الخدمة</label>
+                                            <input type="text" class="form-input service-title" placeholder="عنوان الخدمة">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">وصف الخدمة</label>
+                                            <textarea class="form-textarea service-description" rows="2" placeholder="وصف قصير للخدمة"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">أيقونة الخدمة</label>
+                                            <div class="icon-input-group">
+                                                <input type="text" class="form-input service-icon" placeholder="fas fa-calendar-alt" value="">
+                                                <button type="button" class="btn btn-secondary btn-sm icon-preview-btn" onclick="previewIcon(this)">
+                                                    <i class="fas fa-eye"></i>
+                                                    معاينة
+                                                </button>
+                                            </div>
+                                            <div class="icon-preview" style="display: none;">
+                                                <i class="preview-icon"></i>
+                                                <small class="icon-help">أدخل كود الأيقونة من Font Awesome أو أي مكتبة أيقونات أخرى</small>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-danger btn-sm remove-service" onclick="removeService(this)">
+                                            <i class="fas fa-trash"></i>
+                                            حذف الخدمة
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="addService()">
+                                    <i class="fas fa-plus"></i>
+                                    إضافة خدمة جديدة
+                                </button>
+                                <div class="icon-help-section">
+                                    <h5>أمثلة على رموز الأيقونات:</h5>
+                                    <div class="icon-examples">
+                                        <span class="icon-example"><i class="fas fa-calendar-alt"></i> fas fa-calendar-alt</span>
+                                        <span class="icon-example"><i class="fas fa-video"></i> fas fa-video</span>
+                                        <span class="icon-example"><i class="fas fa-camera"></i> fas fa-camera</span>
+                                        <span class="icon-example"><i class="fas fa-microphone"></i> fas fa-microphone</span>
+                                        <span class="icon-example"><i class="fas fa-lightbulb"></i> fas fa-lightbulb</span>
+                                        <span class="icon-example"><i class="fas fa-rocket"></i> fas fa-rocket</span>
+                                        <span class="icon-example"><i class="fas fa-star"></i> fas fa-star</span>
+                                        <span class="icon-example"><i class="fas fa-heart"></i> fas fa-heart</span>
+                                    </div>
+                                    <p class="help-text">يمكنك استخدام أي رمز من مكتبة Font Awesome أو أي مكتبة أيقونات أخرى متوافقة.</p>
+                                </div>
+                            </div>
+
+                            <!-- Social Media -->
+                            <div class="form-section">
+                                <h4 class="section-title">التواصل الاجتماعي</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="facebookLink" class="form-label">فيسبوك</label>
+                                        <input type="url" id="facebookLink" class="form-input" placeholder="https://facebook.com/company">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="twitterLink" class="form-label">تويتر</label>
+                                        <input type="url" id="twitterLink" class="form-input" placeholder="https://twitter.com/company">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="instagramLink" class="form-label">إنستغرام</label>
+                                        <input type="url" id="instagramLink" class="form-input" placeholder="https://instagram.com/company">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="linkedinLink" class="form-label">لينكدإن</label>
+                                        <input type="url" id="linkedinLink" class="form-input" placeholder="https://linkedin.com/company/company">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="form-section">
+                                <h4 class="section-title">طرق التواصل</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="companyEmail" class="form-label">البريد الإلكتروني</label>
+                                        <input type="email" id="companyEmail" class="form-input" placeholder="info@company.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="companyPhone" class="form-label">رقم الهاتف</label>
+                                        <input type="tel" id="companyPhone" class="form-input" placeholder="+966501234567">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Map Location -->
+                            <div class="form-section">
+                                <h4 class="section-title">موقع الشركة</h4>
+                                <div class="form-group">
+                                    <label for="mapLink" class="form-label">رابط Google Maps</label>
+                                    <input type="url" id="mapLink" class="form-input" placeholder="https://maps.google.com/...">
+                                </div>
+                                <div class="map-preview" id="mapPreview" style="display: none;">
+                                    <iframe id="mapIframe" width="100%" height="200" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -568,16 +831,20 @@
             </div>
             <div class="modal-body">
                 <div class="company-preview">
+                    <div class="preview-banner" id="previewBanner" style="display: none;">
+                        <img id="previewBannerImg" src="" alt="بانر الشركة" class="banner-image">
+                    </div>
                     <div class="preview-logo">
                         <img id="previewLogo" src="" alt="شعار الشركة">
                     </div>
                     <div class="preview-content">
                         <h3 id="previewName" class="preview-company-name"></h3>
                         <p id="previewDescription" class="preview-company-description"></p>
-                        <a id="previewLink" href="#" class="btn btn-primary" target="_blank" style="display: none;">
-                            <i class="fas fa-external-link-alt"></i>
-                            معرفة المزيد
-                        </a>
+                        <p class="preview-overview" style="display: none;"></p>
+                        <div class="preview-stats" style="display: none;"></div>
+                        <div class="preview-services" style="display: none;"></div>
+                        <div class="preview-contact" style="display: none;"></div>
+                        <div class="preview-social" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -613,6 +880,13 @@
     <!-- Scripts -->
     <script src="js/admin.js"></script>
     <script src="js/companies.js"></script>
-    <script src="js/manage-company.js"></script>
+    <script>
+        // Initialize Companies Manager
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded, initializing CompaniesManager'); // Debug log
+            window.companiesManager = new CompaniesManager();
+            console.log('CompaniesManager initialized:', window.companiesManager); // Debug log
+        });
+    </script>
 </body>
 </html>
