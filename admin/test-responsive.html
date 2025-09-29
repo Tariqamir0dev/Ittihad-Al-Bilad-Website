@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار التجاوب - لوحة التحكم</title>
+    <meta name="description" content="صفحة اختبار للتجاوب على أحجام شاشات مختلفة">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/forms.css">
+    
+    <style>
+        .test-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .test-breakpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .breakpoint-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .breakpoint-item.active {
+            border-color: var(--primary-color);
+            background: var(--primary-50);
+        }
+        
+        .breakpoint-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gray-800);
+        }
+        
+        .breakpoint-size {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 10px;
+        }
+        
+        .breakpoint-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .breakpoint-status.active {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .breakpoint-status.inactive {
+            background: var(--gray-300);
+            color: var(--gray-600);
+        }
+        
+        .test-section {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .test-section h2 {
+            margin-bottom: 20px;
+            color: var(--gray-800);
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .test-card {
+            padding: 20px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            background: var(--gray-50);
+        }
+        
+        .test-card h3 {
+            margin-bottom: 15px;
+            color: var(--gray-700);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .test-button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .test-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .test-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .test-table th,
+        .test-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .test-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .test-chart {
+            height: 200px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 767px) {
+            .test-info {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                font-size: 12px;
+                text-align: center;
+            }
+            
+            .test-breakpoints {
+                grid-template-columns: 1fr;
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .test-section {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .test-section h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-table {
+                font-size: 14px;
+            }
+            
+            .test-table th,
+            .test-table td {
+                padding: 8px;
+            }
+            
+            .test-chart {
+                height: 150px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .test-breakpoints {
+                margin: 5px;
+                padding: 10px;
+            }
+            
+            .test-section {
+                margin: 5px;
+                padding: 10px;
+            }
+            
+            .test-section h2 {
+                font-size: 18px;
+            }
+            
+            .breakpoint-title {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .test-info {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+            
+            .test-breakpoints,
+            .test-section {
+                margin: 2px;
+                padding: 8px;
+            }
+            
+            .test-section h2 {
+                font-size: 16px;
+            }
+            
+            .breakpoint-title {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <!-- Test Info Display -->
+    <div class="test-info" id="testInfo">
+        عرض الشاشة: <span id="screenWidth">0</span>px
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title">اختبار التجاوب</h1>
+            <p class="welcome-subtitle">اختبر لوحة التحكم على أحجام شاشات مختلفة</p>
+        </div>
+
+        <!-- Breakpoints Test -->
+        <div class="test-section">
+            <h2>نقاط التحول (Breakpoints)</h2>
+            <div class="test-breakpoints">
+                <div class="breakpoint-item" id="mobile320">
+                    <div class="breakpoint-title">هاتف صغير جداً</div>
+                    <div class="breakpoint-size">320px</div>
+                    <div class="breakpoint-status inactive" id="status320">غير نشط</div>
+                </div>
+                <div class="breakpoint-item" id="mobile480">
+                    <div class="breakpoint-title">هاتف صغير</div>
+                    <div class="breakpoint-size">480px</div>
+                    <div class="breakpoint-status inactive" id="status480">غير نشط</div>
+                </div>
+                <div class="breakpoint-item" id="mobile767">
+                    <div class="breakpoint-title">هاتف</div>
+                    <div class="breakpoint-size">767px</div>
+                    <div class="breakpoint-status inactive" id="status767">غير نشط</div>
+                </div>
+                <div class="breakpoint-item" id="tablet768">
+                    <div class="breakpoint-title">تابلت</div>
+                    <div class="breakpoint-size">768px</div>
+                    <div class="breakpoint-status inactive" id="status768">غير نشط</div>
+                </div>
+                <div class="breakpoint-item" id="desktop1024">
+                    <div class="breakpoint-title">كمبيوتر</div>
+                    <div class="breakpoint-size">1024px</div>
+                    <div class="breakpoint-status inactive" id="status1024">غير نشط</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Components Test -->
+        <div class="test-section">
+            <h2>اختبار المكونات</h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3>الأزرار</h3>
+                    <button class="test-button">زر تجريبي</button>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 10px;">زر ثانوي</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>الحقول</h3>
+                    <input type="text" class="test-input" placeholder="حقل نص">
+                    <select class="test-input">
+                        <option>خيار 1</option>
+                        <option>خيار 2</option>
+                    </select>
+                </div>
+                
+                <div class="test-card">
+                    <h3>البطاقات</h3>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">1,250</div>
+                            <div class="stat-label">المستخدمين</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-card">
+                    <h3>الجدول</h3>
+                    <table class="test-table">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>النوع</th>
+                                <th>الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مشروع 1</td>
+                                <td>ويب</td>
+                                <td>نشط</td>
+                            </tr>
+                            <tr>
+                                <td>مشروع 2</td>
+                                <td>موبايل</td>
+                                <td>معلق</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="test-card">
+                    <h3>المخطط البياني</h3>
+                    <div class="test-chart">
+                        <i class="fas fa-chart-bar" style="font-size: 48px; margin-right: 10px;"></i>
+                        مخطط تجريبي
+                    </div>
+                </div>
+                
+                <div class="test-card">
+                    <h3>النموذج</h3>
+                    <form>
+                        <input type="text" class="test-input" placeholder="العنوان">
+                        <textarea class="test-input" rows="3" placeholder="الوصف"></textarea>
+                        <button type="submit" class="test-button">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update screen width display
+        function updateScreenInfo() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            // Update breakpoint status
+            const breakpoints = [
+                { id: 'status320', max: 320 },
+                { id: 'status480', max: 480 },
+                { id: 'status767', max: 767 },
+                { id: 'status768', max: 1023 },
+                { id: 'status1024', max: Infinity }
+            ];
+            
+            breakpoints.forEach(bp => {
+                const element = document.getElementById(bp.id);
+                const card = element.closest('.breakpoint-item');
+                
+                if (width <= bp.max) {
+                    element.textContent = 'نشط';
+                    element.className = 'breakpoint-status active';
+                    card.classList.add('active');
+                } else {
+                    element.textContent = 'غير نشط';
+                    element.className = 'breakpoint-status inactive';
+                    card.classList.remove('active');
+                }
+            });
+        }
+        
+        // Update on load and resize
+        updateScreenInfo();
+        window.addEventListener('resize', updateScreenInfo);
+        
+        // Add some interactive features
+        document.querySelectorAll('.test-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Test form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال النموذج بنجاح!');
+        });
+    </script>
+</body>
+</html>

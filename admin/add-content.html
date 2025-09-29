@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة محتوى جديد - لوحة التحكم</title>
+    <meta name="description" content="إضافة محتوى جديد لموقع اتحاد البلاد">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- TinyMCE Editor -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body class="admin-body">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="../images/logo.png" alt="اتحاد البلاد" class="logo-img">
+                    <span class="logo-text">اتحاد البلاد</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="إغلاق القائمة">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="content.html" class="nav-link active">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <span class="nav-text">إدارة المحتوى</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">
+                            <i class="fas fa-project-diagram nav-icon"></i>
+                            <span class="nav-text">المشاريع</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="companies.html" class="nav-link">
+                            <i class="fas fa-building nav-icon"></i>
+                            <span class="nav-text">الشركات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="media.html" class="nav-link">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span class="nav-text">الوسائط</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">المستخدمين</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span class="nav-text">التحليلات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog nav-icon"></i>
+                            <span class="nav-text">الإعدادات</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">طارق عامر</span>
+                        <span class="user-role">مدير عام</span>
+                    </div>
+                </div>
+                <a href="logout.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">لوحة التحكم</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item">
+                            <a href="content.html">إدارة المحتوى</a>
+                        </span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item active">إضافة محتوى جديد</span>
+                    </div>
+                </div>
+                
+                <div class="topbar-right">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <button class="search-toggle" id="searchToggle" aria-label="البحث">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="text" placeholder="البحث..." class="search-input">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn" aria-label="الإشعارات">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h3>الإشعارات</h3>
+                                <button class="mark-all-read">تعليم الكل كمقروء</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">تم تحديث صفحة من نحن</p>
+                                        <p class="notification-time">منذ 10 دقائق</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn" aria-label="قائمة المستخدم">
+                            <div class="user-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name-small">طارق عامر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-menu-dropdown" id="userMenuDropdown">
+                            <a href="profile.html" class="user-menu-item">
+                                <i class="fas fa-user"></i>
+                                الملف الشخصي
+                            </a>
+                            <a href="settings.html" class="user-menu-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <div class="user-menu-divider"></div>
+                            <a href="logout.html" class="user-menu-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Form Content -->
+            <div class="form-container">
+                <!-- Form Header -->
+                <div class="form-header">
+                    <div class="form-header-content">
+                        <h1 class="form-title">إضافة محتوى جديد</h1>
+                        <p class="form-subtitle">أضف محتوى جديد للموقع</p>
+                    </div>
+                    <div class="form-header-actions">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">
+                            <i class="fas fa-arrow-right"></i>
+                            رجوع
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="content-form" id="contentForm" novalidate>
+                    <div class="form-grid">
+                        <!-- Main Content Column -->
+                        <div class="form-main">
+                            <!-- Basic Information -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">المعلومات الأساسية</h2>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="title" class="form-label required">العنوان</label>
+                                    <input type="text" id="title" name="title" class="form-input" placeholder="أدخل عنوان المحتوى" required>
+                                    <div class="form-help">سيظهر هذا العنوان في الصفحة وفي نتائج البحث</div>
+                                    <div class="form-error" id="titleError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="slug" class="form-label">الرابط المخصص</label>
+                                    <div class="input-group">
+                                        <span class="input-prefix">ittihadbilad.com/</span>
+                                        <input type="text" id="slug" name="slug" class="form-input" placeholder="content-slug">
+                                    </div>
+                                    <div class="form-help">سيتم إنشاؤه تلقائياً من العنوان إذا لم تحدد رابطاً مخصصاً</div>
+                                    <div class="form-error" id="slugError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="excerpt" class="form-label">الملخص</label>
+                                    <textarea id="excerpt" name="excerpt" class="form-textarea" rows="3" placeholder="اكتب ملخصاً مختصراً عن المحتوى"></textarea>
+                                    <div class="form-help">سيظهر هذا الملخص في قوائم المحتوى وفي نتائج البحث</div>
+                                    <div class="form-error" id="excerptError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="content" class="form-label required">المحتوى</label>
+                                    <textarea id="content" name="content" class="form-textarea rich-editor" rows="10" placeholder="اكتب المحتوى هنا" required></textarea>
+                                    <div class="form-error" id="contentError"></div>
+                                </div>
+                            </div>
+
+                            <!-- SEO Section -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">تحسين محركات البحث (SEO)</h2>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="metaTitle" class="form-label">عنوان SEO</label>
+                                    <input type="text" id="metaTitle" name="metaTitle" class="form-input" placeholder="عنوان محسن لمحركات البحث">
+                                    <div class="form-help">سيظهر في نتائج البحث، إذا لم تحدد سيستخدم العنوان الأساسي</div>
+                                    <div class="form-error" id="metaTitleError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="metaDescription" class="form-label">وصف SEO</label>
+                                    <textarea id="metaDescription" name="metaDescription" class="form-textarea" rows="3" placeholder="وصف مختصر يظهر في نتائج البحث"></textarea>
+                                    <div class="form-help">يجب أن يكون بين 150-160 حرف</div>
+                                    <div class="form-error" id="metaDescriptionError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="keywords" class="form-label">الكلمات المفتاحية</label>
+                                    <input type="text" id="keywords" name="keywords" class="form-input" placeholder="كلمة1, كلمة2, كلمة3">
+                                    <div class="form-help">أدخل الكلمات المفتاحية مفصولة بفواصل</div>
+                                    <div class="form-error" id="keywordsError"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Column -->
+                        <div class="form-sidebar">
+                            <!-- Publish Section -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">النشر</h2>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status" class="form-label required">الحالة</label>
+                                    <select id="status" name="status" class="form-select" required>
+                                        <option value="">اختر الحالة</option>
+                                        <option value="draft">مسودة</option>
+                                        <option value="published">منشور</option>
+                                        <option value="archived">مؤرشف</option>
+                                    </select>
+                                    <div class="form-error" id="statusError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="type" class="form-label required">نوع المحتوى</label>
+                                    <select id="type" name="type" class="form-select" required>
+                                        <option value="">اختر النوع</option>
+                                        <option value="page">صفحة</option>
+                                        <option value="article">مقال</option>
+                                        <option value="news">خبر</option>
+                                    </select>
+                                    <div class="form-error" id="typeError"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="publishedAt" class="form-label">تاريخ النشر</label>
+                                    <input type="datetime-local" id="publishedAt" name="publishedAt" class="form-input">
+                                    <div class="form-help">إذا لم تحدد سيتم النشر فوراً</div>
+                                    <div class="form-error" id="publishedAtError"></div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" id="saveDraftBtn">
+                                        <i class="fas fa-save"></i>
+                                        حفظ كمسودة
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" id="publishBtn">
+                                        <i class="fas fa-paper-plane"></i>
+                                        نشر المحتوى
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Featured Image -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">الصورة المميزة</h2>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="image-upload">
+                                        <div class="image-preview" id="imagePreview">
+                                            <i class="fas fa-image"></i>
+                                            <p>لا توجد صورة مختارة</p>
+                                            <button type="button" class="btn btn-secondary btn-sm" id="selectImageBtn">
+                                                اختيار صورة
+                                            </button>
+                                        </div>
+                                        <input type="file" id="featuredImage" name="featuredImage" accept="image/*" style="display: none;">
+                                    </div>
+                                    <div class="form-help">الصورة التي ستظهر في معاينة المحتوى</div>
+                                    <div class="form-error" id="featuredImageError"></div>
+                                </div>
+                            </div>
+
+                            <!-- Categories -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">التصنيفات</h2>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">اختر التصنيفات</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="categories" value="general">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-label">عام</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="categories" value="projects">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-label">المشاريع</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="categories" value="news">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-label">الأخبار</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="categories" value="company">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-label">الشركة</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-error" id="categoriesError"></div>
+                                </div>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="form-section">
+                                <div class="section-header">
+                                    <h2 class="section-title">العلامات</h2>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tags" class="form-label">العلامات</label>
+                                    <div class="tags-input">
+                                        <input type="text" id="tags" name="tags" class="form-input" placeholder="أدخل علامة واضغط Enter">
+                                        <div class="tags-list" id="tagsList"></div>
+                                    </div>
+                                    <div class="form-help">أدخل العلامات واضغط Enter لإضافتها</div>
+                                    <div class="form-error" id="tagsError"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

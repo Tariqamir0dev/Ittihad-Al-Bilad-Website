@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المحتوى - لوحة التحكم</title>
+    <meta name="description" content="إدارة محتوى موقع اتحاد البلاد">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/content.css">
+</head>
+<body class="admin-body">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="../images/logo.png" alt="اتحاد البلاد" class="logo-img">
+                    <span class="logo-text">اتحاد البلاد</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="إغلاق القائمة">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="content.html" class="nav-link active">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <span class="nav-text">إدارة المحتوى</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">
+                            <i class="fas fa-project-diagram nav-icon"></i>
+                            <span class="nav-text">المشاريع</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="companies.html" class="nav-link">
+                            <i class="fas fa-building nav-icon"></i>
+                            <span class="nav-text">الشركات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="media.html" class="nav-link">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span class="nav-text">الوسائط</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">المستخدمين</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span class="nav-text">التحليلات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog nav-icon"></i>
+                            <span class="nav-text">الإعدادات</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">طارق عامر</span>
+                        <span class="user-role">مدير عام</span>
+                    </div>
+                </div>
+                <a href="logout.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">لوحة التحكم</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item active">إدارة المحتوى</span>
+                    </div>
+                </div>
+                
+                <div class="topbar-right">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <button class="search-toggle" id="searchToggle" aria-label="البحث">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="text" placeholder="البحث في المحتوى..." class="search-input">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn" aria-label="الإشعارات">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h3>الإشعارات</h3>
+                                <button class="mark-all-read">تعليم الكل كمقروء</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">تم تحديث صفحة من نحن</p>
+                                        <p class="notification-time">منذ 10 دقائق</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">تم رفع صور جديدة</p>
+                                        <p class="notification-time">منذ ساعة</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn" aria-label="قائمة المستخدم">
+                            <div class="user-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name-small">طارق عامر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-menu-dropdown" id="userMenuDropdown">
+                            <a href="profile.html" class="user-menu-item">
+                                <i class="fas fa-user"></i>
+                                الملف الشخصي
+                            </a>
+                            <a href="settings.html" class="user-menu-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <div class="user-menu-divider"></div>
+                            <a href="logout.html" class="user-menu-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Management -->
+            <div class="content-management">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-title-section">
+                        <h1 class="page-title">إدارة المحتوى</h1>
+                        <p class="page-subtitle">إدارة صفحات الموقع والمقالات</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i>
+                            تحديث
+                        </button>
+                        <a href="add-content.html" class="btn btn-primary" id="addContentBtn">
+                            <i class="fas fa-plus"></i>
+                            إضافة محتوى جديد
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="content-filters">
+                    <div class="filters-left">
+                        <div class="filter-group">
+                            <label class="filter-label">النوع:</label>
+                            <select class="filter-select" id="contentTypeFilter">
+                                <option value="">جميع الأنواع</option>
+                                <option value="page">صفحة</option>
+                                <option value="article">مقال</option>
+                                <option value="news">خبر</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">الحالة:</label>
+                            <select class="filter-select" id="statusFilter">
+                                <option value="">جميع الحالات</option>
+                                <option value="published">منشور</option>
+                                <option value="draft">مسودة</option>
+                                <option value="archived">مؤرشف</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filters-right">
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Grid/List -->
+                <div class="content-container">
+                    <!-- Mobile Card View -->
+                    <div class="content-grid mobile-view" id="mobileContentGrid">
+                        <!-- Content Card 1 -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-status published">
+                                    <i class="fas fa-check-circle"></i>
+                                    منشور
+                                </div>
+                                <div class="content-actions">
+                                    <button class="action-btn" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content-card-body">
+                                <h3 class="content-title">الصفحة الرئيسية</h3>
+                                <p class="content-type">صفحة</p>
+                                <p class="content-excerpt">صفحة الترحيب الرئيسية للموقع مع معلومات الشركة</p>
+                                <div class="content-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>طارق عامر</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>15 يناير 2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>1,250 مشاهدة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Card 2 -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-status published">
+                                    <i class="fas fa-check-circle"></i>
+                                    منشور
+                                </div>
+                                <div class="content-actions">
+                                    <button class="action-btn" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content-card-body">
+                                <h3 class="content-title">من نحن</h3>
+                                <p class="content-type">صفحة</p>
+                                <p class="content-excerpt">تعريف بالشركة ورؤيتها ورسالتها</p>
+                                <div class="content-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>فاطمة أحمد</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>12 يناير 2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>890 مشاهدة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Card 3 -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-status draft">
+                                    <i class="fas fa-edit"></i>
+                                    مسودة
+                                </div>
+                                <div class="content-actions">
+                                    <button class="action-btn" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content-card-body">
+                                <h3 class="content-title">مشروع معرض الرياض الدولي</h3>
+                                <p class="content-type">مقال</p>
+                                <p class="content-excerpt">تفاصيل مشروع معرض الرياض الدولي 2025</p>
+                                <div class="content-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>خالد السعيد</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>10 يناير 2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>0 مشاهدة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Card 4 -->
+                        <div class="content-card">
+                            <div class="content-card-header">
+                                <div class="content-status published">
+                                    <i class="fas fa-check-circle"></i>
+                                    منشور
+                                </div>
+                                <div class="content-actions">
+                                    <button class="action-btn" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" title="حذف">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content-card-body">
+                                <h3 class="content-title">شركاتنا</h3>
+                                <p class="content-type">صفحة</p>
+                                <p class="content-excerpt">عرض الشركات التابعة لمجموعة اتحاد البلاد</p>
+                                <div class="content-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>طارق عامر</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>8 يناير 2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>650 مشاهدة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Table View -->
+                    <div class="content-table desktop-view" id="desktopContentTable">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="select-all" id="selectAll">
+                                        </th>
+                                        <th>العنوان</th>
+                                        <th>النوع</th>
+                                        <th>الحالة</th>
+                                        <th>المؤلف</th>
+                                        <th>تاريخ الإنشاء</th>
+                                        <th>المشاهدات</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="row-select">
+                                        </td>
+                                        <td>
+                                            <div class="title-cell">
+                                                <strong>الصفحة الرئيسية</strong>
+                                                <p class="excerpt">صفحة الترحيب الرئيسية للموقع مع معلومات الشركة</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="type-badge page">صفحة</span>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge published">
+                                                <i class="fas fa-check-circle"></i>
+                                                منشور
+                                            </span>
+                                        </td>
+                                        <td>طارق عامر</td>
+                                        <td>15 يناير 2025</td>
+                                        <td>
+                                            <span class="views-count">1,250</span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="action-btn" title="تعديل">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="عرض">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn danger" title="حذف">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="row-select">
+                                        </td>
+                                        <td>
+                                            <div class="title-cell">
+                                                <strong>من نحن</strong>
+                                                <p class="excerpt">تعريف بالشركة ورؤيتها ورسالتها</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="type-badge page">صفحة</span>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge published">
+                                                <i class="fas fa-check-circle"></i>
+                                                منشور
+                                            </span>
+                                        </td>
+                                        <td>فاطمة أحمد</td>
+                                        <td>12 يناير 2025</td>
+                                        <td>
+                                            <span class="views-count">890</span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="action-btn" title="تعديل">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="عرض">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn danger" title="حذف">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="row-select">
+                                        </td>
+                                        <td>
+                                            <div class="title-cell">
+                                                <strong>مشروع معرض الرياض الدولي</strong>
+                                                <p class="excerpt">تفاصيل مشروع معرض الرياض الدولي 2025</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="type-badge article">مقال</span>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge draft">
+                                                <i class="fas fa-edit"></i>
+                                                مسودة
+                                            </span>
+                                        </td>
+                                        <td>خالد السعيد</td>
+                                        <td>10 يناير 2025</td>
+                                        <td>
+                                            <span class="views-count">0</span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="action-btn" title="تعديل">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="عرض">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn danger" title="حذف">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="row-select">
+                                        </td>
+                                        <td>
+                                            <div class="title-cell">
+                                                <strong>شركاتنا</strong>
+                                                <p class="excerpt">عرض الشركات التابعة لمجموعة اتحاد البلاد</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="type-badge page">صفحة</span>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge published">
+                                                <i class="fas fa-check-circle"></i>
+                                                منشور
+                                            </span>
+                                        </td>
+                                        <td>طارق عامر</td>
+                                        <td>8 يناير 2025</td>
+                                        <td>
+                                            <span class="views-count">650</span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button class="action-btn" title="تعديل">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="عرض">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn danger" title="حذف">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        <span>عرض 1-4 من 24 عنصر</span>
+                    </div>
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <button class="pagination-btn">5</button>
+                        <button class="pagination-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin.js"></script>
+    <script src="js/content.js"></script>
+</body>
+</html>
