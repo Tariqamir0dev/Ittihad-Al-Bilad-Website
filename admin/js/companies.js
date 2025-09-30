@@ -476,7 +476,7 @@ class CompaniesManager {
      * Handle form submission
      */
     handleFormSubmit(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         
         if (!this.validateForm()) {
             return;

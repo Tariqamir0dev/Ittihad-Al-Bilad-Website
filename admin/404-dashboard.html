@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - الصفحة غير موجودة | لوحة التحكم</title>
+    <meta name="description" content="الصفحة غير موجودة - لوحة تحكم اتحاد البلاد">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/404-dashboard.css">
+</head>
+<body class="admin-body sf-pro-ar error-page">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="img/logo.png" alt="اتحاد البلاد" class="logo-img">
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="إغلاق القائمة">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="content.html" class="nav-link">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <span class="nav-text">إدارة المحتوى</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">
+                            <i class="fas fa-project-diagram nav-icon"></i>
+                            <span class="nav-text">المشاريع</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="companies.html" class="nav-link">
+                            <i class="fas fa-building nav-icon"></i>
+                            <span class="nav-text">الشركات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="clients.html" class="nav-link">
+                            <i class="fas fa-handshake nav-icon"></i>
+                            <span class="nav-text">العملاء</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="media.html" class="nav-link">
+                            <i class="fas fa-images nav-icon"></i>
+                            <span class="nav-text">الوسائط</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">المستخدمين</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span class="nav-text">التحليلات</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog nav-icon"></i>
+                            <span class="nav-text">الإعدادات</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">طارق عامر</span>
+                        <span class="user-role">مدير عام</span>
+                    </div>
+                </div>
+                <a href="logout.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span class="breadcrumb-item">لوحة التحكم</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-item active">خطأ 404</span>
+                    </div>
+                </div>
+                
+                <div class="topbar-right">
+                    <!-- Search -->
+                    <div class="search-container">
+                        <button class="search-toggle" id="searchToggle" aria-label="البحث">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="text" placeholder="البحث..." class="search-input">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn" aria-label="الإشعارات">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-header">
+                                <h3>الإشعارات</h3>
+                                <button class="mark-all-read">تعليم الكل كمقروء</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">صفحة غير موجودة</p>
+                                        <p class="notification-time">منذ دقيقة</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">مستخدم جديد انضم للفريق</p>
+                                        <p class="notification-time">منذ ساعة</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-title">تقرير التحليلات الشهرية جاهز</p>
+                                        <p class="notification-time">منذ يوم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn" aria-label="قائمة المستخدم">
+                            <div class="user-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name-small">طارق عامر</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-menu-dropdown" id="userMenuDropdown">
+                            <a href="profile.html" class="user-menu-item">
+                                <i class="fas fa-user"></i>
+                                الملف الشخصي
+                            </a>
+                            <a href="settings.html" class="user-menu-item">
+                                <i class="fas fa-cog"></i>
+                                الإعدادات
+                            </a>
+                            <div class="user-menu-divider"></div>
+                            <a href="logout.html" class="user-menu-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 404 Error Content -->
+            <div class="error-content">
+                <!-- Error Number -->
+                <div class="error-number">404</div>
+                
+                <!-- Error Title -->
+                <h1 class="error-title">الصفحة غير موجودة</h1>
+                
+                <!-- Error Description -->
+                <p class="error-description">
+                    عذراً، هذه الصفحة غير متوفرة أو تم تغيير مسارها.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="error-actions">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        العودة إلى لوحة التحكم
+                    </a>
+                    <button class="btn btn-secondary" onclick="history.back()">
+                        <i class="fas fa-arrow-right"></i>
+                        العودة للصفحة السابقة
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/admin.js"></script>
+    <script>
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('404 Dashboard page loaded');
+            
+            // Auto redirect after 30 seconds if user doesn't interact
+            let redirectTimer = setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 30000);
+            
+            // Clear timer if user interacts with page
+            document.addEventListener('click', () => {
+                clearTimeout(redirectTimer);
+            });
+            
+            document.addEventListener('keydown', () => {
+                clearTimeout(redirectTimer);
+            });
+        });
+    </script>
+</body>
+</html>
